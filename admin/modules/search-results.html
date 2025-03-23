@@ -1,0 +1,451 @@
+<div class="module-panel" id="search-results-module">
+    <div class="page-header">
+        <h1 class="page-title">检索结果</h1>
+        <div class="search-form-wrapper">
+            <form class="global-search-form">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="输入关键词搜索..." value="API接口设计">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i> 搜索
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- 筛选器侧栏 -->
+        <div class="col-lg-3">
+            <div class="filter-section">
+                <h5 class="filter-title">
+                    <i class="bi bi-funnel"></i> 筛选条件
+                    <button class="btn btn-sm btn-link float-end">重置</button>
+                </h5>
+
+                <!-- 文件类型筛选 -->
+                <div class="filter-group">
+                    <h6 class="filter-label">文件类型</h6>
+                    <div class="filter-options">
+                        <div class="filter-chip active">
+                            <span>全部</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>DOC/DOCX</span>
+                            <span class="count">12</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>PDF</span>
+                            <span class="count">8</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>PPT</span>
+                            <span class="count">5</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>XLS</span>
+                            <span class="count">3</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>TXT</span>
+                            <span class="count">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 部门筛选 -->
+                <div class="filter-group">
+                    <h6 class="filter-label">所属部门</h6>
+                    <div class="filter-options">
+                        <div class="filter-chip active">
+                            <span>全部</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>研发部</span>
+                            <span class="count">14</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>产品部</span>
+                            <span class="count">8</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>测试部</span>
+                            <span class="count">5</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>设计部</span>
+                            <span class="count">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 时间范围筛选 -->
+                <div class="filter-group">
+                    <h6 class="filter-label">时间范围</h6>
+                    <div class="filter-options">
+                        <div class="filter-chip active">
+                            <span>不限</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>最近一周</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>最近一月</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>最近三月</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>最近一年</span>
+                        </div>
+                    </div>
+                    <div class="date-range-picker mt-2">
+                        <div class="input-group">
+                            <input type="date" class="form-control form-control-sm" placeholder="开始日期">
+                            <span class="input-group-text">至</span>
+                            <input type="date" class="form-control form-control-sm" placeholder="结束日期">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 高级筛选 -->
+                <div class="filter-group">
+                    <h6 class="filter-label">相关性</h6>
+                    <div class="filter-slider">
+                        <input type="range" class="form-range" min="1" max="5" step="1" value="3" id="relevanceRange">
+                        <div class="range-labels">
+                            <span>低</span>
+                            <span class="float-end">高</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 标签筛选 -->
+                <div class="filter-group">
+                    <h6 class="filter-label">文档标签</h6>
+                    <div class="filter-options">
+                        <div class="filter-chip">
+                            <span>API</span>
+                            <span class="count">18</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>规范</span>
+                            <span class="count">15</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>设计</span>
+                            <span class="count">12</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>接口</span>
+                            <span class="count">10</span>
+                        </div>
+                        <div class="filter-chip">
+                            <span>RESTful</span>
+                            <span class="count">8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 搜索结果区域 -->
+        <div class="col-lg-9">
+            <div class="search-result-wrapper">
+                <div class="search-result-header">
+                    <div class="result-count">
+                        找到 <strong>28</strong> 条与 "<strong>API接口设计</strong>" 相关的结果
+                    </div>
+                    <div class="sort-control">
+                        <span class="sort-label">排序：</span>
+                        <select class="form-select form-select-sm" style="width: 120px;">
+                            <option value="relevance" selected>相关性</option>
+                            <option value="date_desc">最新发布</option>
+                            <option value="date_asc">最早发布</option>
+                            <option value="views">浏览量</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 搜索结果列表 -->
+                <div class="search-result-list">
+                    <!-- 结果项1 -->
+                    <div class="result-item">
+                        <div class="result-icon">
+                            <i class="bi bi-file-earmark-word"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4 class="result-title">
+                                <a href="#">API接口设计规范文档</a>
+                            </h4>
+                            <p class="result-snippet">
+                                本文档规定了公司内部<span class="entity-highlight" data-entity="RESTful API">API接口</span>的设计标准和规范，所有新开发的API须遵循本规范...接口命名应遵循<span class="entity-highlight" data-entity="设计风格">RESTful风格</span>，使用名词复数形式表示资源集合...
+                            </p>
+                            <div class="result-meta">
+                                <span class="meta-item">
+                                    <i class="bi bi-person"></i> 张明
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-calendar3"></i> 2023-12-20
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-folder"></i> 技术文档
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-building"></i> 研发部
+                                </span>
+                            </div>
+                        </div>
+                        <div class="result-rating">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                            </div>
+                            <span class="rating-text">5.0</span>
+                        </div>
+                    </div>
+
+                    <!-- 结果项2 -->
+                    <div class="result-item">
+                        <div class="result-icon">
+                            <i class="bi bi-file-earmark-pdf"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4 class="result-title">
+                                <a href="#">微服务架构下的API设计指南</a>
+                            </h4>
+                            <p class="result-snippet">
+                                微服务架构强调服务间通过<span class="entity-highlight" data-entity="通信方式">API进行通信</span>，本文档提供了在微服务环境下的API设计最佳实践...包括<span class="entity-highlight" data-entity="设计原则">API网关设计</span>、服务发现、负载均衡等内容...
+                            </p>
+                            <div class="result-meta">
+                                <span class="meta-item">
+                                    <i class="bi bi-person"></i> 李华
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-calendar3"></i> 2023-11-15
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-folder"></i> 技术文档
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-building"></i> 研发部
+                                </span>
+                            </div>
+                        </div>
+                        <div class="result-rating">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star half">★</span>
+                            </div>
+                            <span class="rating-text">4.5</span>
+                        </div>
+                    </div>
+
+                    <!-- 结果项3 -->
+                    <div class="result-item">
+                        <div class="result-icon">
+                            <i class="bi bi-file-earmark-slides"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4 class="result-title">
+                                <a href="#">RESTful API最佳实践培训课件</a>
+                            </h4>
+                            <p class="result-snippet">
+                                本培训课件详细介绍了<span class="entity-highlight" data-entity="API风格">RESTful API</span>的设计原则、实践方法和常见问题...包含丰富的案例和<span class="entity-highlight" data-entity="实践经验">最佳实践</span>指导，适合开发人员学习...
+                            </p>
+                            <div class="result-meta">
+                                <span class="meta-item">
+                                    <i class="bi bi-person"></i> 王刚
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-calendar3"></i> 2023-10-08
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-folder"></i> 培训资料
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-building"></i> 研发部
+                                </span>
+                            </div>
+                        </div>
+                        <div class="result-rating">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                            <span class="rating-text">4.0</span>
+                        </div>
+                    </div>
+
+                    <!-- 结果项4 -->
+                    <div class="result-item">
+                        <div class="result-icon">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4 class="result-title">
+                                <a href="#">前端API调用规范</a>
+                            </h4>
+                            <p class="result-snippet">
+                                该文档规定了前端应用与后端<span class="entity-highlight" data-entity="API交互">API交互</span>的标准方式，包括请求格式、错误处理和状态管理等内容...采用<span class="entity-highlight" data-entity="设计模式">Axios统一封装</span>，实现接口管理...
+                            </p>
+                            <div class="result-meta">
+                                <span class="meta-item">
+                                    <i class="bi bi-person"></i> 赵明
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-calendar3"></i> 2023-09-22
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-folder"></i> 技术文档
+                                </span>
+                                <span class="meta-item">
+                                    <i class="bi bi-building"></i> 前端组
+                                </span>
+                            </div>
+                        </div>
+                        <div class="result-rating">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star half">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                            <span class="rating-text">3.5</span>
+                        </div>
+                    </div>
+
+                    <div class="pagination-container mt-4">
+                        <nav aria-label="Search results pagination">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 知识图谱浮窗 -->
+    <div class="knowledge-graph-popup" id="knowledgeGraphPopup" style="display: none; top: 150px; left: 400px;">
+        <div class="popup-header">
+            <h6 class="popup-title">RESTful API</h6>
+            <button class="popup-close" onclick="closePopup()">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="popup-body">
+            <div class="entity-description mb-3">
+                <p class="small text-muted">一种软件架构风格，定义了一组用于创建Web服务的约束和属性。RESTful API是一种符合REST设计原则的应用程序接口。</p>
+            </div>
+            <h6 class="related-title">相关文档</h6>
+            <div class="related-docs">
+                <div class="related-doc-item">
+                    <div class="related-doc-icon">
+                        <i class="bi bi-file-earmark-word"></i>
+                    </div>
+                    <div class="related-doc-info">
+                        <div class="related-doc-title">API接口设计规范文档</div>
+                        <div class="related-doc-meta">技术文档 | 2023-12-20</div>
+                    </div>
+                </div>
+                <div class="related-doc-item">
+                    <div class="related-doc-icon">
+                        <i class="bi bi-file-earmark-pdf"></i>
+                    </div>
+                    <div class="related-doc-info">
+                        <div class="related-doc-title">微服务架构下的API设计指南</div>
+                        <div class="related-doc-meta">技术文档 | 2023-11-15</div>
+                    </div>
+                </div>
+                <div class="related-doc-item">
+                    <div class="related-doc-icon">
+                        <i class="bi bi-file-earmark-slides"></i>
+                    </div>
+                    <div class="related-doc-info">
+                        <div class="related-doc-title">RESTful API最佳实践培训课件</div>
+                        <div class="related-doc-meta">培训资料 | 2023-10-08</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 示例代码：显示和隐藏知识图谱浮窗
+    document.addEventListener('DOMContentLoaded', function() {
+        // 为所有实体高亮区域添加点击事件
+        const entityHighlights = document.querySelectorAll('.entity-highlight');
+        entityHighlights.forEach(entity => {
+            entity.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 获取实体信息
+                const entityType = this.getAttribute('data-entity');
+                
+                // 获取弹窗
+                const popup = document.getElementById('knowledgeGraphPopup');
+                
+                // 设置弹窗标题
+                const popupTitle = popup.querySelector('.popup-title');
+                popupTitle.textContent = entityType;
+                
+                // 显示弹窗并定位在点击位置附近
+                popup.style.display = 'block';
+                
+                // 计算位置，避免超出视窗
+                const rect = this.getBoundingClientRect();
+                const popupWidth = 320;
+                const windowWidth = window.innerWidth;
+                
+                let leftPos = rect.left;
+                if (leftPos + popupWidth > windowWidth - 20) {
+                    leftPos = windowWidth - popupWidth - 20;
+                }
+                
+                popup.style.left = leftPos + 'px';
+                popup.style.top = (rect.top + rect.height + window.scrollY + 10) + 'px';
+            });
+        });
+        
+        // 关闭弹窗
+        window.closePopup = function() {
+            document.getElementById('knowledgeGraphPopup').style.display = 'none';
+        };
+        
+        // 点击其他区域关闭弹窗
+        document.addEventListener('click', function(e) {
+            const popup = document.getElementById('knowledgeGraphPopup');
+            const isClickInside = popup.contains(e.target);
+            const isClickOnEntity = e.target.classList.contains('entity-highlight') || 
+                                   e.target.parentElement.classList.contains('entity-highlight');
+            
+            if (!isClickInside && !isClickOnEntity && popup.style.display === 'block') {
+                popup.style.display = 'none';
+            }
+        });
+    });
+</script> 

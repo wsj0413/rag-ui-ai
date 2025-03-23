@@ -1,0 +1,473 @@
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">智能助手</h5>
+                <p class="card-text">基于企业知识库的AI助手，回答问题、生成摘要、提供决策支持。</p>
+                
+                <div class="assistant-container p-3 border rounded bg-light">
+                    <div class="chat-messages mb-3" style="height: 400px; overflow-y: auto;">
+                        <div class="message assistant-message">
+                            <div class="message-content">
+                                <div class="message-avatar">
+                                    <i class="bi bi-robot"></i>
+                                </div>
+                                <div class="message-bubble">
+                                    <div class="message-text">
+                                        <p>您好，我是企业知识助手，可以回答问题、总结文档、生成报告等。有什么需要帮助的吗？</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-time text-muted small">
+                                10:00
+                            </div>
+                        </div>
+                        
+                        <div class="message user-message">
+                            <div class="message-content">
+                                <div class="message-bubble">
+                                    <div class="message-text">
+                                        <p>帮我总结Q3季度故障报告的要点</p>
+                                    </div>
+                                </div>
+                                <div class="message-avatar">
+                                    <i class="bi bi-person-circle"></i>
+                                </div>
+                            </div>
+                            <div class="message-time text-muted small text-end">
+                                10:05
+                            </div>
+                        </div>
+                        
+                        <div class="message assistant-message">
+                            <div class="message-content">
+                                <div class="message-avatar">
+                                    <i class="bi bi-robot"></i>
+                                </div>
+                                <div class="message-bubble">
+                                    <div class="message-text">
+                                        <p>根据Q3季度故障报告，主要问题集中在三个方面：</p>
+                                        <ol>
+                                            <li>服务器负载过高导致响应缓慢，主要发生在业务高峰期，影响了约15%的用户访问体验</li>
+                                            <li>数据库连接池配置不合理，导致连接资源浪费和偶发性的查询超时</li>
+                                            <li>前端缓存策略需要优化，特别是在处理大量数据列表时存在性能瓶颈</li>
+                                        </ol>
+                                        <p>建议采取以下措施：</p>
+                                        <ul>
+                                            <li>增加服务器资源，实施更细粒度的弹性扩缩容策略</li>
+                                            <li>重新配置数据库连接池参数，引入连接复用机制</li>
+                                            <li>改进前端缓存机制，实现数据分页和虚拟滚动</li>
+                                        </ul>
+                                        <p>详细内容可参考<a href="#">完整故障报告</a>和<a href="#">技术架构优化方案</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-time text-muted small">
+                                10:06
+                            </div>
+                        </div>
+                        
+                        <div class="message user-message">
+                            <div class="message-content">
+                                <div class="message-bubble">
+                                    <div class="message-text">
+                                        <p>帮我生成一个会议纪要模板</p>
+                                    </div>
+                                </div>
+                                <div class="message-avatar">
+                                    <i class="bi bi-person-circle"></i>
+                                </div>
+                            </div>
+                            <div class="message-time text-muted small text-end">
+                                10:10
+                            </div>
+                        </div>
+                        
+                        <div class="message assistant-message">
+                            <div class="message-content">
+                                <div class="message-avatar">
+                                    <i class="bi bi-robot"></i>
+                                </div>
+                                <div class="message-bubble">
+                                    <div class="message-text">
+                                        <p>以下是会议纪要模板：</p>
+                                        <div class="template-preview p-3 border rounded bg-white">
+                                            <h5>会议纪要</h5>
+                                            <hr>
+                                            <p><strong>会议信息</strong></p>
+                                            <ul>
+                                                <li>会议主题：[会议名称]</li>
+                                                <li>会议时间：[日期] [开始时间]-[结束时间]</li>
+                                                <li>会议地点：[线上/线下位置]</li>
+                                                <li>会议主持：[主持人姓名]</li>
+                                                <li>参会人员：[姓名1]、[姓名2]、...</li>
+                                                <li>缺席人员：[姓名1]、[姓名2]、...</li>
+                                                <li>记录人：[记录人姓名]</li>
+                                            </ul>
+                                            <p><strong>会议议题</strong></p>
+                                            <ol>
+                                                <li><strong>议题一：[议题名称]</strong>
+                                                    <ul>
+                                                        <li>讨论要点：...</li>
+                                                        <li>决议：...</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>议题二：[议题名称]</strong>
+                                                    <ul>
+                                                        <li>讨论要点：...</li>
+                                                        <li>决议：...</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                            <p><strong>行动项</strong></p>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>任务</th>
+                                                        <th>负责人</th>
+                                                        <th>截止日期</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>[任务描述]</td>
+                                                        <td>[负责人]</td>
+                                                        <td>[日期]</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p><strong>下次会议</strong></p>
+                                            <ul>
+                                                <li>日期：[日期]</li>
+                                                <li>时间：[时间]</li>
+                                                <li>地点：[地点]</li>
+                                                <li>预计议题：[议题列表]</li>
+                                            </ul>
+                                        </div>
+                                        <p class="mt-2">您可以<a href="#" class="text-primary">下载此模板</a>或<a href="#" class="text-primary">自定义模板</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-time text-muted small">
+                                10:11
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-form">
+                        <form class="d-flex align-items-end">
+                            <div class="flex-grow-1 me-2">
+                                <textarea class="form-control" rows="2" placeholder="输入您的问题或指令..."></textarea>
+                                <div class="chat-tools mt-1 d-flex">
+                                    <div class="btn-group btn-group-sm me-auto">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm">
+                                            <i class="bi bi-paperclip"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm">
+                                            <i class="bi bi-image"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm">
+                                            <i class="bi bi-file-earmark-text"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="searchPrivate" checked>
+                                        <label class="form-check-label small" for="searchPrivate">搜索私有文档</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-send"></i> 发送
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="quick-prompts mt-3">
+                    <h6>常用指令</h6>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">总结[文档名称]的要点</span>
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">生成[会议/报告]模板</span>
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">分析[数据/图表]的趋势</span>
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">比较[A文档]和[B文档]的异同</span>
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">提取[文档]中的关键信息</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">知识来源</h5>
+            </div>
+            <div class="card-body">
+                <div class="source-info">
+                    <p class="mb-2">当前回答基于以下知识来源：</p>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Q3季度故障报告</h6>
+                                <small>2023-10-05</small>
+                            </div>
+                            <small class="text-muted">技术部 | 王工</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">系统架构优化方案</h6>
+                                <small>2023-10-12</small>
+                            </div>
+                            <small class="text-muted">研发部 | 李工</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">会议纪要规范</h6>
+                                <small>2023-01-15</small>
+                            </div>
+                            <small class="text-muted">行政部 | 张经理</small>
+                        </a>
+                    </div>
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" value="" id="showSources" checked>
+                        <label class="form-check-label" for="showSources">
+                            自动显示知识来源
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">风险预警设置</h5>
+            </div>
+            <div class="card-body">
+                <div class="risk-warning-settings">
+                    <div class="mb-3">
+                        <label for="sensitiveKeywords" class="form-label">敏感关键词管理</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="sensitiveKeywords" placeholder="添加敏感关键词">
+                            <button class="btn btn-outline-secondary" type="button">添加</button>
+                        </div>
+                        <div class="form-text">当检索包含敏感词时将触发预警</div>
+                    </div>
+                    
+                    <div class="sensitive-tags mt-2 mb-3">
+                        <span class="badge bg-danger me-1 mb-1">机密</span>
+                        <span class="badge bg-danger me-1 mb-1">内部</span>
+                        <span class="badge bg-danger me-1 mb-1">财务</span>
+                        <span class="badge bg-danger me-1 mb-1">薪资</span>
+                        <span class="badge bg-danger me-1 mb-1">战略</span>
+                        <span class="badge bg-danger me-1 mb-1">收购</span>
+                        <span class="badge bg-danger me-1 mb-1">裁员</span>
+                        <span class="badge bg-danger me-1 mb-1">技术壁垒</span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="warningLevel" class="form-label">预警级别</label>
+                        <select class="form-select" id="warningLevel">
+                            <option value="low">低 - 仅提示用户</option>
+                            <option value="medium" selected>中 - 提示用户并记录</option>
+                            <option value="high">高 - 提示用户、记录并通知管理员</option>
+                            <option value="block">阻止 - 完全阻止访问敏感内容</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="logAllSearches" checked>
+                            <label class="form-check-label" for="logAllSearches">
+                                记录所有搜索历史
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="notifySensitive" checked>
+                            <label class="form-check-label" for="notifySensitive">
+                                敏感内容触发时通知管理员
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="autoRedact">
+                            <label class="form-check-label" for="autoRedact">
+                                自动遮盖敏感信息
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning" role="alert">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        风险预警机制将监控所有涉及敏感信息的查询，保护企业机密信息不被泄露。
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary">保存设置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">使用统计</h5>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h1 class="display-4">1,256</h1>
+                                <p class="text-muted">总对话次数</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h1 class="display-4">85%</h1>
+                                <p class="text-muted">问题解决率</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h1 class="display-4">3.2s</h1>
+                                <p class="text-muted">平均响应时间</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h1 class="display-4">74</h1>
+                                <p class="text-muted">活跃用户数</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                热门问题分类
+                            </div>
+                            <div class="card-body">
+                                <canvas id="questionCategoryChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                使用趋势
+                            </div>
+                            <div class="card-body">
+                                <canvas id="usageTrendChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 聊天界面样式 */
+    .chat-messages {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .message {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .message-content {
+        display: flex;
+        max-width: 80%;
+    }
+    
+    .assistant-message .message-content {
+        align-self: flex-start;
+    }
+    
+    .user-message .message-content {
+        align-self: flex-end;
+        flex-direction: row-reverse;
+    }
+    
+    .message-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f1f1f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .user-message .message-avatar {
+        background-color: #e7f3ff;
+    }
+    
+    .message-avatar i {
+        font-size: 1.2rem;
+    }
+    
+    .message-bubble {
+        margin: 0 10px;
+        background-color: #f1f1f1;
+        border-radius: 18px;
+        padding: 10px 15px;
+    }
+    
+    .user-message .message-bubble {
+        background-color: #e7f3ff;
+    }
+    
+    .message-text p:last-child {
+        margin-bottom: 0;
+    }
+    
+    .message-time {
+        margin-top: 5px;
+        font-size: 0.8rem;
+    }
+    
+    .user-message .message-time {
+        align-self: flex-end;
+    }
+    
+    /* 快速提示样式 */
+    .quick-prompts .badge {
+        cursor: pointer;
+    }
+    
+    .quick-prompts .badge:hover {
+        background-color: #e9ecef !important;
+    }
+    
+    /* 模板预览样式 */
+    .template-preview {
+        max-height: 200px;
+        overflow-y: auto;
+        font-size: 0.9rem;
+    }
+    
+    /* 敏感标签样式 */
+    .sensitive-tags .badge {
+        font-weight: normal;
+    }
+</style> 

@@ -1,0 +1,419 @@
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">智能搜索</h5>
+                <form class="search-form">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="输入关键词、语义问题或上传图片...">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="bi bi-search"></i> 搜索
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" aria-label="搜索类型">
+                                <option value="keyword" selected>关键词搜索</option>
+                                <option value="semantic">语义搜索</option>
+                                <option value="image">图像搜索</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#advancedSearchModal">
+                                高级搜索
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="search-tips mt-2">
+                    <p class="text-muted small">
+                        <i class="bi bi-info-circle"></i> 提示：
+                        <a href="#" class="text-decoration-none">如何使用语义搜索？</a> | 
+                        <a href="#" class="text-decoration-none">关键词搜索技巧</a> | 
+                        <a href="#" class="text-decoration-none">图片搜索指南</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="search-tabs">
+            <ul class="nav nav-tabs" id="searchTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="keyword-tab" data-bs-toggle="tab" data-bs-target="#keyword-results" type="button" role="tab" aria-controls="keyword-results" aria-selected="true">
+                        <i class="bi bi-key"></i> 关键词搜索
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="semantic-tab" data-bs-toggle="tab" data-bs-target="#semantic-results" type="button" role="tab" aria-controls="semantic-results" aria-selected="false">
+                        <i class="bi bi-diagram-3"></i> 语义搜索
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-results" type="button" role="tab" aria-controls="image-results" aria-selected="false">
+                        <i class="bi bi-image"></i> 图像搜索
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#search-history" type="button" role="tab" aria-controls="search-history" aria-selected="false">
+                        <i class="bi bi-clock-history"></i> 搜索历史
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content p-3 border border-top-0 bg-white rounded-bottom" id="searchTabContent">
+                <div class="tab-pane fade show active" id="keyword-results" role="tabpanel" aria-labelledby="keyword-tab">
+                    <div class="search-results">
+                        <div class="text-center text-muted my-5">
+                            <i class="bi bi-search" style="font-size: 3rem;"></i>
+                            <p class="mt-3">请输入关键词开始搜索</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="semantic-results" role="tabpanel" aria-labelledby="semantic-tab">
+                    <div class="search-examples">
+                        <h6>语义搜索示例</h6>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="card-body py-2">
+                                        <a href="#" class="text-decoration-none">找类似2023年营销方案的文档</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="card-body py-2">
+                                        <a href="#" class="text-decoration-none">介绍产品性能的PPT</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="card-body py-2">
+                                        <a href="#" class="text-decoration-none">与客户沟通技巧相关的文档</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="image-results" role="tabpanel" aria-labelledby="image-tab">
+                    <div class="image-upload-area">
+                        <div class="dropzone" id="image-dropzone">
+                            <input type="file" accept="image/*" style="display: none;" id="imageInput">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                            <h4>拖拽图片到此处</h4>
+                            <p>或者 <a href="#" onclick="document.getElementById('imageInput').click(); return false;">点击选择图片</a></p>
+                            <p class="text-muted">支持JPG、PNG、WEBP等格式，最大10MB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="search-history" role="tabpanel" aria-labelledby="history-tab">
+                    <div class="search-history-list">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>搜索内容</th>
+                                        <th>搜索类型</th>
+                                        <th>时间</th>
+                                        <th>结果数</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>产品设计方案</td>
+                                        <td>关键词</td>
+                                        <td>2023-03-20 15:30</td>
+                                        <td>12</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">重新搜索</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>关于新产品发布的会议记录</td>
+                                        <td>语义</td>
+                                        <td>2023-03-19 10:15</td>
+                                        <td>8</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">重新搜索</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://via.placeholder.com/30" class="img-thumbnail" alt="搜索图片"></td>
+                                        <td>图像</td>
+                                        <td>2023-03-18 14:20</td>
+                                        <td>5</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">重新搜索</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>销售数据分析</td>
+                                        <td>关键词</td>
+                                        <td>2023-03-17 09:45</td>
+                                        <td>15</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">重新搜索</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="card-title mb-0">热门搜索</h5>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">今日</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary active">本周</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">本月</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="hot-search-tags">
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">产品设计 <span class="hot-count">128</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">市场分析 <span class="hot-count">95</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">销售策略 <span class="hot-count">87</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">用户体验 <span class="hot-count">76</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">项目管理 <span class="hot-count">65</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">技术规范 <span class="hot-count">58</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">会议纪要 <span class="hot-count">52</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">培训资料 <span class="hot-count">49</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">竞品分析 <span class="hot-count">41</span></a>
+                            <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2 p-2">用户调研 <span class="hot-count">36</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="hot-search-chart">
+                            <canvas id="hotSearchChart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">搜索推荐</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">2023年第二季度市场分析报告</h6>
+                            <small>3天前</small>
+                        </div>
+                        <p class="mb-1">基于您最近查看的内容推荐</p>
+                        <small class="text-muted">市场部 | 李四</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">产品设计规范V2.0</h6>
+                            <small>1周前</small>
+                        </div>
+                        <p class="mb-1">与您最近搜索的内容相关</p>
+                        <small class="text-muted">设计部 | 王五</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">用户调研问卷设计指南</h6>
+                            <small>2周前</small>
+                        </div>
+                        <p class="mb-1">您所在部门的热门文档</p>
+                        <small class="text-muted">产品部 | 张三</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">搜索助手</h5>
+                <div class="assistant-chat p-3 border rounded mb-3" style="height: 200px; overflow-y: auto;">
+                    <div class="message assistant-message">
+                        <div class="message-content">
+                            您好！我是搜索助手，有什么可以帮您查找的吗？
+                        </div>
+                    </div>
+                    <div class="message user-message">
+                        <div class="message-content">
+                            我需要找关于产品设计的文档
+                        </div>
+                    </div>
+                    <div class="message assistant-message">
+                        <div class="message-content">
+                            好的，您是需要查找产品设计的模板、规范还是案例研究？或者您可以告诉我具体的产品类型，我可以提供更精准的搜索建议。
+                        </div>
+                    </div>
+                </div>
+                <div class="assistant-input">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="输入您的问题...">
+                        <button class="btn btn-primary" type="button">发送</button>
+                    </div>
+                    <div class="quick-questions mt-2">
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">如何找到最新的设计规范？</span>
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">查找市场部的报告</span>
+                        <span class="badge bg-light text-dark border p-2 me-2 mb-2 cursor-pointer">搜索技巧</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="advancedSearchModalLabel">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="advancedKeywords" class="form-label">关键词</label>
+                            <input type="text" class="form-control" id="advancedKeywords" placeholder="输入搜索关键词">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exactPhrase" class="form-label">精确短语</label>
+                            <input type="text" class="form-control" id="exactPhrase" placeholder="输入精确匹配的短语">
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="documentType" class="form-label">文档类型</label>
+                            <select class="form-select" id="documentType" multiple>
+                                <option value="pdf">PDF</option>
+                                <option value="doc">Word文档</option>
+                                <option value="xls">Excel表格</option>
+                                <option value="ppt">PowerPoint</option>
+                                <option value="txt">文本文件</option>
+                                <option value="img">图像文件</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="departmentFilter" class="form-label">部门筛选</label>
+                            <select class="form-select" id="departmentFilter" multiple>
+                                <option value="product">产品部</option>
+                                <option value="design">设计部</option>
+                                <option value="development">研发部</option>
+                                <option value="marketing">市场部</option>
+                                <option value="sales">销售部</option>
+                                <option value="hr">人力资源部</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="dateRangeStart" class="form-label">日期范围</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="dateRangeStart">
+                                <span class="input-group-text">至</span>
+                                <input type="date" class="form-control" id="dateRangeEnd">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="sortOrder" class="form-label">排序方式</label>
+                            <select class="form-select" id="sortOrder">
+                                <option value="relevance">相关度</option>
+                                <option value="date_desc">日期 (最新)</option>
+                                <option value="date_asc">日期 (最早)</option>
+                                <option value="views">浏览量</option>
+                                <option value="downloads">下载量</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="tagsFilter" class="form-label">标签筛选</label>
+                        <input type="text" class="form-control" id="tagsFilter" placeholder="输入标签，用逗号分隔">
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="onlyMyDocs">
+                        <label class="form-check-label" for="onlyMyDocs">
+                            仅显示我创建或编辑的文档
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 热门搜索标签样式 */
+    .hot-search-tags .badge {
+        font-size: 0.9rem;
+        font-weight: normal;
+    }
+    
+    .hot-count {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        padding: 0 8px;
+        margin-left: 5px;
+        font-size: 0.8rem;
+    }
+    
+    /* 聊天消息样式 */
+    .message {
+        margin-bottom: 15px;
+        clear: both;
+    }
+    
+    .message-content {
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 80%;
+    }
+    
+    .assistant-message .message-content {
+        background-color: #f1f1f1;
+        float: left;
+    }
+    
+    .user-message .message-content {
+        background-color: #d1e7ff;
+        float: right;
+    }
+    
+    .quick-questions .badge {
+        cursor: pointer;
+    }
+    
+    .quick-questions .badge:hover {
+        background-color: #e9ecef !important;
+    }
+</style> 

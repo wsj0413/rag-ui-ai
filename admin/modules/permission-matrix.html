@@ -1,0 +1,485 @@
+<div class="module-panel" id="permission-matrix-module">
+    <div class="page-header">
+        <h1 class="page-title">权限矩阵</h1>
+        <div class="page-actions">
+            <button class="btn btn-outline-secondary me-2">
+                <i class="bi bi-download"></i> 导出配置
+            </button>
+            <button class="btn btn-primary">
+                <i class="bi bi-shield-lock"></i> 设置默认权限
+            </button>
+        </div>
+    </div>
+
+    <!-- 权限管理标签页 -->
+    <ul class="nav nav-tabs" id="permissionTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="role-permissions-tab" data-bs-toggle="tab" data-bs-target="#role-permissions" type="button" role="tab">角色权限</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="resource-permissions-tab" data-bs-toggle="tab" data-bs-target="#resource-permissions" type="button" role="tab">资源权限</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="special-permissions-tab" data-bs-toggle="tab" data-bs-target="#special-permissions" type="button" role="tab">特殊权限</button>
+        </li>
+    </ul>
+
+    <div class="tab-content p-3 bg-white rounded-3 shadow-sm" id="permissionTabContent">
+        <!-- 角色权限标签内容 -->
+        <div class="tab-pane fade show active" id="role-permissions" role="tabpanel">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text">选择角色</span>
+                        <select class="form-select" id="roleFilter">
+                            <option value="all" selected>所有角色</option>
+                            <option value="admin">系统管理员</option>
+                            <option value="manager">部门经理</option>
+                            <option value="developer">开发人员</option>
+                            <option value="tester">测试人员</option>
+                            <option value="designer">设计人员</option>
+                            <option value="viewer">普通用户</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-check form-switch float-end">
+                        <input class="form-check-input" type="checkbox" id="showInheritedPermissions" checked>
+                        <label class="form-check-label" for="showInheritedPermissions">显示继承权限</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 角色权限矩阵 -->
+            <div class="permission-matrix-wrapper">
+                <div class="permission-matrix">
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>功能/角色</th>
+                                <th>系统管理员</th>
+                                <th>部门经理</th>
+                                <th>开发人员</th>
+                                <th>测试人员</th>
+                                <th>设计人员</th>
+                                <th>普通用户</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 知识库管理权限 -->
+                            <tr class="category-header">
+                                <td colspan="7">知识库管理</td>
+                            </tr>
+                            <tr>
+                                <td>查看文档</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>创建文档</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>编辑文档</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>删除文档</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>批量导入</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+
+                            <!-- 权限管理权限 -->
+                            <tr class="category-header">
+                                <td colspan="7">权限管理</td>
+                            </tr>
+                            <tr>
+                                <td>管理用户</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>管理角色</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>配置权限</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>查看访问日志</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+
+                            <!-- 数据分析权限 -->
+                            <tr class="category-header">
+                                <td colspan="7">数据分析</td>
+                            </tr>
+                            <tr>
+                                <td>查看分析报表</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>导出报表</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>配置分析指标</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+
+                            <!-- 系统设置权限 -->
+                            <tr class="category-header">
+                                <td colspan="7">系统设置</td>
+                            </tr>
+                            <tr>
+                                <td>修改系统参数</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>备份与还原</td>
+                                <td><span class="permission-indicator permission-full"><i class="bi bi-check"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                                <td><span class="permission-indicator permission-none"><i class="bi bi-x"></i></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 权限图例 -->
+            <div class="permission-legend mt-3">
+                <div class="legend-item">
+                    <span class="permission-indicator permission-full"><i class="bi bi-check"></i></span>
+                    <span class="legend-text">完全权限</span>
+                </div>
+                <div class="legend-item">
+                    <span class="permission-indicator permission-partial"><i class="bi bi-dash"></i></span>
+                    <span class="legend-text">部分权限（带条件限制）</span>
+                </div>
+                <div class="legend-item">
+                    <span class="permission-indicator permission-none"><i class="bi bi-x"></i></span>
+                    <span class="legend-text">无权限</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 资源权限标签内容 -->
+        <div class="tab-pane fade" id="resource-permissions" role="tabpanel">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text">选择资源类型</span>
+                        <select class="form-select" id="resourceTypeFilter">
+                            <option value="all" selected>所有资源</option>
+                            <option value="document">文档</option>
+                            <option value="report">报表</option>
+                            <option value="api">API接口</option>
+                            <option value="dashboard">仪表盘</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜索资源名称">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资源权限列表 -->
+            <div class="resource-permissions-container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>资源名称</th>
+                            <th>资源类型</th>
+                            <th>拥有者</th>
+                            <th>公开级别</th>
+                            <th>特殊授权</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>API接口设计规范文档</td>
+                            <td>文档</td>
+                            <td>张明</td>
+                            <td>部门内公开</td>
+                            <td>3个角色，5个用户</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary">管理权限</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>微服务架构设计文档</td>
+                            <td>文档</td>
+                            <td>李华</td>
+                            <td>全公司公开</td>
+                            <td>2个角色，0个用户</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary">管理权限</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>月度知识检索分析</td>
+                            <td>报表</td>
+                            <td>王管理</td>
+                            <td>仅管理层</td>
+                            <td>1个角色，3个用户</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary">管理权限</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>知识库使用情况仪表盘</td>
+                            <td>仪表盘</td>
+                            <td>系统</td>
+                            <td>全公司公开</td>
+                            <td>无特殊授权</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary">管理权限</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>文档生成API</td>
+                            <td>API接口</td>
+                            <td>系统</td>
+                            <td>仅技术人员</td>
+                            <td>1个角色，2个用户</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary">管理权限</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 特殊权限标签内容 -->
+        <div class="tab-pane fade" id="special-permissions" role="tabpanel">
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        特殊权限用于临时授权或特定场景下的权限管理，这些权限将优先于常规的角色权限。
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">临时权限</h5>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-plus"></i> 新增临时权限
+                            </button>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>授权对象</th>
+                                        <th>资源</th>
+                                        <th>权限类型</th>
+                                        <th>生效时间</th>
+                                        <th>失效时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>刘敏（产品经理）</td>
+                                        <td>API接口设计规范文档</td>
+                                        <td>编辑权限</td>
+                                        <td>2023-12-01</td>
+                                        <td>2023-12-31</td>
+                                        <td><span class="badge bg-success">生效中</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger">撤销</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>测试组（角色）</td>
+                                        <td>前端API调用规范</td>
+                                        <td>查看权限</td>
+                                        <td>2023-12-15</td>
+                                        <td>2024-01-15</td>
+                                        <td><span class="badge bg-success">生效中</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger">撤销</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>外部顾问组（角色）</td>
+                                        <td>月度知识检索分析</td>
+                                        <td>查看权限</td>
+                                        <td>2023-11-01</td>
+                                        <td>2023-11-30</td>
+                                        <td><span class="badge bg-secondary">已过期</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-secondary">延期</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">权限豁免</h5>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-plus"></i> 新增豁免
+                            </button>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>豁免对象</th>
+                                        <th>豁免范围</th>
+                                        <th>豁免原因</th>
+                                        <th>申请人</th>
+                                        <th>审批人</th>
+                                        <th>生效状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>安全审计组</td>
+                                        <td>所有文档只读访问</td>
+                                        <td>合规审计需要</td>
+                                        <td>李总监</td>
+                                        <td>王总</td>
+                                        <td><span class="badge bg-success">永久有效</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger">撤销</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>张三（开发人员）</td>
+                                        <td>系统参数配置</td>
+                                        <td>特殊项目需求</td>
+                                        <td>李经理</td>
+                                        <td>王总</td>
+                                        <td><span class="badge bg-warning text-dark">临时生效</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger">撤销</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .category-header {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+    
+    .category-header td {
+        padding: 8px 12px;
+        color: #495057;
+    }
+    
+    .permission-legend {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .legend-text {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+</style> 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业知识管理系统</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid g-0">
+        <div class="row g-0">
+            <!-- 侧边导航栏 -->
+            <nav id="sidebar" class="col-md-2 d-md-block sidebar">
+                <div class="position-sticky">
+                    <div class="company-info">
+                        <h5>企业知识管理平台</h5>
+                        <p class="user-info">张三 | 产品经理</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-module="home">
+                                <i class="bi bi-house-door"></i>
+                                <span>首页</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-module="collector">
+                                <i class="bi bi-cloud-upload"></i>
+                                <span>多模态知识采集器</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-module="processor">
+                                <i class="bi bi-gear"></i>
+                                <span>智能知识处理器</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-module="search">
+                                <i class="bi bi-search"></i>
+                                <span>三维检索系统</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-module="permission">
+                                <i class="bi bi-shield-lock"></i>
+                                <span>动态权限矩阵</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-module="operation">
+                                <i class="bi bi-graph-up"></i>
+                                <span>知识运营中心</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-module="assistant">
+                                <i class="bi bi-robot"></i>
+                                <span>智能助手集成</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 主内容区域 -->
+            <main class="col-md-10 ms-sm-auto px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2" id="current-module-title">系统首页</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="智能搜索...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        <div class="btn-group ms-2">
+                            <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle">
+                                <i class="bi bi-person-circle"></i> 用户中心
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块内容区域 -->
+                <div id="module-content">
+                    <!-- 首页模块内容 -->
+                    <div id="home-module" class="module-panel active">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">最近访问文档</h5>
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1">2023年Q4产品规划方案.pdf</h6>
+                                                    <small>3天前</small>
+                                                </div>
+                                                <small>产品部 | 张三</small>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1">客户需求调研报告.docx</h6>
+                                                    <small>1周前</small>
+                                                </div>
+                                                <small>市场部 | 李四</small>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1">系统架构设计文档.xlsx</h6>
+                                                    <small>2周前</small>
+                                                </div>
+                                                <small>研发部 | 王五</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">知识更新动态</h5>
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">研发知识库更新</div>
+                                                    新增《API接口文档v2.3》
+                                                </div>
+                                                <span class="badge bg-primary rounded-pill">1小时前</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">产品知识库更新</div>
+                                                    修改《产品原型设计指南》
+                                                </div>
+                                                <span class="badge bg-primary rounded-pill">昨天</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">市场知识库更新</div>
+                                                    新增《2023年市场分析报告》
+                                                </div>
+                                                <span class="badge bg-primary rounded-pill">3天前</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-file-earmark-text display-4 text-primary mb-3"></i>
+                                        <h5 class="card-title">文档总数</h5>
+                                        <p class="card-text display-6 fw-bold">1,243</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-people display-4 text-primary mb-3"></i>
+                                        <h5 class="card-title">活跃用户</h5>
+                                        <p class="card-text display-6 fw-bold">85</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-graph-up-arrow display-4 text-primary mb-3"></i>
+                                        <h5 class="card-title">本月检索量</h5>
+                                        <p class="card-text display-6 fw-bold">3,567</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-4">知识趋势图</h5>
+                                        <div class="chart-container" style="position: relative; height:300px;">
+                                            <canvas id="trendChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 其他模块将通过JavaScript动态加载 -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // 趋势图初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('trendChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月'],
+                        datasets: [{
+                            label: '文档上传量',
+                            data: [65, 72, 86, 81, 96, 110, 125, 131, 142],
+                            borderColor: '#6366F1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }, {
+                            label: '检索次数',
+                            data: [150, 160, 170, 185, 210, 250, 290, 310, 350],
+                            borderColor: '#8B5CF6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业知识管理系统 - 后台管理</title>
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 左侧导航菜单 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <h5>知识库管理后台</h5>
+                </div>
+                <div class="admin-info">
+                    <div class="admin-avatar">
+                        <img src="assets/avatar.jpg" alt="管理员头像" onerror="this.src='https://via.placeholder.com/40'">
+                    </div>
+                    <div class="admin-details">
+                        <h6>王管理</h6>
+                        <span>系统管理员</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 三级菜单开始 -->
+            <nav class="sidebar-nav">
+                <ul class="menu-list">
+                    <li class="menu-item active">
+                        <a href="#" class="menu-link">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>仪表盘</span>
+                        </a>
+                    </li>
+                    
+                    <!-- 知识库管理 -->
+                    <li class="menu-item has-submenu">
+                        <a href="#" class="menu-link">
+                            <i class="bi bi-journal-text"></i>
+                            <span>知识库管理</span>
+                            <i class="bi bi-chevron-down toggle-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="doc-list">
+                                    <span>文档列表</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item has-submenu">
+                                <a href="#" class="submenu-link">
+                                    <span>知识分类</span>
+                                    <i class="bi bi-chevron-down toggle-icon"></i>
+                                </a>
+                                <ul class="submenu level-three">
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="category-technical">
+                                            <span>技术文档</span>
+                                        </a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="category-business">
+                                            <span>业务文档</span>
+                                        </a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="category-management">
+                                            <span>管理文档</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="doc-import">
+                                    <span>文档导入</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="doc-export">
+                                    <span>文档导出</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 权限管理 -->
+                    <li class="menu-item has-submenu">
+                        <a href="#" class="menu-link">
+                            <i class="bi bi-shield-lock"></i>
+                            <span>权限管理</span>
+                            <i class="bi bi-chevron-down toggle-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="user-management">
+                                    <span>用户管理</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="role-management">
+                                    <span>角色管理</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item has-submenu">
+                                <a href="#" class="submenu-link">
+                                    <span>访问控制</span>
+                                    <i class="bi bi-chevron-down toggle-icon"></i>
+                                </a>
+                                <ul class="submenu level-three">
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="permission-matrix">
+                                            <span>权限矩阵</span>
+                                        </a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="access-log">
+                                            <span>访问日志</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 数据分析 -->
+                    <li class="menu-item has-submenu">
+                        <a href="#" class="menu-link">
+                            <i class="bi bi-graph-up"></i>
+                            <span>数据分析</span>
+                            <i class="bi bi-chevron-down toggle-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="knowledge-trends">
+                                    <span>知识趋势</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="usage-statistics">
+                                    <span>使用统计</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item has-submenu">
+                                <a href="#" class="submenu-link">
+                                    <span>高级分析</span>
+                                    <i class="bi bi-chevron-down toggle-icon"></i>
+                                </a>
+                                <ul class="submenu level-three">
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="knowledge-graph">
+                                            <span>知识图谱</span>
+                                        </a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="#" class="submenu-link" data-module="user-behavior">
+                                            <span>用户行为</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="report-export">
+                                    <span>报表导出</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 系统设置 -->
+                    <li class="menu-item has-submenu">
+                        <a href="#" class="menu-link">
+                            <i class="bi bi-gear"></i>
+                            <span>系统设置</span>
+                            <i class="bi bi-chevron-down toggle-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="system-params">
+                                    <span>系统参数</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="#" class="submenu-link" data-module="backup-restore">
+                                    <span>备份还原</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <!-- 顶部导航栏（悬浮固定） -->
+            <header class="header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    
+                    <!-- 面包屑导航 -->
+                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">首页</a></li>
+                            <li class="breadcrumb-item"><a href="#">知识库管理</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">文档详情</li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <!-- 全局搜索框 -->
+                <div class="global-search">
+                    <div class="search-container">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="全局搜索文档、用户、设置...">
+                        <div class="search-shortcut">Alt+K</div>
+                    </div>
+                </div>
+                
+                <!-- 用户操作区 -->
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button class="action-btn" title="消息通知">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="action-btn" title="帮助中心">
+                            <i class="bi bi-question-circle"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="action-btn" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> 个人资料</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> 账号设置</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- 页面内容 -->
+            <div class="content-wrapper">
+                <div id="module-content">
+                    <!-- 默认显示仪表盘 -->
+                    <div id="dashboard-module" class="module-panel active">
+                        <div class="dashboard-header">
+                            <h1 class="page-title">仪表盘</h1>
+                            <div class="date-filter">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle">
+                                    <i class="bi bi-calendar3"></i> 最近30天
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 数据概览卡片 -->
+                        <div class="row stat-cards">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="stat-icon bg-primary-soft">
+                                            <i class="bi bi-file-earmark-text"></i>
+                                        </div>
+                                        <div class="stat-details">
+                                            <h3 class="stat-number">2,547</h3>
+                                            <p class="stat-label">文档总数</p>
+                                            <div class="stat-change increase">
+                                                <i class="bi bi-arrow-up"></i> 12.5%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="stat-icon bg-success-soft">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="stat-details">
+                                            <h3 class="stat-number">156</h3>
+                                            <p class="stat-label">活跃用户</p>
+                                            <div class="stat-change increase">
+                                                <i class="bi bi-arrow-up"></i> 8.2%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="stat-icon bg-info-soft">
+                                            <i class="bi bi-search"></i>
+                                        </div>
+                                        <div class="stat-details">
+                                            <h3 class="stat-number">4,218</h3>
+                                            <p class="stat-label">检索量</p>
+                                            <div class="stat-change increase">
+                                                <i class="bi bi-arrow-up"></i> 18.3%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card stat-card">
+                                    <div class="card-body">
+                                        <div class="stat-icon bg-warning-soft">
+                                            <i class="bi bi-clock-history"></i>
+                                        </div>
+                                        <div class="stat-details">
+                                            <h3 class="stat-number">86.4%</h3>
+                                            <p class="stat-label">知识覆盖率</p>
+                                            <div class="stat-change decrease">
+                                                <i class="bi bi-arrow-down"></i> 2.1%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 图表区域 -->
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card chart-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">知识库访问趋势</h5>
+                                        <div class="card-actions">
+                                            <button class="btn btn-sm btn-outline-secondary">日</button>
+                                            <button class="btn btn-sm btn-primary">周</button>
+                                            <button class="btn btn-sm btn-outline-secondary">月</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart-container">
+                                            <canvas id="trendsChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-4">
+                                <div class="card chart-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">知识类型分布</h5>
+                                        <div class="card-actions">
+                                            <button class="btn btn-sm btn-icon">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart-container">
+                                            <canvas id="distributionChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 最近活动和热门文档 -->
+                        <div class="row">
+                            <div class="col-xl-7">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">最近活动</h5>
+                                        <div class="card-actions">
+                                            <button class="btn btn-sm btn-link">查看全部</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="activity-timeline">
+                                            <div class="activity-item">
+                                                <div class="activity-icon bg-primary">
+                                                    <i class="bi bi-file-earmark-plus"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <div class="activity-title">李明上传了新文档</div>
+                                                    <p class="activity-text">《产品需求规格说明书v2.0》被添加到技术文档分类</p>
+                                                    <span class="activity-time">30分钟前</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="activity-item">
+                                                <div class="activity-icon bg-success">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <div class="activity-title">张华编辑了文档</div>
+                                                    <p class="activity-text">更新了《系统架构设计》文档的内容</p>
+                                                    <span class="activity-time">2小时前</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="activity-item">
+                                                <div class="activity-icon bg-info">
+                                                    <i class="bi bi-people"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <div class="activity-title">王管理调整了权限</div>
+                                                    <p class="activity-text">为"研发团队"角色添加了文档导出权限</p>
+                                                    <span class="activity-time">昨天</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="activity-item">
+                                                <div class="activity-icon bg-warning">
+                                                    <i class="bi bi-share"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <div class="activity-title">赵敏分享了文档</div>
+                                                    <p class="activity-text">与市场部共享了《用户调研报告》</p>
+                                                    <span class="activity-time">2天前</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-5">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">热门文档</h5>
+                                        <div class="card-actions">
+                                            <button class="btn btn-sm btn-link">更多</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="popular-docs">
+                                            <div class="doc-item">
+                                                <div class="doc-icon">
+                                                    <i class="bi bi-file-earmark-pdf"></i>
+                                                </div>
+                                                <div class="doc-info">
+                                                    <h6 class="doc-title">项目管理规范v3.1</h6>
+                                                    <div class="doc-meta">
+                                                        <span class="doc-category">管理文档</span>
+                                                        <span class="doc-views"><i class="bi bi-eye"></i> 239</span>
+                                                    </div>
+                                                </div>
+                                                <div class="doc-rating">
+                                                    <div class="rating">
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star half">★</span>
+                                                    </div>
+                                                    <span class="rating-value">4.5</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="doc-item">
+                                                <div class="doc-icon">
+                                                    <i class="bi bi-file-earmark-word"></i>
+                                                </div>
+                                                <div class="doc-info">
+                                                    <h6 class="doc-title">API接口文档</h6>
+                                                    <div class="doc-meta">
+                                                        <span class="doc-category">技术文档</span>
+                                                        <span class="doc-views"><i class="bi bi-eye"></i> 186</span>
+                                                    </div>
+                                                </div>
+                                                <div class="doc-rating">
+                                                    <div class="rating">
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star empty">★</span>
+                                                    </div>
+                                                    <span class="rating-value">4.0</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="doc-item">
+                                                <div class="doc-icon">
+                                                    <i class="bi bi-file-earmark-excel"></i>
+                                                </div>
+                                                <div class="doc-info">
+                                                    <h6 class="doc-title">市场分析报告2023</h6>
+                                                    <div class="doc-meta">
+                                                        <span class="doc-category">业务文档</span>
+                                                        <span class="doc-views"><i class="bi bi-eye"></i> 152</span>
+                                                    </div>
+                                                </div>
+                                                <div class="doc-rating">
+                                                    <div class="rating">
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star half">★</span>
+                                                        <span class="star empty">★</span>
+                                                    </div>
+                                                    <span class="rating-value">3.5</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="doc-item">
+                                                <div class="doc-icon">
+                                                    <i class="bi bi-file-earmark-ppt"></i>
+                                                </div>
+                                                <div class="doc-info">
+                                                    <h6 class="doc-title">产品路线图</h6>
+                                                    <div class="doc-meta">
+                                                        <span class="doc-category">业务文档</span>
+                                                        <span class="doc-views"><i class="bi bi-eye"></i> 118</span>
+                                                    </div>
+                                                </div>
+                                                <div class="doc-rating">
+                                                    <div class="rating">
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                        <span class="star filled">★</span>
+                                                    </div>
+                                                    <span class="rating-value">5.0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 其他模块内容将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html> 

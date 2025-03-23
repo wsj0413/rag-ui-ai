@@ -1,0 +1,712 @@
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">权限管理</h5>
+                <p class="card-text">管理知识库访问权限，包括部门隔离、文档生命周期和水印策略。</p>
+                
+                <ul class="nav nav-tabs" id="permissionTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="dept-tab" data-bs-toggle="tab" data-bs-target="#dept-isolation" type="button" role="tab" aria-controls="dept-isolation" aria-selected="true">
+                            <i class="bi bi-diagram-3"></i> 部门隔离
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="lifecycle-tab" data-bs-toggle="tab" data-bs-target="#doc-lifecycle" type="button" role="tab" aria-controls="doc-lifecycle" aria-selected="false">
+                            <i class="bi bi-clock-history"></i> 文档生命周期
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="watermark-tab" data-bs-toggle="tab" data-bs-target="#watermark-policy" type="button" role="tab" aria-controls="watermark-policy" aria-selected="false">
+                            <i class="bi bi-water"></i> 水印策略
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content pt-3" id="permissionTabsContent">
+                    <!-- 部门隔离 -->
+                    <div class="tab-pane fade show active" id="dept-isolation" role="tabpanel" aria-labelledby="dept-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="departmentSelect" class="form-label">选择部门</label>
+                                    <select class="form-select" id="departmentSelect">
+                                        <option value="all">全部部门</option>
+                                        <option value="product">产品部</option>
+                                        <option value="design">设计部</option>
+                                        <option value="dev">研发部</option>
+                                        <option value="marketing">市场部</option>
+                                        <option value="sales">销售部</option>
+                                        <option value="hr">人力资源部</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        权限矩阵
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-sm m-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 20%">部门/知识库</th>
+                                                        <th>产品</th>
+                                                        <th>设计</th>
+                                                        <th>研发</th>
+                                                        <th>市场</th>
+                                                        <th>销售</th>
+                                                        <th>HR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>产品部</td>
+                                                        <td class="bg-success bg-opacity-25">读写</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>设计部</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-success bg-opacity-25">读写</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>研发部</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-success bg-opacity-25">读写</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>市场部</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-success bg-opacity-25">读写</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>销售部</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-warning bg-opacity-25">只读</td>
+                                                        <td class="bg-success bg-opacity-25">读写</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>HR部门</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-danger bg-opacity-25">无权限</td>
+                                                        <td class="bg-success bg-opacity-25">读写</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-outline-primary me-2">查看详细权限</button>
+                                    <button class="btn btn-primary">修改权限</button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        部门权限设置
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="sourceDept" class="form-label">来源部门</label>
+                                                <select class="form-select" id="sourceDept">
+                                                    <option selected>-- 选择部门 --</option>
+                                                    <option value="product">产品部</option>
+                                                    <option value="design">设计部</option>
+                                                    <option value="dev">研发部</option>
+                                                    <option value="marketing">市场部</option>
+                                                    <option value="sales">销售部</option>
+                                                    <option value="hr">人力资源部</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="targetDept" class="form-label">目标部门</label>
+                                                <select class="form-select" id="targetDept">
+                                                    <option selected>-- 选择部门 --</option>
+                                                    <option value="product">产品部</option>
+                                                    <option value="design">设计部</option>
+                                                    <option value="dev">研发部</option>
+                                                    <option value="marketing">市场部</option>
+                                                    <option value="sales">销售部</option>
+                                                    <option value="hr">人力资源部</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="permissionLevel" class="form-label">权限级别</label>
+                                                <select class="form-select" id="permissionLevel">
+                                                    <option value="none">无权限</option>
+                                                    <option value="read">只读权限</option>
+                                                    <option value="write">读写权限</option>
+                                                    <option value="admin">管理权限</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="recursivePermission">
+                                                    <label class="form-check-label" for="recursivePermission">
+                                                        应用到所有子目录和文档
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="notifyChange">
+                                                    <label class="form-check-label" for="notifyChange">
+                                                        通知相关人员权限变更
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-primary">保存权限设置</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 文档生命周期 -->
+                    <div class="tab-pane fade" id="doc-lifecycle" role="tabpanel" aria-labelledby="lifecycle-tab">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        文档生命周期管理
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>文档名称</th>
+                                                        <th>当前状态</th>
+                                                        <th>创建时间</th>
+                                                        <th>最后修改</th>
+                                                        <th>到期时间</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>产品需求规格说明书</td>
+                                                        <td><span class="badge bg-success">已发布</span></td>
+                                                        <td>2023-02-10</td>
+                                                        <td>2023-03-15</td>
+                                                        <td>2024-03-15</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    状态
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#">发布</a></li>
+                                                                    <li><a class="dropdown-item" href="#">归档</a></li>
+                                                                    <li><a class="dropdown-item" href="#">废止</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>市场推广方案</td>
+                                                        <td><span class="badge bg-warning text-dark">审核中</span></td>
+                                                        <td>2023-03-01</td>
+                                                        <td>2023-03-18</td>
+                                                        <td>-</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    状态
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#">发布</a></li>
+                                                                    <li><a class="dropdown-item" href="#">退回修改</a></li>
+                                                                    <li><a class="dropdown-item" href="#">拒绝</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2022年财务报表</td>
+                                                        <td><span class="badge bg-secondary">已归档</span></td>
+                                                        <td>2022-12-31</td>
+                                                        <td>2023-01-15</td>
+                                                        <td>2025-01-15</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    状态
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#">恢复</a></li>
+                                                                    <li><a class="dropdown-item" href="#">废止</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>旧版产品说明书</td>
+                                                        <td><span class="badge bg-danger">已废止</span></td>
+                                                        <td>2022-06-10</td>
+                                                        <td>2022-08-15</td>
+                                                        <td>2023-01-01</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    状态
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#">恢复</a></li>
+                                                                    <li><a class="dropdown-item" href="#">彻底删除</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>产品迭代计划</td>
+                                                        <td><span class="badge bg-info text-dark">草稿</span></td>
+                                                        <td>2023-03-20</td>
+                                                        <td>2023-03-20</td>
+                                                        <td>-</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    状态
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#">提交审核</a></li>
+                                                                    <li><a class="dropdown-item" href="#">废弃草稿</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        生命周期流程图
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <img src="https://via.placeholder.com/300x200?text=文档生命周期流程图" class="img-fluid" alt="文档生命周期流程图">
+                                        
+                                        <div class="lifecycle-legend mt-3 text-start">
+                                            <h6>状态说明</h6>
+                                            <div class="d-flex flex-column gap-2">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge bg-info text-dark me-2">草稿</span>
+                                                    <small>文档处于编辑阶段，仅创建者可见</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge bg-warning text-dark me-2">审核中</span>
+                                                    <small>等待相关人员审批</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge bg-success me-2">已发布</span>
+                                                    <small>正式发布，授权用户可访问</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge bg-secondary me-2">已归档</span>
+                                                    <small>不再活跃使用，但保留访问权限</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge bg-danger me-2">已废止</span>
+                                                    <small>内容已过期，仅管理员可访问</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        生命周期策略
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="docTypePolicy" class="form-label">文档类型</label>
+                                                <select class="form-select" id="docTypePolicy">
+                                                    <option>产品文档</option>
+                                                    <option>技术文档</option>
+                                                    <option>市场材料</option>
+                                                    <option>财务文件</option>
+                                                    <option>人事档案</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="expiryPeriod" class="form-label">有效期</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="expiryPeriod" value="12">
+                                                    <select class="form-select" style="max-width: 40%;">
+                                                        <option value="day">天</option>
+                                                        <option value="month" selected>月</option>
+                                                        <option value="year">年</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="expiryAction" class="form-label">过期后动作</label>
+                                                <select class="form-select" id="expiryAction">
+                                                    <option value="notify">仅通知</option>
+                                                    <option value="archive">自动归档</option>
+                                                    <option value="obsolete">标记为废止</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="notifyExpiry" checked>
+                                                    <label class="form-check-label" for="notifyExpiry">
+                                                        过期前提醒
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-primary">保存策略</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 水印策略 -->
+                    <div class="tab-pane fade" id="watermark-policy" role="tabpanel" aria-labelledby="watermark-tab">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        水印设置
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="watermarkType" class="form-label">水印类型</label>
+                                                    <select class="form-select" id="watermarkType">
+                                                        <option value="text">文本水印</option>
+                                                        <option value="image">图片水印</option>
+                                                        <option value="mixed">混合水印</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="watermarkPosition" class="form-label">水印位置</label>
+                                                    <select class="form-select" id="watermarkPosition">
+                                                        <option value="center">居中</option>
+                                                        <option value="tile">平铺</option>
+                                                        <option value="top-left">左上角</option>
+                                                        <option value="top-right">右上角</option>
+                                                        <option value="bottom-left">左下角</option>
+                                                        <option value="bottom-right">右下角</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="watermarkContent" class="form-label">水印内容</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="watermarkContent" placeholder="输入水印文本">
+                                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">插入变量</button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a class="dropdown-item" href="#">{用户名}</a></li>
+                                                        <li><a class="dropdown-item" href="#">{部门}</a></li>
+                                                        <li><a class="dropdown-item" href="#">{日期}</a></li>
+                                                        <li><a class="dropdown-item" href="#">{时间}</a></li>
+                                                        <li><a class="dropdown-item" href="#">{IP地址}</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="form-text">支持使用变量创建动态水印</div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="watermarkOpacity" class="form-label">透明度 (0-1): <span id="opacityValue">0.3</span></label>
+                                                    <input type="range" class="form-range" min="0.1" max="1" step="0.1" value="0.3" id="watermarkOpacity">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="watermarkRotation" class="form-label">旋转角度: <span id="rotationValue">-45°</span></label>
+                                                    <input type="range" class="form-range" min="-180" max="180" step="15" value="-45" id="watermarkRotation">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="watermarkFontSize" class="form-label">字体大小</label>
+                                                    <select class="form-select" id="watermarkFontSize">
+                                                        <option value="small">小</option>
+                                                        <option value="medium" selected>中</option>
+                                                        <option value="large">大</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="watermarkColor" class="form-label">水印颜色</label>
+                                                    <input type="color" class="form-control form-control-color" id="watermarkColor" value="#999999" title="选择水印颜色">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label class="form-label">应用水印的场景</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="previewWatermark" checked>
+                                                    <label class="form-check-label" for="previewWatermark">
+                                                        在线预览
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="downloadWatermark" checked>
+                                                    <label class="form-check-label" for="downloadWatermark">
+                                                        文件下载
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="printWatermark" checked>
+                                                    <label class="form-check-label" for="printWatermark">
+                                                        打印输出
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <label class="form-label">安全增强选项</label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="preventScreenshot" checked>
+                                                        <label class="form-check-label" for="preventScreenshot">
+                                                            防止截屏移除水印 (适用于在线预览)
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="encryptedWatermark">
+                                                        <label class="form-check-label" for="encryptedWatermark">
+                                                            使用加密水印 (支持溯源追踪)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between">
+                                                <button type="button" class="btn btn-outline-secondary">恢复默认</button>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary me-2">保存设置</button>
+                                                    <button type="button" class="btn btn-success">预览效果</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        水印策略分配
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>策略名称</th>
+                                                        <th>应用对象</th>
+                                                        <th>状态</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>默认水印</td>
+                                                        <td>所有文档</td>
+                                                        <td><span class="badge bg-success">启用</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1">编辑</button>
+                                                            <button class="btn btn-sm btn-outline-danger">禁用</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>高度保密</td>
+                                                        <td>财务、人事文档</td>
+                                                        <td><span class="badge bg-success">启用</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1">编辑</button>
+                                                            <button class="btn btn-sm btn-outline-danger">禁用</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>外部分享</td>
+                                                        <td>营销材料</td>
+                                                        <td><span class="badge bg-success">启用</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1">编辑</button>
+                                                            <button class="btn btn-sm btn-outline-danger">禁用</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>版权水印</td>
+                                                        <td>产品手册、白皮书</td>
+                                                        <td><span class="badge bg-secondary">禁用</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1">编辑</button>
+                                                            <button class="btn btn-sm btn-outline-success">启用</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <button class="btn btn-outline-primary mt-2">创建新策略</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-5">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        水印预览
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="watermark-preview p-3 border rounded position-relative" style="height: 350px; overflow: hidden;">
+                                            <div class="watermark-preview-content p-3">
+                                                <h4>文档预览示例</h4>
+                                                <p>这是一个文档预览的示例内容，用于展示水印效果。实际的文档内容将根据用户访问的文档而定。</p>
+                                                <p>水印将自动应用于符合条件的文档预览、下载和打印场景，有效保护知识产权和敏感信息。</p>
+                                                <p>水印策略可以针对不同的文档类型、部门和用户角色进行个性化设置，确保既满足安全需求又不影响用户体验。</p>
+                                            </div>
+                                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                                <div class="watermark" style="transform: rotate(-45deg); opacity: 0.3;">
+                                                    张三 - 产品部 - 2023-03-21
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <small class="text-muted">预览效果根据水印设置实时更新</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        水印使用日志
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>时间</th>
+                                                        <th>用户</th>
+                                                        <th>文档</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>2023-03-21 14:30</td>
+                                                        <td>张三</td>
+                                                        <td>产品规划.pdf</td>
+                                                        <td>预览</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023-03-21 13:45</td>
+                                                        <td>李四</td>
+                                                        <td>财务报表.xlsx</td>
+                                                        <td>下载</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023-03-21 11:20</td>
+                                                        <td>王五</td>
+                                                        <td>市场分析.pptx</td>
+                                                        <td>打印</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023-03-21 10:15</td>
+                                                        <td>赵六</td>
+                                                        <td>技术文档.docx</td>
+                                                        <td>预览</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023-03-20 16:30</td>
+                                                        <td>张三</td>
+                                                        <td>战略规划.pdf</td>
+                                                        <td>下载</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023-03-20 15:45</td>
+                                                        <td>李四</td>
+                                                        <td>销售报告.xlsx</td>
+                                                        <td>预览</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023-03-20 14:20</td>
+                                                        <td>王五</td>
+                                                        <td>项目计划.pptx</td>
+                                                        <td>打印</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-2">
+                                            <button class="btn btn-sm btn-outline-secondary">查看完整日志</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 水印预览样式 */
+    .watermark-preview {
+        background-color: #fff;
+    }
+    
+    .watermark {
+        font-size: 24px;
+        color: #999;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    
+    /* 权限矩阵表格颜色 */
+    .table-bordered td {
+        text-align: center;
+    }
+</style> 

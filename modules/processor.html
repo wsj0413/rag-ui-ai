@@ -1,0 +1,369 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">文档结构解析</h5>
+                <p class="card-text">自动提取文档结构，包括目录、标题、表格等。</p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="documentSelector" class="form-label">选择要处理的文档</label>
+                            <select class="form-select" id="documentSelector">
+                                <option selected>-- 请选择文档 --</option>
+                                <option value="1">企业战略规划2023.pdf</option>
+                                <option value="2">产品发布会PPT.pptx</option>
+                                <option value="3">市场调研数据分析.xlsx</option>
+                                <option value="4">设计部门会议纪要.docx</option>
+                                <option value="5">行业趋势分析报告.html</option>
+                            </select>
+                        </div>
+                        
+                        <div class="processing-options mt-4">
+                            <h6>处理选项</h6>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="extractToc" checked>
+                                <label class="form-check-label" for="extractToc">
+                                    提取目录结构
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="extractTables" checked>
+                                <label class="form-check-label" for="extractTables">
+                                    提取表格数据
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="extractImages">
+                                <label class="form-check-label" for="extractImages">
+                                    提取图片内容
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="convertToMarkdown">
+                                <label class="form-check-label" for="convertToMarkdown">
+                                    转换为Markdown格式
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary mt-3">开始处理</button>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="document-preview p-3 border rounded" style="height: 300px; overflow-y: auto;">
+                            <h6 class="text-center text-muted">文档预览</h6>
+                            <div class="text-center mt-5">
+                                <i class="bi bi-file-earmark-text" style="font-size: 3rem;"></i>
+                                <p class="mt-3">请选择一个文档进行处理</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">实体识别</h5>
+                <p class="card-text">自动识别文档中的实体，如人物、地点、产品等。</p>
+                
+                <div class="entity-recognition-demo p-3 border rounded mb-3">
+                    <h6>示例文本</h6>
+                    <p>
+                        <span class="entity entity-person">张三</span>于上周五在<span class="entity entity-location">上海总部</span>主持了<span class="entity entity-product">智能文档管理系统</span>的项目启动会议。会议由<span class="entity entity-organization">研发部</span>组织，<span class="entity entity-person">李四</span>和<span class="entity entity-person">王五</span>分别介绍了产品功能规划和技术架构。
+                    </p>
+                </div>
+                
+                <div class="entity-legend mb-3">
+                    <h6>实体类型</h6>
+                    <div class="d-flex flex-wrap">
+                        <div class="me-3 mb-2">
+                            <span class="badge entity-badge entity-person">人物</span>
+                        </div>
+                        <div class="me-3 mb-2">
+                            <span class="badge entity-badge entity-location">地点</span>
+                        </div>
+                        <div class="me-3 mb-2">
+                            <span class="badge entity-badge entity-organization">组织</span>
+                        </div>
+                        <div class="me-3 mb-2">
+                            <span class="badge entity-badge entity-product">产品</span>
+                        </div>
+                        <div class="me-3 mb-2">
+                            <span class="badge entity-badge entity-date">日期</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="custom-entity-settings">
+                    <h6>自定义实体类型</h6>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="输入自定义实体类型">
+                        <button class="btn btn-outline-secondary" type="button">添加</button>
+                    </div>
+                </div>
+                
+                <div class="processing-stats mt-3">
+                    <h6>处理统计</h6>
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <div class="stat-item">
+                                <h3>153</h3>
+                                <p class="text-muted">已识别实体</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="stat-item">
+                                <h3>42</h3>
+                                <p class="text-muted">自定义实体</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="stat-item">
+                                <h3>89%</h3>
+                                <p class="text-muted">识别准确率</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">问答对生成</h5>
+                <p class="card-text">从文档内容自动生成常见问题及答案。</p>
+                
+                <div class="qa-generation-panel">
+                    <div class="mb-3">
+                        <label for="qaDocumentSelector" class="form-label">选择源文档</label>
+                        <select class="form-select" id="qaDocumentSelector">
+                            <option selected>-- 请选择文档 --</option>
+                            <option value="1">企业战略规划2023.pdf</option>
+                            <option value="2">产品发布会PPT.pptx</option>
+                            <option value="3">市场调研数据分析.xlsx</option>
+                            <option value="4">设计部门会议纪要.docx</option>
+                            <option value="5">行业趋势分析报告.html</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="qaGenerationCount" class="form-label">生成问答对数量</label>
+                        <input type="range" class="form-range" min="5" max="50" step="5" value="10" id="qaGenerationCount">
+                        <div class="d-flex justify-content-between">
+                            <span>5</span>
+                            <span>10</span>
+                            <span>15</span>
+                            <span>20</span>
+                            <span>25</span>
+                            <span>30</span>
+                            <span>35</span>
+                            <span>40</span>
+                            <span>45</span>
+                            <span>50</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary mb-3">生成问答对</button>
+                    
+                    <div class="qa-results mt-4">
+                        <h6>生成的问答对</h6>
+                        <div class="accordion" id="qaAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="qaHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#qaCollapse1" aria-expanded="true" aria-controls="qaCollapse1">
+                                        什么是智能文档管理系统的核心优势？
+                                    </button>
+                                </h2>
+                                <div id="qaCollapse1" class="accordion-collapse collapse show" aria-labelledby="qaHeading1" data-bs-parent="#qaAccordion">
+                                    <div class="accordion-body">
+                                        智能文档管理系统的核心优势在于三个方面：1）多模态知识采集能力，支持多种格式文档的自动解析；2）智能语义理解，能够准确把握文档内容和上下文关系；3）智能检索和推荐功能，帮助用户快速找到所需信息。
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="qaHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qaCollapse2" aria-expanded="false" aria-controls="qaCollapse2">
+                                        如何确保文档库中的信息安全？
+                                    </button>
+                                </h2>
+                                <div id="qaCollapse2" class="accordion-collapse collapse" aria-labelledby="qaHeading2" data-bs-parent="#qaAccordion">
+                                    <div class="accordion-body">
+                                        文档库的信息安全通过多层次保障：1）基于角色的访问控制，确保用户只能访问被授权的文档；2）文档级别的权限管理，可以设置阅读、编辑、下载等不同权限；3）操作日志审计，记录所有用户的访问和操作行为；4）数据传输加密，保护数据在传输过程中的安全。
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="qaHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qaCollapse3" aria-expanded="false" aria-controls="qaCollapse3">
+                                        系统支持哪些类型的文档格式？
+                                    </button>
+                                </h2>
+                                <div id="qaCollapse3" class="accordion-collapse collapse" aria-labelledby="qaHeading3" data-bs-parent="#qaAccordion">
+                                    <div class="accordion-body">
+                                        系统支持几乎所有常见的文档格式，包括但不限于：1）办公文档：PDF、Word、Excel、PowerPoint等；2）图像文件：JPG、PNG、TIFF等；3）音视频文件：MP3、MP4、AVI等；4）网页内容：HTML、XML等；5）设计文件：PSD、AI、Sketch等；6）代码文件：TXT、MD、各种编程语言源代码。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end mt-3">
+                        <button class="btn btn-outline-primary">查看全部</button>
+                        <button class="btn btn-outline-success ms-2">导出问答集</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">处理历史</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>文档名称</th>
+                                <th>处理类型</th>
+                                <th>处理时间</th>
+                                <th>状态</th>
+                                <th>处理结果</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>企业战略规划2023.pdf</td>
+                                <td>文档结构解析</td>
+                                <td>2023-03-21 10:30</td>
+                                <td><span class="badge bg-success">已完成</span></td>
+                                <td>提取目录15条，表格3个</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1">查看</button>
+                                    <button class="btn btn-sm btn-outline-secondary">导出</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>产品发布会PPT.pptx</td>
+                                <td>实体识别</td>
+                                <td>2023-03-20 15:45</td>
+                                <td><span class="badge bg-success">已完成</span></td>
+                                <td>识别实体48个，准确率92%</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1">查看</button>
+                                    <button class="btn btn-sm btn-outline-secondary">导出</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>设计部门会议纪要.docx</td>
+                                <td>问答对生成</td>
+                                <td>2023-03-19 09:15</td>
+                                <td><span class="badge bg-success">已完成</span></td>
+                                <td>生成问答对12组</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1">查看</button>
+                                    <button class="btn btn-sm btn-outline-secondary">导出</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>市场调研数据分析.xlsx</td>
+                                <td>文档结构解析</td>
+                                <td>2023-03-18 14:20</td>
+                                <td><span class="badge bg-success">已完成</span></td>
+                                <td>提取表格8个，图表5个</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1">查看</button>
+                                    <button class="btn btn-sm btn-outline-secondary">导出</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>客户满意度调查报告.pdf</td>
+                                <td>实体识别 + 问答对生成</td>
+                                <td>2023-03-17 11:30</td>
+                                <td><span class="badge bg-warning">处理中</span></td>
+                                <td>-</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1" disabled>查看</button>
+                                    <button class="btn btn-sm btn-outline-secondary" disabled>导出</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 实体样式 */
+    .entity {
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-weight: 500;
+    }
+    
+    .entity-person {
+        background-color: rgba(255, 99, 132, 0.2);
+        border-bottom: 2px solid rgba(255, 99, 132, 0.7);
+    }
+    
+    .entity-location {
+        background-color: rgba(54, 162, 235, 0.2);
+        border-bottom: 2px solid rgba(54, 162, 235, 0.7);
+    }
+    
+    .entity-organization {
+        background-color: rgba(255, 206, 86, 0.2);
+        border-bottom: 2px solid rgba(255, 206, 86, 0.7);
+    }
+    
+    .entity-product {
+        background-color: rgba(75, 192, 192, 0.2);
+        border-bottom: 2px solid rgba(75, 192, 192, 0.7);
+    }
+    
+    .entity-date {
+        background-color: rgba(153, 102, 255, 0.2);
+        border-bottom: 2px solid rgba(153, 102, 255, 0.7);
+    }
+    
+    /* 实体标签样式 */
+    .entity-badge {
+        padding: 5px 10px;
+        font-weight: normal;
+    }
+    
+    .entity-badge.entity-person {
+        background-color: rgba(255, 99, 132, 0.7);
+    }
+    
+    .entity-badge.entity-location {
+        background-color: rgba(54, 162, 235, 0.7);
+    }
+    
+    .entity-badge.entity-organization {
+        background-color: rgba(255, 206, 86, 0.7);
+    }
+    
+    .entity-badge.entity-product {
+        background-color: rgba(75, 192, 192, 0.7);
+    }
+    
+    .entity-badge.entity-date {
+        background-color: rgba(153, 102, 255, 0.7);
+    }
+</style> 

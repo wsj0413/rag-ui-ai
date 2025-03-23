@@ -1,0 +1,269 @@
+<div class="module-panel" id="system-params-module">
+    <div class="page-header">
+        <h1 class="page-title">系统参数</h1>
+        <div class="page-actions">
+            <button class="btn btn-outline-secondary me-2">
+                <i class="bi bi-arrow-counterclockwise"></i> 重置默认
+            </button>
+            <button class="btn btn-primary">
+                <i class="bi bi-save"></i> 保存更改
+            </button>
+        </div>
+    </div>
+
+    <!-- 系统参数配置 -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="alert alert-warning">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                修改系统参数可能会影响系统的稳定性和性能，请在了解参数作用的情况下进行修改。
+            </div>
+        </div>
+    </div>
+
+    <!-- 配置标签页 -->
+    <ul class="nav nav-tabs" id="configTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic-config" type="button" role="tab">基础配置</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-config" type="button" role="tab">检索设置</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="storage-tab" data-bs-toggle="tab" data-bs-target="#storage-config" type="button" role="tab">存储配置</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security-config" type="button" role="tab">安全设置</button>
+        </li>
+    </ul>
+
+    <!-- 参数配置内容 -->
+    <div class="tab-content p-3 bg-white rounded-3 shadow-sm" id="configTabContent">
+        <!-- 基础配置 -->
+        <div class="tab-pane fade show active" id="basic-config" role="tabpanel">
+            <div class="form-section">
+                <h5 class="section-title">系统基础配置</h5>
+                
+                <div class="mb-4">
+                    <label for="systemName" class="form-label">系统名称</label>
+                    <input type="text" class="form-control" id="systemName" value="企业知识管理系统">
+                    <div class="form-text">显示在标题栏和登录页面的系统名称</div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="logoUpload" class="form-label">系统Logo</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="logoUpload">
+                        <button class="btn btn-outline-secondary" type="button">上传</button>
+                    </div>
+                    <div class="form-text">推荐尺寸: 200px × 50px, 格式: PNG (透明背景)</div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="defaultLanguage" class="form-label">默认语言</label>
+                    <select class="form-select" id="defaultLanguage">
+                        <option value="zh-CN" selected>简体中文</option>
+                        <option value="en-US">English (US)</option>
+                        <option value="ja-JP">日本語</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="defaultPageSize" class="form-label">默认分页大小</label>
+                    <select class="form-select" id="defaultPageSize">
+                        <option value="10">10条/页</option>
+                        <option value="20" selected>20条/页</option>
+                        <option value="50">50条/页</option>
+                        <option value="100">100条/页</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">首页默认视图</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="defaultView" id="dashboardView" checked>
+                        <label class="form-check-label" for="dashboardView">
+                            仪表盘视图
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="defaultView" id="listView">
+                        <label class="form-check-label" for="listView">
+                            文档列表视图
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 检索设置 -->
+        <div class="tab-pane fade" id="search-config" role="tabpanel">
+            <div class="form-section">
+                <h5 class="section-title">搜索引擎配置</h5>
+                
+                <div class="mb-4">
+                    <label for="searchEngine" class="form-label">搜索引擎类型</label>
+                    <select class="form-select" id="searchEngine">
+                        <option value="native" selected>内置全文检索</option>
+                        <option value="elasticsearch">Elasticsearch</option>
+                        <option value="opensearch">OpenSearch</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="searchURL" class="form-label">搜索服务URL</label>
+                    <input type="text" class="form-control" id="searchURL" value="http://localhost:9200">
+                    <div class="form-text">使用外部搜索引擎时的服务地址</div>
+                </div>
+                
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="enableSmartSearch" checked>
+                    <label class="form-check-label" for="enableSmartSearch">启用智能搜索</label>
+                    <div class="form-text">启用后将使用语义理解改进搜索结果</div>
+                </div>
+                
+                <h5 class="section-title mt-4">索引设置</h5>
+                
+                <div class="mb-4">
+                    <label for="indexInterval" class="form-label">索引更新间隔</label>
+                    <select class="form-select" id="indexInterval">
+                        <option value="realtime">实时更新</option>
+                        <option value="5min" selected>每5分钟</option>
+                        <option value="15min">每15分钟</option>
+                        <option value="30min">每30分钟</option>
+                        <option value="1hour">每小时</option>
+                    </select>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                    <button class="btn btn-warning me-md-2" type="button">重建索引</button>
+                    <button class="btn btn-outline-secondary" type="button">优化索引</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 存储配置 -->
+        <div class="tab-pane fade" id="storage-config" role="tabpanel">
+            <div class="form-section">
+                <h5 class="section-title">文件存储配置</h5>
+                
+                <div class="mb-4">
+                    <label for="storageType" class="form-label">存储类型</label>
+                    <select class="form-select" id="storageType">
+                        <option value="local" selected>本地文件系统</option>
+                        <option value="s3">Amazon S3</option>
+                        <option value="oss">阿里云OSS</option>
+                        <option value="cos">腾讯云COS</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="storagePath" class="form-label">存储路径</label>
+                    <input type="text" class="form-control" id="storagePath" value="/data/storage">
+                    <div class="form-text">本地存储的文件路径或云存储的Bucket地址</div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="maxFileSize" class="form-label">最大文件大小</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="maxFileSize" value="50">
+                        <span class="input-group-text">MB</span>
+                    </div>
+                </div>
+                
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="enableCompression" checked>
+                    <label class="form-check-label" for="enableCompression">启用文件压缩</label>
+                    <div class="form-text">自动压缩大文件以节省存储空间</div>
+                </div>
+                
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="enableVersioning" checked>
+                    <label class="form-check-label" for="enableVersioning">启用版本控制</label>
+                    <div class="form-text">保留文档的历史版本</div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="maxVersions" class="form-label">最大版本数</label>
+                    <input type="number" class="form-control" id="maxVersions" value="10">
+                    <div class="form-text">单个文档保留的最大历史版本数量</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 安全设置 -->
+        <div class="tab-pane fade" id="security-config" role="tabpanel">
+            <div class="form-section">
+                <h5 class="section-title">访问安全配置</h5>
+                
+                <div class="mb-4">
+                    <label for="sessionTimeout" class="form-label">会话超时时间</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="sessionTimeout" value="30">
+                        <span class="input-group-text">分钟</span>
+                    </div>
+                    <div class="form-text">用户无操作后的自动登出时间</div>
+                </div>
+                
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="enableTwoFactor" checked>
+                    <label class="form-check-label" for="enableTwoFactor">启用双因素认证</label>
+                </div>
+                
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="enableLoginCaptcha" checked>
+                    <label class="form-check-label" for="enableLoginCaptcha">登录验证码</label>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="passwordPolicy" class="form-label">密码策略</label>
+                    <select class="form-select" id="passwordPolicy">
+                        <option value="simple">简单 (至少6位)</option>
+                        <option value="medium" selected>中等 (至少8位，包含字母和数字)</option>
+                        <option value="strong">严格 (至少10位，包含大小写字母、数字和特殊字符)</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="passwordExpire" class="form-label">密码过期时间</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="passwordExpire" value="90">
+                        <span class="input-group-text">天</span>
+                    </div>
+                    <div class="form-text">设置为0表示永不过期</div>
+                </div>
+                
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="enableAccessLog" checked>
+                    <label class="form-check-label" for="enableAccessLog">启用访问日志</label>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="logRetention" class="form-label">日志保留时间</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="logRetention" value="180">
+                        <span class="input-group-text">天</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-section {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e3e6f0;
+        color: #4e73df;
+    }
+    
+    .form-text {
+        font-size: 0.8rem;
+        color: #858796;
+    }
+</style> 

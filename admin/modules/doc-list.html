@@ -1,0 +1,395 @@
+<div class="module-panel" id="doc-list-module">
+    <div class="page-header">
+        <h1 class="page-title">文档列表</h1>
+        <div class="page-actions">
+            <button class="btn btn-outline-secondary me-2">
+                <i class="bi bi-filter"></i> 高级筛选
+            </button>
+            <button class="btn btn-primary">
+                <i class="bi bi-plus"></i> 新建文档
+            </button>
+        </div>
+    </div>
+
+    <!-- 文档管理功能区 -->
+    <div class="control-bar mb-3">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="搜索文档...">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-end">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-down-up"></i> 排序
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">切换下拉菜单</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">名称 (A-Z)</a></li>
+                            <li><a class="dropdown-item" href="#">名称 (Z-A)</a></li>
+                            <li><a class="dropdown-item" href="#">最近修改</a></li>
+                            <li><a class="dropdown-item" href="#">最近创建</a></li>
+                            <li><a class="dropdown-item" href="#">访问量</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary active">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 批量操作工具栏 -->
+    <div class="batch-actions mb-3 d-none" id="batchActionsBar">
+        <div class="d-flex align-items-center">
+            <div class="selected-count me-3">已选择 <span id="selectedCount">0</span> 项</div>
+            <div class="action-buttons">
+                <button class="btn btn-sm btn-outline-primary me-2">
+                    <i class="bi bi-share"></i> 批量共享
+                </button>
+                <button class="btn btn-sm btn-outline-secondary me-2">
+                    <i class="bi bi-tag"></i> 批量标签
+                </button>
+                <button class="btn btn-sm btn-outline-secondary me-2">
+                    <i class="bi bi-folder"></i> 移动分类
+                </button>
+                <button class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-trash"></i> 批量删除
+                </button>
+            </div>
+            <button class="btn btn-sm btn-link ms-auto" id="cancelBatchSelection">取消选择</button>
+        </div>
+    </div>
+
+    <!-- 文档列表 -->
+    <div class="doc-list-container">
+        <table class="table table-hover doc-table">
+            <thead>
+                <tr>
+                    <th width="40">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="selectAllDocs">
+                        </div>
+                    </th>
+                    <th>文档名称</th>
+                    <th>分类</th>
+                    <th>创建者</th>
+                    <th>修改日期</th>
+                    <th>状态</th>
+                    <th>浏览量</th>
+                    <th width="120">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input doc-select" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="doc-item-info">
+                            <div class="doc-icon">
+                                <i class="bi bi-file-earmark-word"></i>
+                            </div>
+                            <div class="doc-name">API接口设计规范文档</div>
+                        </div>
+                    </td>
+                    <td>技术文档</td>
+                    <td>张明</td>
+                    <td>2023-12-20</td>
+                    <td><span class="badge bg-success">已发布</span></td>
+                    <td>239</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-link p-0 me-2" title="查看">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-link p-0 me-2" title="编辑">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-link p-0" data-bs-toggle="dropdown" title="更多">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-share"></i> 共享</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-download"></i> 下载</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> 添加标签</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> 删除</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input doc-select" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="doc-item-info">
+                            <div class="doc-icon">
+                                <i class="bi bi-file-earmark-pdf"></i>
+                            </div>
+                            <div class="doc-name">微服务架构设计文档</div>
+                        </div>
+                    </td>
+                    <td>技术文档</td>
+                    <td>李华</td>
+                    <td>2023-11-15</td>
+                    <td><span class="badge bg-success">已发布</span></td>
+                    <td>186</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-link p-0 me-2" title="查看">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-link p-0 me-2" title="编辑">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-link p-0" data-bs-toggle="dropdown" title="更多">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-share"></i> 共享</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-download"></i> 下载</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> 添加标签</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> 删除</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input doc-select" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="doc-item-info">
+                            <div class="doc-icon">
+                                <i class="bi bi-file-earmark-slides"></i>
+                            </div>
+                            <div class="doc-name">RESTful API最佳实践培训课件</div>
+                        </div>
+                    </td>
+                    <td>培训资料</td>
+                    <td>王刚</td>
+                    <td>2023-10-08</td>
+                    <td><span class="badge bg-success">已发布</span></td>
+                    <td>152</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-link p-0 me-2" title="查看">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-link p-0 me-2" title="编辑">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-link p-0" data-bs-toggle="dropdown" title="更多">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-share"></i> 共享</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-download"></i> 下载</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> 添加标签</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> 删除</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input doc-select" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="doc-item-info">
+                            <div class="doc-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <div class="doc-name">前端API调用规范</div>
+                        </div>
+                    </td>
+                    <td>技术文档</td>
+                    <td>赵明</td>
+                    <td>2023-09-22</td>
+                    <td><span class="badge bg-secondary">草稿</span></td>
+                    <td>98</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-link p-0 me-2" title="查看">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-link p-0 me-2" title="编辑">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-link p-0" data-bs-toggle="dropdown" title="更多">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-share"></i> 共享</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-download"></i> 下载</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> 添加标签</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> 删除</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input doc-select" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="doc-item-info">
+                            <div class="doc-icon">
+                                <i class="bi bi-file-earmark-excel"></i>
+                            </div>
+                            <div class="doc-name">项目资源分配表</div>
+                        </div>
+                    </td>
+                    <td>管理文档</td>
+                    <td>陈晨</td>
+                    <td>2023-09-15</td>
+                    <td><span class="badge bg-warning text-dark">审核中</span></td>
+                    <td>76</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-sm btn-link p-0 me-2" title="查看">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-link p-0 me-2" title="编辑">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-link p-0" data-bs-toggle="dropdown" title="更多">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-share"></i> 共享</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-download"></i> 下载</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> 添加标签</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> 删除</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- 分页 -->
+    <div class="pagination-container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pagination-info">
+                    显示 1 到 5 条，共 28 条
+                </div>
+            </div>
+            <div class="col-md-6">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <i class="bi bi-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 全选/取消全选
+        const selectAllCheckbox = document.getElementById('selectAllDocs');
+        const docCheckboxes = document.querySelectorAll('.doc-select');
+        const batchActionsBar = document.getElementById('batchActionsBar');
+        const selectedCountEl = document.getElementById('selectedCount');
+        const cancelBatchSelection = document.getElementById('cancelBatchSelection');
+        
+        // 全选/取消全选
+        selectAllCheckbox.addEventListener('change', function() {
+            const isChecked = this.checked;
+            
+            docCheckboxes.forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
+            
+            updateBatchActionsBar();
+        });
+        
+        // 单个文档选择变化
+        docCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                updateBatchActionsBar();
+                
+                // 检查是否所有复选框都被选中
+                const allChecked = Array.from(docCheckboxes).every(cb => cb.checked);
+                selectAllCheckbox.checked = allChecked;
+            });
+        });
+        
+        // 取消选择按钮
+        cancelBatchSelection.addEventListener('click', function() {
+            selectAllCheckbox.checked = false;
+            docCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            updateBatchActionsBar();
+        });
+        
+        // 更新批量操作工具栏
+        function updateBatchActionsBar() {
+            const checkedCount = document.querySelectorAll('.doc-select:checked').length;
+            
+            if (checkedCount > 0) {
+                batchActionsBar.classList.remove('d-none');
+                selectedCountEl.textContent = checkedCount;
+            } else {
+                batchActionsBar.classList.add('d-none');
+            }
+        }
+    });
+</script> 

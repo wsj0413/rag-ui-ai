@@ -1,0 +1,394 @@
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">知识热力图</h5>
+                <p class="card-text">展示文档访问热度分布，帮助识别高频使用的知识。</p>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary active">文档热度</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">知识领域</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">用户活跃度</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">本周</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary active">本月</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">本季度</button>
+                    </div>
+                </div>
+                
+                <div class="heatmap-container mb-3">
+                    <!-- 热力图将通过JavaScript渲染 -->
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h3>2,543</h3>
+                                <p class="text-muted">总访问量</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h3>127</h3>
+                                <p class="text-muted">活跃文档数</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h3>83%</h3>
+                                <p class="text-muted">知识覆盖率</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">热门知识排行</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">产品设计规范V2.0</h6>
+                            <small class="text-primary">245次</small>
+                        </div>
+                        <small class="text-muted">设计部 | 2023-02-15</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">2023年Q1市场分析报告</h6>
+                            <small class="text-primary">198次</small>
+                        </div>
+                        <small class="text-muted">市场部 | 2023-03-05</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">客户需求调研问卷</h6>
+                            <small class="text-primary">176次</small>
+                        </div>
+                        <small class="text-muted">产品部 | 2023-01-20</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">技术架构说明文档</h6>
+                            <small class="text-primary">152次</small>
+                        </div>
+                        <small class="text-muted">研发部 | 2023-02-28</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">销售培训手册</h6>
+                            <small class="text-primary">143次</small>
+                        </div>
+                        <small class="text-muted">销售部 | 2023-01-15</small>
+                    </a>
+                </div>
+                <div class="d-flex justify-content-end mt-2">
+                    <button class="btn btn-sm btn-outline-primary">查看完整排行</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">知识关联推荐</h5>
+                <p class="card-text">基于用户行为分析，推荐相关知识内容。</p>
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="knowledge-relation p-3 border rounded">
+                            <div class="relation-item mb-4">
+                                <h6>查看过《产品设计规范V2.0》的用户也查看：</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">UI设计指南</h6>
+                                                <p class="card-text small">详细说明UI设计原则、组件规范及应用场景</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">设计部</small>
+                                                    <span class="badge bg-success">87%相关</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">交互设计规范</h6>
+                                                <p class="card-text small">包含用户交互流程、动效标准及最佳实践</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">设计部</small>
+                                                    <span class="badge bg-success">82%相关</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">品牌视觉规范</h6>
+                                                <p class="card-text small">品牌标识、色彩系统、字体规范等内容</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">市场部</small>
+                                                    <span class="badge bg-primary">75%相关</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="relation-item">
+                                <h6>查看过《2023年Q1市场分析报告》的用户也查看：</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">竞品分析报告</h6>
+                                                <p class="card-text small">主要竞争对手的产品分析和市场策略研究</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">市场部</small>
+                                                    <span class="badge bg-success">90%相关</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">2023年产品规划</h6>
+                                                <p class="card-text small">产品线规划、迭代计划和功能优先级安排</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">产品部</small>
+                                                    <span class="badge bg-success">85%相关</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">销售策略指南</h6>
+                                                <p class="card-text small">根据市场情况制定的销售策略和执行方案</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <small class="text-muted">销售部</small>
+                                                    <span class="badge bg-primary">78%相关</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                推荐配置
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="recommendMethod" class="form-label">推荐算法</label>
+                                        <select class="form-select" id="recommendMethod">
+                                            <option value="collaborative">协同过滤</option>
+                                            <option value="content">内容相似度</option>
+                                            <option value="hybrid" selected>混合推荐</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="recommendCount" class="form-label">推荐数量</label>
+                                        <select class="form-select" id="recommendCount">
+                                            <option value="3" selected>3个</option>
+                                            <option value="5">5个</option>
+                                            <option value="10">10个</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">推荐范围</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="deptRecommend" checked>
+                                            <label class="form-check-label" for="deptRecommend">
+                                                同部门文档
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="crossDeptRecommend" checked>
+                                            <label class="form-check-label" for="crossDeptRecommend">
+                                                跨部门文档
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="externalRecommend">
+                                            <label class="form-check-label" for="externalRecommend">
+                                                外部知识源
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="minSimilarity" class="form-label">最低相似度: <span id="similarityValue">70%</span></label>
+                                        <input type="range" class="form-range" min="50" max="100" step="5" value="70" id="minSimilarity">
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary">应用设置</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">版本对比</h5>
+                <p class="card-text">对比文档不同版本之间的差异，高亮显示变更内容。</p>
+                
+                <div class="version-compare-header mb-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-text">选择文档</span>
+                                <select class="form-select" id="documentSelect">
+                                    <option>-- 选择文档 --</option>
+                                    <option selected>产品设计规范</option>
+                                    <option>技术架构说明</option>
+                                    <option>市场策略规划</option>
+                                    <option>销售培训手册</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-text">旧版本</span>
+                                <select class="form-select" id="oldVersionSelect">
+                                    <option>V1.0 (2022-10-15)</option>
+                                    <option selected>V1.5 (2022-12-20)</option>
+                                    <option>V1.8 (2023-01-25)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-text">新版本</span>
+                                <select class="form-select" id="newVersionSelect">
+                                    <option>V1.8 (2023-01-25)</option>
+                                    <option selected>V2.0 (2023-02-15)</option>
+                                    <option>V2.1 (2023-03-10)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-primary w-100">对比</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="version-compare-content">
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <div class="row">
+                                <div class="col-6 text-center">V1.5 (2022-12-20)</div>
+                                <div class="col-6 text-center">V2.0 (2023-02-15)</div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-6 border-end">
+                                    <div class="p-3">
+                                        <h6>1. 设计原则</h6>
+                                        <p>1.1 一致性：保持视觉和交互设计的一致性，让用户在不同页面和功能间有统一的体验。</p>
+                                        <p>1.2 简洁性：简化界面，减少用户认知负担，专注于核心功能和内容。</p>
+                                        <p>1.3 易用性：设计直观易懂的界面，降低用户学习成本。</p>
+                                        <p class="bg-danger bg-opacity-10 p-2">1.4 响应性：确保界面在各种设备上都能良好运行。</p>
+                                        
+                                        <h6 class="mt-4">2. 色彩规范</h6>
+                                        <p>2.1 主色调：#2468F2 (蓝色)</p>
+                                        <p>2.2 辅助色：#F27424 (橙色)</p>
+                                        <p>2.3 功能色：</p>
+                                        <ul>
+                                            <li>成功：#36B37E</li>
+                                            <li>警告：#FFAB00</li>
+                                            <li>错误：#FF5630</li>
+                                            <li>信息：#0065FF</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3">
+                                        <h6>1. 设计原则</h6>
+                                        <p>1.1 一致性：保持视觉和交互设计的一致性，让用户在不同页面和功能间有统一的体验。</p>
+                                        <p>1.2 简洁性：简化界面，减少用户认知负担，专注于核心功能和内容。</p>
+                                        <p>1.3 易用性：设计直观易懂的界面，降低用户学习成本。</p>
+                                        <p class="bg-success bg-opacity-10 p-2">1.4 响应性：确保界面在各种设备上都能良好运行，包括桌面、平板和移动设备。</p>
+                                        <p class="bg-success bg-opacity-10 p-2">1.5 包容性：确保设计对各类用户友好，包括视觉、听觉或行动不便的用户。</p>
+                                        
+                                        <h6 class="mt-4">2. 色彩规范</h6>
+                                        <p class="bg-success bg-opacity-10">2.1 主色调：#1E88E5 (蓝色)</p>
+                                        <p>2.2 辅助色：#F27424 (橙色)</p>
+                                        <p>2.3 功能色：</p>
+                                        <ul>
+                                            <li>成功：#36B37E</li>
+                                            <li>警告：#FFAB00</li>
+                                            <li>错误：#FF5630</li>
+                                            <li>信息：#0065FF</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary">显示全部内容</button>
+                            <button type="button" class="btn btn-outline-secondary active">仅显示差异</button>
+                        </div>
+                        <button type="button" class="btn btn-primary ms-2">导出对比结果</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 版本比较样式 */
+    .version-compare-content .row .col-6 {
+        min-height: 400px;
+    }
+    
+    /* 变更高亮样式 */
+    .bg-danger.bg-opacity-10 {
+        text-decoration: line-through;
+        color: #842029;
+    }
+    
+    .bg-success.bg-opacity-10 {
+        color: #0f5132;
+        font-weight: 500;
+    }
+</style> 
