@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<div class="container-fluid py-3" id="knowledge-category-module">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">知识分类管理</h4>
+        <div>
+          <button class="btn btn-primary" id="add-category-btn">
+            <i class="bi bi-plus-circle me-1"></i>新增分类
+          </button>
+          <button class="btn btn-outline-secondary ms-2" id="expand-all-btn">
+            <i class="bi bi-arrows-expand me-1"></i>全部展开
+          </button>
+          <button class="btn btn-outline-secondary ms-2" id="collapse-all-btn">
+            <i class="bi bi-arrows-collapse me-1"></i>全部折叠
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">分类结构</h5>
+        </div>
+        <div class="card-body">
+          <div class="category-tree">
+            <ul class="tree-root">
+              <!-- 技术文档分类 -->
+              <li class="tree-item">
+                <div class="tree-item-header">
+                  <span class="tree-toggle">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </span>
+                  <i class="bi bi-folder-fill text-warning me-2"></i>
+                  <span class="tree-label">技术文档</span>
+                  <span class="badge bg-primary ms-2">125</span>
+                  <div class="tree-actions">
+                    <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                      <i class="bi bi-plus-circle"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <ul class="tree-children">
+                  <li class="tree-item">
+                    <div class="tree-item-header">
+                      <span class="tree-toggle">
+                        <i class="bi bi-caret-down-fill"></i>
+                      </span>
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span class="tree-label">接口文档</span>
+                      <span class="badge bg-primary ms-2">56</span>
+                      <div class="tree-actions">
+                        <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                          <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <ul class="tree-children">
+                      <li class="tree-item">
+                        <div class="tree-item-header">
+                          <span class="tree-toggle invisible">
+                            <i class="bi bi-caret-right-fill"></i>
+                          </span>
+                          <i class="bi bi-file-earmark-text me-2"></i>
+                          <span class="tree-label">REST API设计规范</span>
+                          <span class="badge bg-primary ms-2">18</span>
+                          <div class="tree-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                              <i class="bi bi-plus-circle"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="tree-item">
+                        <div class="tree-item-header">
+                          <span class="tree-toggle invisible">
+                            <i class="bi bi-caret-right-fill"></i>
+                          </span>
+                          <i class="bi bi-file-earmark-text me-2"></i>
+                          <span class="tree-label">WebSocket接口规范</span>
+                          <span class="badge bg-primary ms-2">12</span>
+                          <div class="tree-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                              <i class="bi bi-plus-circle"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="tree-item">
+                    <div class="tree-item-header">
+                      <span class="tree-toggle">
+                        <i class="bi bi-caret-right-fill"></i>
+                      </span>
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span class="tree-label">架构设计</span>
+                      <span class="badge bg-primary ms-2">38</span>
+                      <div class="tree-actions">
+                        <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                          <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="tree-item">
+                    <div class="tree-item-header">
+                      <span class="tree-toggle">
+                        <i class="bi bi-caret-right-fill"></i>
+                      </span>
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span class="tree-label">开发规范</span>
+                      <span class="badge bg-primary ms-2">31</span>
+                      <div class="tree-actions">
+                        <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                          <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              
+              <!-- 管理文档分类 -->
+              <li class="tree-item">
+                <div class="tree-item-header">
+                  <span class="tree-toggle">
+                    <i class="bi bi-caret-right-fill"></i>
+                  </span>
+                  <i class="bi bi-folder-fill text-warning me-2"></i>
+                  <span class="tree-label">管理文档</span>
+                  <span class="badge bg-primary ms-2">87</span>
+                  <div class="tree-actions">
+                    <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                      <i class="bi bi-plus-circle"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              
+              <!-- 培训资料分类 -->
+              <li class="tree-item">
+                <div class="tree-item-header">
+                  <span class="tree-toggle">
+                    <i class="bi bi-caret-right-fill"></i>
+                  </span>
+                  <i class="bi bi-folder-fill text-warning me-2"></i>
+                  <span class="tree-label">培训资料</span>
+                  <span class="badge bg-primary ms-2">64</span>
+                  <div class="tree-actions">
+                    <button class="btn btn-sm btn-outline-primary" title="添加子分类">
+                      <i class="bi bi-plus-circle"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" title="删除分类">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="card-title mb-0">分类详情</h5>
+        </div>
+        <div class="card-body" id="category-details">
+          <div class="text-center py-4 text-muted">
+            <i class="bi bi-arrow-left-circle fs-2"></i>
+            <p class="mt-2">请从左侧选择一个分类查看详情</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">分类统计</h5>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="border rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="d-block text-muted">一级分类</span>
+                    <h3 class="mb-0">6</h3>
+                  </div>
+                  <div class="bg-primary-soft rounded-circle p-2">
+                    <i class="bi bi-folder fs-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="border rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="d-block text-muted">二级分类</span>
+                    <h3 class="mb-0">24</h3>
+                  </div>
+                  <div class="bg-success-soft rounded-circle p-2">
+                    <i class="bi bi-folder fs-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="border rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="d-block text-muted">三级分类</span>
+                    <h3 class="mb-0">53</h3>
+                  </div>
+                  <div class="bg-info-soft rounded-circle p-2">
+                    <i class="bi bi-folder fs-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="border rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="d-block text-muted">平均深度</span>
+                    <h3 class="mb-0">2.8</h3>
+                  </div>
+                  <div class="bg-warning-soft rounded-circle p-2">
+                    <i class="bi bi-layers fs-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 添加/编辑分类模态框 -->
+<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="categoryModalLabel">添加分类</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+      </div>
+      <div class="modal-body">
+        <form id="category-form" class="needs-validation" novalidate>
+          <input type="hidden" id="category-id">
+          <div class="mb-3">
+            <label for="category-name" class="form-label">分类名称</label>
+            <input type="text" class="form-control" id="category-name" required>
+            <div class="invalid-feedback">请输入分类名称</div>
+          </div>
+          <div class="mb-3">
+            <label for="parent-category" class="form-label">父级分类</label>
+            <select class="form-select" id="parent-category">
+              <option value="">无 (顶级分类)</option>
+              <option value="tech">技术文档</option>
+              <option value="tech-api">技术文档 > 接口文档</option>
+              <option value="tech-arch">技术文档 > 架构设计</option>
+              <option value="tech-dev">技术文档 > 开发规范</option>
+              <option value="mgmt">管理文档</option>
+              <option value="training">培训资料</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="category-icon" class="form-label">分类图标</label>
+            <select class="form-select" id="category-icon">
+              <option value="folder-fill">文件夹</option>
+              <option value="file-earmark-text">文档</option>
+              <option value="code-square">代码</option>
+              <option value="diagram-3">架构图</option>
+              <option value="gear">设置</option>
+              <option value="people">团队</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="category-description" class="form-label">分类描述</label>
+            <textarea class="form-control" id="category-description" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="category-visible" checked>
+              <label class="form-check-label" for="category-visible">
+                在导航菜单中显示
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="save-category-btn">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">确认删除</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>确定要删除该分类吗？此操作将同时删除其下所有子分类。</p>
+        <p class="text-danger"><strong>注意：</strong> 该操作不可恢复！</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-delete-btn">确认删除</button>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,405 @@
+<div class="module-panel" id="knowledge-manage-module">
+    <div class="page-header">
+        <h1 class="page-title">知识库管理</h1>
+        <div class="page-actions">
+            <button class="btn btn-primary" id="create-knowledge-base-btn">
+                <i class="bi bi-plus-lg"></i> 创建知识库
+            </button>
+            <button class="btn btn-outline-secondary" id="import-knowledge-base-btn">
+                <i class="bi bi-upload"></i> 批量导入
+            </button>
+        </div>
+    </div>
+
+    <!-- 知识库统计卡片 -->
+    <div class="row stat-cards">
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <div class="stat-icon bg-primary-soft">
+                        <i class="bi bi-journals"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 class="stat-number">18</h3>
+                        <p class="stat-label">知识库总数</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <div class="stat-icon bg-info-soft">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 class="stat-number">2,547</h3>
+                        <p class="stat-label">文档总数</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <div class="stat-icon bg-success-soft">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 class="stat-number">187</h3>
+                        <p class="stat-label">用户数</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <div class="stat-icon bg-warning-soft">
+                        <i class="bi bi-hdd-rack"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3 class="stat-number">4.8GB</h3>
+                        <p class="stat-label">存储用量</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 知识库列表 -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title">知识库列表</h5>
+                <div class="card-tools">
+                    <div class="input-group search-box">
+                        <input type="text" class="form-control" placeholder="搜索知识库..." id="knowledge-search-input">
+                        <button class="btn btn-outline-secondary" type="button" id="knowledge-search-btn">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table knowledge-list-table">
+                    <thead>
+                        <tr>
+                            <th class="text-center" width="40">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="select-all-knowledge">
+                                    <label class="form-check-label" for="select-all-knowledge"></label>
+                                </div>
+                            </th>
+                            <th>知识库名称</th>
+                            <th class="text-center">文档数量</th>
+                            <th class="text-center">创建者</th>
+                            <th class="text-center">创建时间</th>
+                            <th class="text-center">最近更新</th>
+                            <th class="text-center">状态</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input knowledge-select" type="checkbox" value="1">
+                                    <label class="form-check-label"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="kb-icon me-2">
+                                        <i class="bi bi-journal-code"></i>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="fw-medium text-primary">技术文档库</a>
+                                        <div class="small text-muted">技术规范、API文档、架构设计等</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">892</td>
+                            <td class="text-center">张明</td>
+                            <td class="text-center">2023-06-15</td>
+                            <td class="text-center">2023-12-20</td>
+                            <td class="text-center"><span class="badge bg-success">已启用</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" title="查看详情">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="编辑配置">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" title="停用">
+                                        <i class="bi bi-power"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input knowledge-select" type="checkbox" value="2">
+                                    <label class="form-check-label"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="kb-icon me-2">
+                                        <i class="bi bi-journal-text"></i>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="fw-medium text-primary">业务文档库</a>
+                                        <div class="small text-muted">业务流程、规范、培训资料等</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">637</td>
+                            <td class="text-center">李华</td>
+                            <td class="text-center">2023-08-22</td>
+                            <td class="text-center">2023-12-18</td>
+                            <td class="text-center"><span class="badge bg-success">已启用</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" title="查看详情">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="编辑配置">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" title="停用">
+                                        <i class="bi bi-power"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input knowledge-select" type="checkbox" value="3">
+                                    <label class="form-check-label"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="kb-icon me-2">
+                                        <i class="bi bi-journal-album"></i>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="fw-medium text-primary">管理文档库</a>
+                                        <div class="small text-muted">管理制度、流程、考核标准等</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">510</td>
+                            <td class="text-center">王刚</td>
+                            <td class="text-center">2023-09-10</td>
+                            <td class="text-center">2023-12-15</td>
+                            <td class="text-center"><span class="badge bg-success">已启用</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" title="查看详情">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="编辑配置">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" title="停用">
+                                        <i class="bi bi-power"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input knowledge-select" type="checkbox" value="4">
+                                    <label class="form-check-label"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="kb-icon me-2">
+                                        <i class="bi bi-journal-medical"></i>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="fw-medium text-primary">培训资料库</a>
+                                        <div class="small text-muted">内部培训课件、视频教程等</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">382</td>
+                            <td class="text-center">赵明</td>
+                            <td class="text-center">2023-10-05</td>
+                            <td class="text-center">2023-12-10</td>
+                            <td class="text-center"><span class="badge bg-success">已启用</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" title="查看详情">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="编辑配置">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" title="停用">
+                                        <i class="bi bi-power"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input knowledge-select" type="checkbox" value="5">
+                                    <label class="form-check-label"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="kb-icon me-2">
+                                        <i class="bi bi-journal-bookmark"></i>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="fw-medium text-primary">销售资料库</a>
+                                        <div class="small text-muted">销售手册、客户案例、竞品分析等</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">126</td>
+                            <td class="text-center">陈晨</td>
+                            <td class="text-center">2023-11-20</td>
+                            <td class="text-center">2023-12-05</td>
+                            <td class="text-center"><span class="badge bg-secondary">已禁用</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" title="查看详情">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="编辑配置">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-success" title="启用">
+                                        <i class="bi bi-power"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="batch-actions">
+                        <button class="btn btn-sm btn-outline-danger" data-action="delete">
+                            <i class="bi bi-trash"></i> 批量删除
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" data-action="disable">
+                            <i class="bi bi-power"></i> 批量禁用
+                        </button>
+                        <button class="btn btn-sm btn-outline-success" data-action="export">
+                            <i class="bi bi-file-earmark-arrow-down"></i> 批量导出
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <span class="pagination-info me-3">共 18 条</span>
+                    <nav aria-label="知识库分页">
+                        <ul class="pagination mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="上一页">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="下一页">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 创建知识库模态框 -->
+    <div class="modal fade" id="createKnowledgeBaseModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">创建知识库</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="create-knowledge-form" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="knowledge-name" class="form-label">知识库名称 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="knowledge-name" required>
+                            <div class="invalid-feedback">请输入知识库名称</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="knowledge-desc" class="form-label">知识库描述</label>
+                            <textarea class="form-control" id="knowledge-desc" rows="3"></textarea>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="knowledge-category" class="form-label">知识库分类 <span class="text-danger">*</span></label>
+                                <select class="form-select" id="knowledge-category" required>
+                                    <option value="">选择分类...</option>
+                                    <option value="technical">技术文档</option>
+                                    <option value="business">业务文档</option>
+                                    <option value="management">管理文档</option>
+                                    <option value="training">培训资料</option>
+                                    <option value="sales">销售资料</option>
+                                    <option value="other">其他</option>
+                                </select>
+                                <div class="invalid-feedback">请选择知识库分类</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="knowledge-icon" class="form-label">知识库图标</label>
+                                <select class="form-select" id="knowledge-icon">
+                                    <option value="journal-code">代码图标</option>
+                                    <option value="journal-text">文本图标</option>
+                                    <option value="journal-album">相册图标</option>
+                                    <option value="journal-medical">医疗图标</option>
+                                    <option value="journal-bookmark">书签图标</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">高级设置</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="enable-versioning" checked>
+                                <label class="form-check-label" for="enable-versioning">启用版本控制</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="enable-comments">
+                                <label class="form-check-label" for="enable-comments">允许评论</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="enable-export" checked>
+                                <label class="form-check-label" for="enable-export">允许导出</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="save-knowledge-btn">创建知识库</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

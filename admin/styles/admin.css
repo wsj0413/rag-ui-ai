@@ -255,9 +255,17 @@ a:hover {
 .main-content {
     flex: 1;
     margin-left: var(--sidebar-width);
-    min-height: 100vh;
+    padding: 0;
+    width: calc(100% - var(--sidebar-width));
     transition: var(--transition);
+    min-height: 100vh;
     position: relative;
+}
+
+/* 响应式布局 */
+.main-content.expanded {
+    width: calc(100% - var(--sidebar-collapsed-width));
+    margin-left: var(--sidebar-collapsed-width);
 }
 
 /* 侧边栏折叠状态 */
@@ -498,31 +506,21 @@ a:hover {
     border-top: 1px solid var(--gray-200);
 }
 
-/* 内容区域 */
-.content-wrapper {
-    padding: 1.5rem;
-    background-color: var(--gray-100);
-    min-height: calc(100vh - var(--header-height));
-}
-
+/* 模块面板样式 */
 .module-panel {
     display: none;
+    animation: fadeIn 0.3s ease-in-out;
+    width: 100%;
 }
 
 .module-panel.active {
     display: block;
-    animation: fadeIn 0.3s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* 页面内容包装器 */
+.content-wrapper {
+    padding: calc(var(--header-height) + 30px) 30px 30px 30px;
+    min-height: 100vh;
 }
 
 /* 页面标题 */
@@ -1463,5 +1461,17 @@ a:hover {
     
     .breadcrumb-nav {
         display: none;
+    }
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 } 
