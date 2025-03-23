@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>备份还原</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <div id="backup-restore-module" class="container-fluid py-3">
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">备份还原</h4>
+          <div>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-gear me-1"></i>备份策略配置
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 状态概览 -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card bg-primary-subtle h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-clock-history fs-3 text-primary me-3"></i>
+              <h5 class="card-title mb-0">最近备份</h5>
+            </div>
+            <h3 class="mb-0">2023-10-15 08:30</h3>
+            <p class="text-muted small">2天前 (自动完成)</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-success-subtle h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-hdd-stack fs-3 text-success me-3"></i>
+              <h5 class="card-title mb-0">备份总容量</h5>
+            </div>
+            <h3 class="mb-0">258.6 GB</h3>
+            <p class="text-muted small">共35个备份文件</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info-subtle h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-shield-check fs-3 text-info me-3"></i>
+              <h5 class="card-title mb-0">备份健康状态</h5>
+            </div>
+            <h3 class="mb-0 text-success">正常</h3>
+            <p class="text-muted small">最近校验通过率100%</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-warning-subtle h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-calendar-check fs-3 text-warning me-3"></i>
+              <h5 class="card-title mb-0">下次备份</h5>
+            </div>
+            <h3 class="mb-0">2023-10-17 08:30</h3>
+            <p class="text-muted small">距离现在8小时30分钟</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 操作面板 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">快捷操作</h5>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-3">
+                <button class="btn btn-primary w-100 py-3">
+                  <i class="bi bi-cloud-arrow-up fs-3 d-block mb-2"></i>
+                  立即备份
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-success w-100 py-3">
+                  <i class="bi bi-cloud-arrow-down fs-3 d-block mb-2"></i>
+                  还原系统
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-info w-100 py-3 text-white">
+                  <i class="bi bi-cloud-download fs-3 d-block mb-2"></i>
+                  导出备份
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-secondary w-100 py-3">
+                  <i class="bi bi-clipboard-check fs-3 d-block mb-2"></i>
+                  校验备份
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 备份历史 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">备份历史</h5>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary btn-sm active">全部</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm">自动备份</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm">手动备份</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>备份ID</th>
+                    <th>创建时间</th>
+                    <th>备份类型</th>
+                    <th>大小</th>
+                    <th>状态</th>
+                    <th>备份内容</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-zip text-primary me-2"></i>
+                        <span>BK-20231015-083000</span>
+                      </div>
+                    </td>
+                    <td>2023-10-15 08:30:00</td>
+                    <td><span class="badge bg-info-subtle text-info">自动备份</span></td>
+                    <td>8.2 GB</td>
+                    <td><span class="badge bg-success">正常</span></td>
+                    <td>完整备份</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          操作
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-counterclockwise me-2"></i>还原</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-download me-2"></i>下载</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-shield-check me-2"></i>验证</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>删除</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-zip text-success me-2"></i>
+                        <span>BK-20231013-143022</span>
+                      </div>
+                    </td>
+                    <td>2023-10-13 14:30:22</td>
+                    <td><span class="badge bg-primary-subtle text-primary">手动备份</span></td>
+                    <td>8.1 GB</td>
+                    <td><span class="badge bg-success">正常</span></td>
+                    <td>完整备份</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          操作
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-counterclockwise me-2"></i>还原</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-download me-2"></i>下载</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-shield-check me-2"></i>验证</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>删除</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-zip text-primary me-2"></i>
+                        <span>BK-20231013-083000</span>
+                      </div>
+                    </td>
+                    <td>2023-10-13 08:30:00</td>
+                    <td><span class="badge bg-info-subtle text-info">自动备份</span></td>
+                    <td>8.0 GB</td>
+                    <td><span class="badge bg-success">正常</span></td>
+                    <td>完整备份</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          操作
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-counterclockwise me-2"></i>还原</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-download me-2"></i>下载</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-shield-check me-2"></i>验证</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>删除</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-zip text-primary me-2"></i>
+                        <span>BK-20231011-083000</span>
+                      </div>
+                    </td>
+                    <td>2023-10-11 08:30:00</td>
+                    <td><span class="badge bg-info-subtle text-info">自动备份</span></td>
+                    <td>7.9 GB</td>
+                    <td><span class="badge bg-warning text-dark">待验证</span></td>
+                    <td>完整备份</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          操作
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-counterclockwise me-2"></i>还原</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-download me-2"></i>下载</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-shield-check me-2"></i>验证</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>删除</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-zip text-primary me-2"></i>
+                        <span>BK-20231009-083000</span>
+                      </div>
+                    </td>
+                    <td>2023-10-09 08:30:00</td>
+                    <td><span class="badge bg-info-subtle text-info">自动备份</span></td>
+                    <td>7.8 GB</td>
+                    <td><span class="badge bg-danger">校验失败</span></td>
+                    <td>完整备份</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          操作
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item disabled" href="#"><i class="bi bi-arrow-counterclockwise me-2"></i>还原</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-download me-2"></i>下载</a></li>
+                          <li><a class="dropdown-item" href="#"><i class="bi bi-shield-check me-2"></i>重新验证</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>删除</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <nav aria-label="备份分页" class="mt-3">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">下一页</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 备份策略 -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">备份策略</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6>自动备份</h6>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="autoBackupSwitch" checked>
+                  <label class="form-check-label" for="autoBackupSwitch">已启用</label>
+                </div>
+              </div>
+              <div class="card bg-light">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">备份频率</label>
+                      <select class="form-select">
+                        <option value="daily" selected>每天</option>
+                        <option value="weekly">每周</option>
+                        <option value="monthly">每月</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">备份时间</label>
+                      <input type="time" class="form-control" value="08:30">
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">保留策略</label>
+                      <select class="form-select">
+                        <option value="7" selected>保留最近7次备份</option>
+                        <option value="14">保留最近14次备份</option>
+                        <option value="30">保留最近30次备份</option>
+                        <option value="90">保留最近90次备份</option>
+                        <option value="0">永久保留所有备份</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6>备份内容选择</h6>
+              </div>
+              <div class="card bg-light">
+                <div class="card-body">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="backupAllCheck" checked>
+                    <label class="form-check-label fw-medium" for="backupAllCheck">完整备份 (推荐)</label>
+                  </div>
+                  <hr>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="backupDbCheck" disabled>
+                    <label class="form-check-label" for="backupDbCheck">数据库</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="backupFilesCheck" disabled>
+                    <label class="form-check-label" for="backupFilesCheck">文件存储</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="backupConfigCheck" disabled>
+                    <label class="form-check-label" for="backupConfigCheck">系统配置</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="backupLogsCheck" disabled>
+                    <label class="form-check-label" for="backupLogsCheck">系统日志</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button class="btn btn-primary w-100">保存备份设置</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">备份存储位置</h5>
+          </div>
+          <div class="card-body">
+            <div class="nav nav-tabs mb-3" id="storageTab" role="tablist">
+              <button class="nav-link active" id="local-tab" data-bs-toggle="tab" data-bs-target="#local" type="button" role="tab" aria-selected="true">本地存储</button>
+              <button class="nav-link" id="cloud-tab" data-bs-toggle="tab" data-bs-target="#cloud" type="button" role="tab" aria-selected="false">云存储</button>
+              <button class="nav-link" id="remote-tab" data-bs-toggle="tab" data-bs-target="#remote" type="button" role="tab" aria-selected="false">远程服务器</button>
+            </div>
+            <div class="tab-content" id="storageTabContent">
+              <div class="tab-pane fade show active" id="local" role="tabpanel" aria-labelledby="local-tab">
+                <div class="mb-3">
+                  <label class="form-label">本地存储路径</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" value="/data/backups" readonly>
+                    <button class="btn btn-outline-secondary" type="button">浏览</button>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">存储容量</label>
+                  <div class="progress mb-2" style="height: 20px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
+                  </div>
+                  <div class="small text-muted">已使用: 258.6 GB / 可用空间: 741.4 GB</div>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="autoCleanSwitch" checked>
+                  <label class="form-check-label" for="autoCleanSwitch">空间不足时自动清理最早的备份</label>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="cloud" role="tabpanel" aria-labelledby="cloud-tab">
+                <div class="text-center py-4">
+                  <div class="mb-3">
+                    <i class="bi bi-cloud-plus fs-1 text-muted"></i>
+                  </div>
+                  <h6>云存储备份未配置</h6>
+                  <p class="text-muted small mb-3">配置云存储可以将备份自动同步到云端，提高数据安全性</p>
+                  <button class="btn btn-outline-primary">添加云存储配置</button>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="remote" role="tabpanel" aria-labelledby="remote-tab">
+                <div class="text-center py-4">
+                  <div class="mb-3">
+                    <i class="bi bi-hdd-network fs-1 text-muted"></i>
+                  </div>
+                  <h6>远程服务器备份未配置</h6>
+                  <p class="text-muted small mb-3">配置远程服务器可将备份自动同步到其他服务器，实现多地备份</p>
+                  <button class="btn btn-outline-primary">添加远程服务器</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">备份存储统计</h5>
+          </div>
+          <div class="card-body">
+            <div style="height: 250px;">
+              <canvas id="backupChart"></canvas>
+            </div>
+          </div>
+          <div class="card-footer bg-white">
+            <div class="d-flex justify-content-between align-items-center small text-muted">
+              <div>统计显示最近12次备份的大小变化趋势</div>
+              <div>
+                <i class="bi bi-arrow-up-right text-success"></i> 平均增长率: 1.2%/次
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入脚本 -->
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/chart.js"></script>
+  <script>
+    // 页面加载完成后初始化图表
+    document.addEventListener('DOMContentLoaded', function() {
+      // 备份存储统计图表
+      const backupCtx = document.getElementById('backupChart').getContext('2d');
+      const backupChart = new Chart(backupCtx, {
+        type: 'line',
+        data: {
+          labels: ['10/09', '10/10', '10/11', '10/12', '10/13', '10/14', '10/15', '10/16', '10/17', '10/18', '10/19', '10/20'],
+          datasets: [{
+            label: '备份大小 (GB)',
+            data: [7.8, 7.8, 7.9, 7.9, 8.0, 8.1, 8.2, 8.2, 8.3, 8.3, 8.4, 8.5],
+            backgroundColor: 'rgba(13, 110, 253, 0.1)',
+            borderColor: 'rgba(13, 110, 253, 1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 7.5
+            }
+          }
+        }
+      });
+      
+      // 全选备份内容切换逻辑
+      document.getElementById('backupAllCheck').addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('#backupDbCheck, #backupFilesCheck, #backupConfigCheck, #backupLogsCheck');
+        checkboxes.forEach(checkbox => {
+          checkbox.disabled = this.checked;
+          if (!this.checked) {
+            checkbox.checked = true;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

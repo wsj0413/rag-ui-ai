@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高级分析</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <div id="advanced-analytics-module" class="container-fluid py-3">
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">高级分析</h4>
+          <div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-secondary active">月</button>
+              <button type="button" class="btn btn-outline-secondary">季</button>
+              <button type="button" class="btn btn-outline-secondary">年</button>
+            </div>
+            <button class="btn btn-outline-primary ms-2">
+              <i class="bi bi-download me-1"></i>导出报告
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 知识流转图 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">知识流转图</h5>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="knowledgeFlowOptions" data-bs-toggle="dropdown" aria-expanded="false">
+                  可视化选项
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="knowledgeFlowOptions">
+                  <li><a class="dropdown-item active" href="#">部门维度</a></li>
+                  <li><a class="dropdown-item" href="#">知识类型维度</a></li>
+                  <li><a class="dropdown-item" href="#">用户角色维度</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="small text-muted">显示知识在不同部门间的流转频率和路径，箭头越粗表示流转频率越高</div>
+                <div class="btn-group btn-group-sm" role="group">
+                  <button type="button" class="btn btn-outline-secondary active">力导向图</button>
+                  <button type="button" class="btn btn-outline-secondary">桑基图</button>
+                </div>
+              </div>
+            </div>
+            <div class="knowledge-flow-container" style="height: 500px; background-color: #f8f9fa; border-radius: 8px;">
+              <!-- 这里将由JS渲染知识流转图 -->
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-center">
+                  <div class="spinner-border text-primary mb-2" role="status">
+                    <span class="visually-hidden">加载中...</span>
+                  </div>
+                  <p class="text-muted">正在加载知识流转图...</p>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <div class="card bg-light">
+                  <div class="card-body py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="card-title mb-0">流转量最高</h6>
+                        <div class="text-muted small">产品部 → 研发部</div>
+                      </div>
+                      <h5 class="mb-0 text-primary">256次</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-light">
+                  <div class="card-body py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="card-title mb-0">协作最密切</h6>
+                        <div class="text-muted small">产品部 ↔ 设计部</div>
+                      </div>
+                      <h5 class="mb-0 text-success">87%</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-light">
+                  <div class="card-body py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="card-title mb-0">知识孤岛部门</h6>
+                        <div class="text-muted small">财务部</div>
+                      </div>
+                      <h5 class="mb-0 text-danger">12%</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-light">
+                  <div class="card-body py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="card-title mb-0">知识输出最多</h6>
+                        <div class="text-muted small">研发部</div>
+                      </div>
+                      <h5 class="mb-0 text-info">482篇</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 相关性分析 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">相关性分析</h5>
+              <button class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-plus-circle me-1"></i>新建分析
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-8">
+                <div class="input-group">
+                  <span class="input-group-text bg-white">分析维度</span>
+                  <select class="form-select">
+                    <option selected>使用频率与质量评分</option>
+                    <option>创建时间与访问量</option>
+                    <option>知识领域与参与度</option>
+                    <option>标签数量与搜索命中率</option>
+                  </select>
+                  <button class="btn btn-primary">应用</button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <span class="input-group-text bg-white">数据范围</span>
+                  <select class="form-select">
+                    <option selected>全部文档</option>
+                    <option>技术文档</option>
+                    <option>产品文档</option>
+                    <option>营销文档</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="correlation-chart-container" style="height: 400px;">
+              <canvas id="correlationChart"></canvas>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <div class="card bg-light">
+                  <div class="card-body">
+                    <h6 class="card-title">分析结论</h6>
+                    <p class="mb-0">通过对知识库文档使用频率与质量评分的相关性分析，发现两者呈现<strong>中等正相关(r=0.62)</strong>，即质量评分较高的文档通常具有更高的使用频率。特别是在技术文档分类中，这种相关性更为显著(r=0.78)。建议重点提升低使用频率但高质量文档的曝光度，同时对高使用频率但低质量文档进行优化改进。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 用户画像分析 -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">用户画像分析</h5>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="userPersonaOptions" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-filter me-1"></i>筛选
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userPersonaOptions">
+                  <li><a class="dropdown-item active" href="#">全部用户</a></li>
+                  <li><a class="dropdown-item" href="#">管理层</a></li>
+                  <li><a class="dropdown-item" href="#">技术人员</a></li>
+                  <li><a class="dropdown-item" href="#">运营人员</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card mb-3">
+                  <div class="card-header bg-white">
+                    <h6 class="card-title mb-0">知识消费者画像</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="text-center mb-3">
+                      <div class="avatar-circle mx-auto bg-primary text-white" style="width: 60px; height: 60px; font-size: 24px;">KC</div>
+                      <h5 class="mt-2 mb-0">知识消费者</h5>
+                      <div class="text-muted small">占比 48% (约 124 人)</div>
+                    </div>
+                    <div class="mb-3">
+                      <h6>特征描述</h6>
+                      <ul class="small">
+                        <li>主要浏览和搜索已有知识</li>
+                        <li>很少创建或编辑内容</li>
+                        <li>平均每周访问系统 3-5 次</li>
+                        <li>典型部门：销售部、客服部</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h6>使用行为</h6>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">搜索行为</span>
+                          <span class="small text-muted">82%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">浏览行为</span>
+                          <span class="small text-muted">91%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: 91%;" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">创建行为</span>
+                          <span class="small text-muted">12%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: 12%;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card mb-3">
+                  <div class="card-header bg-white">
+                    <h6 class="card-title mb-0">知识贡献者画像</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="text-center mb-3">
+                      <div class="avatar-circle mx-auto bg-success text-white" style="width: 60px; height: 60px; font-size: 24px;">KC</div>
+                      <h5 class="mt-2 mb-0">知识贡献者</h5>
+                      <div class="text-muted small">占比 32% (约 83 人)</div>
+                    </div>
+                    <div class="mb-3">
+                      <h6>特征描述</h6>
+                      <ul class="small">
+                        <li>频繁上传和创建新知识</li>
+                        <li>积极参与内容更新和维护</li>
+                        <li>平均每周访问系统 8-10 次</li>
+                        <li>典型部门：产品部、研发部</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h6>使用行为</h6>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">搜索行为</span>
+                          <span class="small text-muted">65%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">浏览行为</span>
+                          <span class="small text-muted">58%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 58%;" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">创建行为</span>
+                          <span class="small text-muted">87%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 87%;" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card mb-3">
+                  <div class="card-header bg-white">
+                    <h6 class="card-title mb-0">知识管理者画像</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="text-center mb-3">
+                      <div class="avatar-circle mx-auto bg-info text-white" style="width: 60px; height: 60px; font-size: 24px;">KM</div>
+                      <h5 class="mt-2 mb-0">知识管理者</h5>
+                      <div class="text-muted small">占比 20% (约 52 人)</div>
+                    </div>
+                    <div class="mb-3">
+                      <h6>特征描述</h6>
+                      <ul class="small">
+                        <li>管理知识结构和分类体系</li>
+                        <li>审核和优化知识内容质量</li>
+                        <li>平均每周访问系统 12-15 次</li>
+                        <li>典型部门：KM团队、项目管理部</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h6>使用行为</h6>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">搜索行为</span>
+                          <span class="small text-muted">78%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">浏览行为</span>
+                          <span class="small text-muted">72%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="behavior-metric">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="small">管理行为</span>
+                          <span class="small text-muted">94%</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 5px;">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 94%;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header bg-white">
+                    <h6 class="card-title mb-0">用户行为分布</h6>
+                  </div>
+                  <div class="card-body">
+                    <div style="height: 300px;">
+                      <canvas id="userBehaviorDistribution"></canvas>
+                    </div>
+                  </div>
+                  <div class="card-footer bg-white">
+                    <div class="small text-muted">
+                      <i class="bi bi-info-circle me-1"></i>基于过去30天的用户行为数据分析，显示不同类型用户在系统中的活动分布情况
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入脚本 -->
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/chart.js"></script>
+  <script src="../../js/d3.min.js"></script>
+  <script>
+    // 页面加载完成后初始化图表
+    document.addEventListener('DOMContentLoaded', function() {
+      // 相关性分析散点图
+      const correlationCtx = document.getElementById('correlationChart').getContext('2d');
+      const correlationChart = new Chart(correlationCtx, {
+        type: 'scatter',
+        data: {
+          datasets: [{
+            label: '技术文档',
+            data: [
+              { x: 24, y: 8.2 }, { x: 15, y: 6.8 }, { x: 32, y: 8.7 }, { x: 42, y: 9.1 },
+              { x: 38, y: 8.8 }, { x: 12, y: 6.2 }, { x: 28, y: 8.0 }, { x: 7, y: 5.6 },
+              { x: 18, y: 7.2 }, { x: 35, y: 8.6 }, { x: 26, y: 7.9 }, { x: 22, y: 7.6 }
+            ],
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)'
+          }, {
+            label: '产品文档',
+            data: [
+              { x: 18, y: 7.8 }, { x: 28, y: 8.3 }, { x: 16, y: 7.5 }, { x: 32, y: 8.5 },
+              { x: 24, y: 8.0 }, { x: 10, y: 6.5 }, { x: 20, y: 7.6 }, { x: 36, y: 8.8 },
+              { x: 14, y: 7.0 }, { x: 30, y: 8.4 }, { x: 22, y: 7.8 }, { x: 8, y: 6.0 }
+            ],
+            backgroundColor: 'rgba(153, 102, 255, 0.6)',
+            borderColor: 'rgba(153, 102, 255, 1)'
+          }, {
+            label: '营销文档',
+            data: [
+              { x: 12, y: 7.0 }, { x: 20, y: 7.6 }, { x: 8, y: 6.2 }, { x: 26, y: 8.0 },
+              { x: 18, y: 7.4 }, { x: 6, y: 5.8 }, { x: 14, y: 7.2 }, { x: 30, y: 8.2 },
+              { x: 10, y: 6.5 }, { x: 24, y: 7.8 }, { x: 16, y: 7.3 }, { x: 4, y: 5.5 }
+            ],
+            backgroundColor: 'rgba(255, 159, 64, 0.6)',
+            borderColor: 'rgba(255, 159, 64, 1)'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `${context.dataset.label}: (使用频率: ${context.parsed.x}次/月, 质量评分: ${context.parsed.y})`;
+                }
+              }
+            },
+            legend: {
+              position: 'top',
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: '使用频率（次/月）'
+              },
+              min: 0
+            },
+            y: {
+              title: {
+                display: true,
+                text: '质量评分（1-10分）'
+              },
+              min: 5,
+              max: 10
+            }
+          }
+        }
+      });
+
+      // 用户行为分布图
+      const userBehaviorCtx = document.getElementById('userBehaviorDistribution').getContext('2d');
+      const userBehaviorChart = new Chart(userBehaviorCtx, {
+        type: 'bar',
+        data: {
+          labels: ['搜索', '浏览', '下载', '上传', '编辑', '评论', '分享', '收藏'],
+          datasets: [{
+            label: '知识消费者',
+            data: [85, 92, 68, 12, 8, 25, 42, 56],
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }, {
+            label: '知识贡献者',
+            data: [65, 58, 45, 87, 78, 52, 38, 42],
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }, {
+            label: '知识管理者',
+            data: [78, 72, 62, 58, 82, 65, 53, 48],
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: '活动百分比（%）'
+              },
+              max: 100
+            }
+          }
+        }
+      });
+
+      // 模拟知识流转图加载完成
+      setTimeout(function() {
+        document.querySelector('.knowledge-flow-container').innerHTML = `
+          <img src="../../img/knowledge-flow-demo.png" class="img-fluid" alt="知识流转图" style="width: 100%; height: 100%; object-fit: contain;" />
+        `;
+      }, 1500);
+    });
+  </script>
+</body>
+</html> 

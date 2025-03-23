@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>报表导出</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <div id="report-export-module" class="container-fluid py-3">
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">报表导出</h4>
+          <div>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-calendar3 me-1"></i>历史导出记录
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 快速导出 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">快速导出</h5>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-bar-chart-line fs-2 text-primary mb-3"></i>
+                    <h6 class="card-title">使用统计报表</h6>
+                    <p class="small text-muted mb-3">系统使用情况及用户活跃度的完整统计数据</p>
+                    <button class="btn btn-sm btn-outline-primary">
+                      <i class="bi bi-download me-1"></i>导出报表
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-people fs-2 text-success mb-3"></i>
+                    <h6 class="card-title">用户行为报表</h6>
+                    <p class="small text-muted mb-3">详细记录用户在系统中的各类操作行为数据</p>
+                    <button class="btn btn-sm btn-outline-success">
+                      <i class="bi bi-download me-1"></i>导出报表
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-file-earmark-text fs-2 text-info mb-3"></i>
+                    <h6 class="card-title">知识资产报表</h6>
+                    <p class="small text-muted mb-3">系统中所有知识文档的统计和分类明细</p>
+                    <button class="btn btn-sm btn-outline-info">
+                      <i class="bi bi-download me-1"></i>导出报表
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <i class="bi bi-shield-check fs-2 text-danger mb-3"></i>
+                    <h6 class="card-title">安全审计报表</h6>
+                    <p class="small text-muted mb-3">系统安全事件和权限变更的完整审计记录</p>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-download me-1"></i>导出报表
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 自定义报表 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">自定义报表</h5>
+              <button class="btn btn-sm btn-primary">
+                <i class="bi bi-plus-circle me-1"></i>新建报表
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <select class="form-select" id="reportCategory">
+                    <option value="" selected>全部分类</option>
+                    <option value="usage">使用统计</option>
+                    <option value="user">用户行为</option>
+                    <option value="content">内容分析</option>
+                    <option value="security">安全审计</option>
+                  </select>
+                  <label for="reportCategory">报表分类</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                  <input type="text" class="form-control" placeholder="搜索报表名称或描述">
+                  <button class="btn btn-outline-secondary" type="button">搜索</button>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <select class="form-select" id="reportSort">
+                    <option value="recent" selected>最近创建</option>
+                    <option value="name">名称排序</option>
+                    <option value="frequency">使用频率</option>
+                  </select>
+                  <label for="reportSort">排序方式</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>报表名称</th>
+                    <th>分类</th>
+                    <th>创建者</th>
+                    <th>创建时间</th>
+                    <th>最近导出</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-bar-graph text-primary me-2"></i>
+                        <div>
+                          <div class="fw-medium">部门知识贡献度对比</div>
+                          <div class="small text-muted">各部门在系统中贡献的知识数量和质量评分对比</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-primary-subtle text-primary">使用统计</span></td>
+                    <td>张经理</td>
+                    <td>2023-09-12</td>
+                    <td>2023-10-01</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-bar-graph text-success me-2"></i>
+                        <div>
+                          <div class="fw-medium">季度用户活跃度分析</div>
+                          <div class="small text-muted">分析用户在各季度的活跃情况，包含登录次数、使用时长等指标</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-success-subtle text-success">用户行为</span></td>
+                    <td>李分析师</td>
+                    <td>2023-08-20</td>
+                    <td>2023-09-30</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-bar-graph text-info me-2"></i>
+                        <div>
+                          <div class="fw-medium">知识资产质量评估</div>
+                          <div class="small text-muted">评估系统中知识资产的质量，包含完整度、可用性等多维度指标</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-info-subtle text-info">内容分析</span></td>
+                    <td>王管理员</td>
+                    <td>2023-07-15</td>
+                    <td>2023-09-15</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-bar-graph text-danger me-2"></i>
+                        <div>
+                          <div class="fw-medium">敏感操作审计记录</div>
+                          <div class="small text-muted">记录系统中所有敏感操作的完整审计日志，包含操作人、时间等信息</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-danger-subtle text-danger">安全审计</span></td>
+                    <td>刘安全</td>
+                    <td>2023-09-01</td>
+                    <td>2023-09-28</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <nav aria-label="报表分页" class="mt-3">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">下一页</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导出设置 -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">导出设置</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h6 class="card-title mb-3">导出格式</h6>
+                    <div class="mb-3">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="formatExcel" checked>
+                        <label class="form-check-label" for="formatExcel">Excel</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="formatPDF" checked>
+                        <label class="form-check-label" for="formatPDF">PDF</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="formatCSV">
+                        <label class="form-check-label" for="formatCSV">CSV</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="formatJSON">
+                        <label class="form-check-label" for="formatJSON">JSON</label>
+                      </div>
+                    </div>
+                    <h6 class="card-title mb-3">默认导出选项</h6>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="includeCharts" checked>
+                      <label class="form-check-label" for="includeCharts">包含图表</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="includeRawData" checked>
+                      <label class="form-check-label" for="includeRawData">包含原始数据</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="includeAnalysis">
+                      <label class="form-check-label" for="includeAnalysis">包含分析结论</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="applyWatermark" checked>
+                      <label class="form-check-label" for="applyWatermark">应用水印</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h6 class="card-title mb-3">定时导出</h6>
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" id="enableScheduledExport">
+                      <label class="form-check-label" for="enableScheduledExport">启用定时导出</label>
+                    </div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <select class="form-select" id="exportFrequency" disabled>
+                            <option value="daily">每日</option>
+                            <option value="weekly" selected>每周</option>
+                            <option value="monthly">每月</option>
+                            <option value="quarterly">每季度</option>
+                          </select>
+                          <label for="exportFrequency">导出频率</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <select class="form-select" id="exportDay" disabled>
+                            <option value="1">星期一</option>
+                            <option value="2">星期二</option>
+                            <option value="3">星期三</option>
+                            <option value="4">星期四</option>
+                            <option value="5" selected>星期五</option>
+                            <option value="6">星期六</option>
+                            <option value="0">星期日</option>
+                          </select>
+                          <label for="exportDay">导出日期</label>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-floating">
+                          <input type="time" class="form-control" id="exportTime" value="08:00" disabled>
+                          <label for="exportTime">导出时间</label>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-floating">
+                          <input type="email" class="form-control" id="exportEmail" placeholder="name@example.com" value="admin@example.com" disabled>
+                          <label for="exportEmail">发送报表至邮箱</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 text-center mt-3">
+                <button class="btn btn-primary px-4">保存设置</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入脚本 -->
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/chart.js"></script>
+  <script>
+    // 切换定时导出状态
+    document.getElementById('enableScheduledExport').addEventListener('change', function() {
+      const inputs = document.querySelectorAll('#exportFrequency, #exportDay, #exportTime, #exportEmail');
+      inputs.forEach(input => {
+        input.disabled = !this.checked;
+      });
+    });
+  </script>
+</body>
+</html> 

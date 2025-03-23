@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文档导出</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <div id="doc-export-module" class="container-fluid py-3">
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">文档导出</h4>
+          <div>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-clock-history me-1"></i>导出历史记录
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 选择导出文档 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">选择导出文档</h5>
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                  <input type="text" class="form-control" placeholder="搜索文档名称">
+                  <button class="btn btn-outline-secondary" type="button">搜索</button>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select">
+                  <option value="" selected>所有分类</option>
+                  <option value="tech">技术文档</option>
+                  <option value="product">产品文档</option>
+                  <option value="design">设计规范</option>
+                  <option value="management">管理制度</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select">
+                  <option value="recent" selected>最近更新</option>
+                  <option value="name">名称排序</option>
+                  <option value="size">大小排序</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th width="40">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="selectAllDocs">
+                      </div>
+                    </th>
+                    <th>文档名称</th>
+                    <th>分类</th>
+                    <th>大小</th>
+                    <th>创建者</th>
+                    <th>更新时间</th>
+                    <th>格式</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-word fs-3 text-primary me-2"></i>
+                        <div>
+                          <div class="fw-medium">产品需求文档V2.0</div>
+                          <div class="small text-muted">详细描述了产品功能模块与验收标准</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-primary-subtle text-primary">产品文档</span></td>
+                    <td>1.2 MB</td>
+                    <td>张经理</td>
+                    <td>2023-09-28</td>
+                    <td>DOCX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-pdf fs-3 text-danger me-2"></i>
+                        <div>
+                          <div class="fw-medium">系统架构设计说明</div>
+                          <div class="small text-muted">核心系统组件与数据流架构设计文档</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-success-subtle text-success">技术文档</span></td>
+                    <td>3.5 MB</td>
+                    <td>李架构师</td>
+                    <td>2023-10-05</td>
+                    <td>PDF</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-slides fs-3 text-warning me-2"></i>
+                        <div>
+                          <div class="fw-medium">项目进度汇报</div>
+                          <div class="small text-muted">上季度项目完成情况与下阶段计划</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-warning-subtle text-warning">管理文档</span></td>
+                    <td>5.8 MB</td>
+                    <td>王项目经理</td>
+                    <td>2023-10-10</td>
+                    <td>PPTX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-file-earmark-richtext fs-3 text-info me-2"></i>
+                        <div>
+                          <div class="fw-medium">API接口规范</div>
+                          <div class="small text-muted">RESTful API设计与测试规范指导文档</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-info-subtle text-info">规范文档</span></td>
+                    <td>860 KB</td>
+                    <td>刘开发</td>
+                    <td>2023-09-20</td>
+                    <td>HTML</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div>
+                <span class="text-muted">已选择 2 个文档，总计 4.7 MB</span>
+              </div>
+              <nav aria-label="文档分页">
+                <ul class="pagination mb-0">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">下一页</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导出选项 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">导出选项</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h6 class="mb-3">基本选项</h6>
+                <div class="mb-3">
+                  <label class="form-label">导出格式</label>
+                  <div class="d-flex flex-wrap gap-2">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="exportFormat" id="formatOriginal" checked>
+                      <label class="form-check-label" for="formatOriginal">原始格式</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="exportFormat" id="formatPDF">
+                      <label class="form-check-label" for="formatPDF">PDF</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="exportFormat" id="formatHTML">
+                      <label class="form-check-label" for="formatHTML">HTML</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="exportFormat" id="formatMarkdown">
+                      <label class="form-check-label" for="formatMarkdown">Markdown</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="exportFormat" id="formatText">
+                      <label class="form-check-label" for="formatText">纯文本</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">导出内容</label>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="includeAttachments" checked>
+                    <label class="form-check-label" for="includeAttachments">
+                      包含附件
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="includeVersions">
+                    <label class="form-check-label" for="includeVersions">
+                      包含历史版本
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="includeMetadata" checked>
+                    <label class="form-check-label" for="includeMetadata">
+                      包含元数据
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeComments" checked>
+                    <label class="form-check-label" for="includeComments">
+                      包含评论
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6 class="mb-3">高级选项</h6>
+                <div class="mb-3">
+                  <label class="form-label">打包选项</label>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="packageOption" id="singleArchive" checked>
+                    <label class="form-check-label" for="singleArchive">
+                      打包为单个压缩文件
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="packageOption" id="separateFiles">
+                    <label class="form-check-label" for="separateFiles">
+                      导出为单独文件
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label">加密选项</label>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="encryptFiles">
+                    <label class="form-check-label" for="encryptFiles">
+                      加密导出文件
+                    </label>
+                  </div>
+                  <div class="input-group mb-3" id="passwordGroup" style="display: none;">
+                    <input type="password" class="form-control" placeholder="输入密码" disabled>
+                    <input type="password" class="form-control" placeholder="确认密码" disabled>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label">权限控制</label>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="applyWatermark" checked>
+                    <label class="form-check-label" for="applyWatermark">
+                      应用水印 (仅PDF格式)
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="disableCopy" checked>
+                    <label class="form-check-label" for="disableCopy">
+                      禁止复制内容 (仅PDF格式)
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导出目标 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">导出目标</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card h-100 border-0 shadow-sm cursor-pointer export-target-card active">
+                  <div class="card-body text-center py-4">
+                    <i class="bi bi-download fs-2 text-primary mb-3"></i>
+                    <h6 class="card-title">本地下载</h6>
+                    <p class="small text-muted mb-0">直接下载到您的设备</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card h-100 border-0 shadow-sm cursor-pointer export-target-card">
+                  <div class="card-body text-center py-4">
+                    <i class="bi bi-envelope fs-2 text-success mb-3"></i>
+                    <h6 class="card-title">发送到邮箱</h6>
+                    <p class="small text-muted mb-0">通过邮件接收导出文件</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card h-100 border-0 shadow-sm cursor-pointer export-target-card">
+                  <div class="card-body text-center py-4">
+                    <i class="bi bi-cloud-upload fs-2 text-info mb-3"></i>
+                    <h6 class="card-title">上传到云存储</h6>
+                    <p class="small text-muted mb-0">保存到OneDrive、Google等</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card h-100 border-0 shadow-sm cursor-pointer export-target-card">
+                  <div class="card-body text-center py-4">
+                    <i class="bi bi-link-45deg fs-2 text-warning mb-3"></i>
+                    <h6 class="card-title">生成分享链接</h6>
+                    <p class="small text-muted mb-0">创建临时访问链接</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 本地下载选项 -->
+            <div id="localDownloadOptions" class="mt-3">
+              <div class="alert alert-primary d-flex align-items-center" role="alert">
+                <i class="bi bi-info-circle-fill me-2"></i>
+                <div>文件将直接下载到您的设备，无需额外设置</div>
+              </div>
+            </div>
+
+            <!-- 邮箱选项 (默认隐藏) -->
+            <div id="emailOptions" class="mt-3" style="display: none;">
+              <div class="card bg-light">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">收件人邮箱</label>
+                    <input type="email" class="form-control" value="user@example.com">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">邮件主题</label>
+                    <input type="text" class="form-control" value="[系统自动发送] 您的文档导出">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">邮件内容</label>
+                    <textarea class="form-control" rows="3">您请求的文档已导出并附在此邮件中，请查收。如有问题，请联系系统管理员。</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 导出操作 -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="btn btn-primary btn-lg px-5 me-2">
+          <i class="bi bi-download me-2"></i>开始导出
+        </button>
+        <button class="btn btn-outline-secondary btn-lg px-4">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入脚本 -->
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/chart.js"></script>
+  <script>
+    // 切换加密选项显示
+    document.getElementById('encryptFiles').addEventListener('change', function() {
+      const passwordGroup = document.getElementById('passwordGroup');
+      const passwordInputs = passwordGroup.querySelectorAll('input');
+      
+      if(this.checked) {
+        passwordGroup.style.display = 'flex';
+        passwordInputs.forEach(input => input.disabled = false);
+      } else {
+        passwordGroup.style.display = 'none';
+        passwordInputs.forEach(input => input.disabled = true);
+      }
+    });
+    
+    // 导出目标卡片切换
+    const targetCards = document.querySelectorAll('.export-target-card');
+    const optionPanels = {
+      'localDownloadOptions': document.getElementById('localDownloadOptions'),
+      'emailOptions': document.getElementById('emailOptions')
+    };
+    
+    targetCards.forEach((card, index) => {
+      card.addEventListener('click', function() {
+        // 移除所有卡片的active类
+        targetCards.forEach(c => c.classList.remove('active'));
+        // 添加当前卡片的active类
+        this.classList.add('active');
+        
+        // 隐藏所有选项面板
+        Object.values(optionPanels).forEach(panel => {
+          if(panel) panel.style.display = 'none';
+        });
+        
+        // 显示对应的选项面板
+        if(index === 0 && optionPanels.localDownloadOptions) {
+          optionPanels.localDownloadOptions.style.display = 'block';
+        } else if(index === 1 && optionPanels.emailOptions) {
+          optionPanels.emailOptions.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

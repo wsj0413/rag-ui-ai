@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文档导入</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <div id="doc-import-module" class="container-fluid py-3">
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">文档导入</h4>
+          <div>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-clock-history me-1"></i>导入历史记录
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导入方式选择 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">选择导入方式</h5>
+          </div>
+          <div class="card-body">
+            <div class="nav nav-pills nav-justified mb-4" id="importTab" role="tablist">
+              <button class="nav-link active" id="upload-tab" data-bs-toggle="tab" data-bs-target="#upload" type="button" role="tab" aria-selected="true">
+                <i class="bi bi-cloud-upload me-2"></i>本地上传
+              </button>
+              <button class="nav-link" id="folder-tab" data-bs-toggle="tab" data-bs-target="#folder" type="button" role="tab" aria-selected="false">
+                <i class="bi bi-folder me-2"></i>文件夹导入
+              </button>
+              <button class="nav-link" id="sync-tab" data-bs-toggle="tab" data-bs-target="#sync" type="button" role="tab" aria-selected="false">
+                <i class="bi bi-cloud-check me-2"></i>云端同步
+              </button>
+              <button class="nav-link" id="batch-tab" data-bs-toggle="tab" data-bs-target="#batch" type="button" role="tab" aria-selected="false">
+                <i class="bi bi-list-check me-2"></i>批量导入
+              </button>
+            </div>
+            
+            <div class="tab-content" id="importTabContent">
+              <!-- 本地上传 -->
+              <div class="tab-pane fade show active" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+                <div class="upload-area text-center p-5 border rounded mb-4" style="border-style: dashed !important;">
+                  <i class="bi bi-cloud-upload fs-1 text-primary mb-3"></i>
+                  <h5>拖放文件到此处或点击上传</h5>
+                  <p class="text-muted mb-3">支持Word、Excel、PDF、PPT、图片等多种格式</p>
+                  <input type="file" id="fileUpload" class="d-none" multiple>
+                  <button class="btn btn-primary px-4" onclick="document.getElementById('fileUpload').click()">
+                    <i class="bi bi-upload me-2"></i>选择文件
+                  </button>
+                </div>
+                
+                <div class="selected-files mb-4">
+                  <h6 class="mb-3">已选择2个文件</h6>
+                  <div class="card mb-2">
+                    <div class="card-body py-2">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-file-earmark-word fs-3 text-primary me-3"></i>
+                          <div>
+                            <h6 class="mb-0">产品需求文档.docx</h6>
+                            <span class="text-muted small">1.2 MB</span>
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body py-2">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-file-earmark-pdf fs-3 text-danger me-3"></i>
+                          <div>
+                            <h6 class="mb-0">系统架构说明.pdf</h6>
+                            <span class="text-muted small">3.5 MB</span>
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 文件夹导入 -->
+              <div class="tab-pane fade" id="folder" role="tabpanel" aria-labelledby="folder-tab">
+                <div class="folder-import p-4">
+                  <div class="mb-3">
+                    <label class="form-label">选择导入路径</label>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" value="D:\企业文档\研发部\产品规范" readonly>
+                      <button class="btn btn-outline-secondary" type="button">浏览</button>
+                    </div>
+                  </div>
+                  
+                  <div class="card bg-light mb-4">
+                    <div class="card-body">
+                      <h6 class="card-title">导入选项</h6>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="includeSubfolders" checked>
+                        <label class="form-check-label" for="includeSubfolders">
+                          包含子文件夹
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="preserveStructure" checked>
+                        <label class="form-check-label" for="preserveStructure">
+                          保留文件夹结构
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="skipExisting">
+                        <label class="form-check-label" for="skipExisting">
+                          跳过已存在文件
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="autoCategory">
+                        <label class="form-check-label" for="autoCategory">
+                          根据文件夹自动分类
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info d-flex align-items-center">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    <div>发现该路径下有 56 个文件，总大小约 125MB</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 云端同步 -->
+              <div class="tab-pane fade" id="sync" role="tabpanel" aria-labelledby="sync-tab">
+                <div class="cloud-sync py-3">
+                  <div class="d-flex flex-wrap gap-4 mb-4">
+                    <div class="card flex-grow-1" style="min-width: 200px;">
+                      <div class="card-body text-center py-4">
+                        <img src="../../images/cloud/onedrive.png" alt="OneDrive" height="48" class="mb-3">
+                        <h6>OneDrive</h6>
+                        <p class="small text-muted mb-3">已连接 · 上次同步: 昨天</p>
+                        <button class="btn btn-sm btn-outline-primary px-3">同步</button>
+                      </div>
+                    </div>
+                    <div class="card flex-grow-1" style="min-width: 200px;">
+                      <div class="card-body text-center py-4">
+                        <img src="../../images/cloud/googledrive.png" alt="Google Drive" height="48" class="mb-3">
+                        <h6>Google Drive</h6>
+                        <p class="small text-muted mb-3">未连接</p>
+                        <button class="btn btn-sm btn-primary px-3">连接</button>
+                      </div>
+                    </div>
+                    <div class="card flex-grow-1" style="min-width: 200px;">
+                      <div class="card-body text-center py-4">
+                        <img src="../../images/cloud/sharepoint.png" alt="SharePoint" height="48" class="mb-3">
+                        <h6>SharePoint</h6>
+                        <p class="small text-muted mb-3">已连接 · 上次同步: 3天前</p>
+                        <button class="btn btn-sm btn-outline-primary px-3">同步</button>
+                      </div>
+                    </div>
+                    <div class="card flex-grow-1" style="min-width: 200px;">
+                      <div class="card-body text-center py-4">
+                        <i class="bi bi-plus-circle fs-1 text-muted mb-3"></i>
+                        <h6>添加更多</h6>
+                        <p class="small text-muted mb-3">连接更多云存储服务</p>
+                        <button class="btn btn-sm btn-outline-secondary px-3">添加</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card">
+                    <div class="card-header bg-white">
+                      <h6 class="card-title mb-0">OneDrive同步设置</h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label class="form-label">选择同步文件夹</label>
+                        <select class="form-select">
+                          <option>全部文件</option>
+                          <option selected>企业文档</option>
+                          <option>项目资料</option>
+                          <option>培训资料</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">同步频率</label>
+                        <select class="form-select">
+                          <option>手动同步</option>
+                          <option>每小时</option>
+                          <option selected>每天</option>
+                          <option>每周</option>
+                        </select>
+                      </div>
+                      <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" id="autoSync" checked>
+                        <label class="form-check-label" for="autoSync">发现新文件时自动同步</label>
+                      </div>
+                      <div class="text-end">
+                        <button class="btn btn-primary">保存设置</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 批量导入 -->
+              <div class="tab-pane fade" id="batch" role="tabpanel" aria-labelledby="batch-tab">
+                <div class="batch-import py-3">
+                  <div class="card mb-4">
+                    <div class="card-header bg-white">
+                      <h6 class="card-title mb-0">批量导入模板</h6>
+                    </div>
+                    <div class="card-body">
+                      <p class="mb-3">使用Excel模板批量导入文档信息与路径，系统将自动处理导入</p>
+                      <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-outline-primary">
+                          <i class="bi bi-download me-2"></i>下载模板
+                        </button>
+                        <button class="btn btn-outline-secondary">
+                          <i class="bi bi-question-circle me-2"></i>查看说明
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card mb-4">
+                    <div class="card-header bg-white">
+                      <h6 class="card-title mb-0">上传批量导入文件</h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label for="batchFile" class="form-label">选择Excel导入文件</label>
+                        <input class="form-control" type="file" id="batchFile">
+                      </div>
+                      
+                      <div class="card bg-light mb-3">
+                        <div class="card-body">
+                          <h6 class="card-title">导入选项</h6>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="validateBeforeImport" checked>
+                            <label class="form-check-label" for="validateBeforeImport">
+                              导入前检查有效性
+                            </label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="skipErrorRows" checked>
+                            <label class="form-check-label" for="skipErrorRows">
+                              跳过错误行继续导入
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="createCategory">
+                            <label class="form-check-label" for="createCategory">
+                              自动创建不存在的分类
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="text-end">
+                        <button class="btn btn-primary">开始导入</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导入设置 -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">导入设置</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h6 class="mb-3">分类与标签</h6>
+                <div class="mb-3">
+                  <label class="form-label">文档分类</label>
+                  <select class="form-select">
+                    <option value="">选择分类</option>
+                    <option value="tech" selected>技术文档</option>
+                    <option value="product">产品文档</option>
+                    <option value="design">设计规范</option>
+                    <option value="management">管理制度</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">添加标签</label>
+                  <input type="text" class="form-control" value="API, 需求文档" placeholder="输入标签，用逗号分隔">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">公开范围</label>
+                  <select class="form-select">
+                    <option value="public">全公司可见</option>
+                    <option value="department" selected>本部门可见</option>
+                    <option value="team">团队可见</option>
+                    <option value="private">仅自己可见</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6 class="mb-3">文本处理选项</h6>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="extractText" checked>
+                  <label class="form-check-label" for="extractText">
+                    自动提取文本内容
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="ocr">
+                  <label class="form-check-label" for="ocr">
+                    对图片进行OCR识别
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="autoSummary" checked>
+                  <label class="form-check-label" for="autoSummary">
+                    自动生成文档摘要
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="keywordExtract" checked>
+                  <label class="form-check-label" for="keywordExtract">
+                    自动提取关键词
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="semanticAnalysis">
+                  <label class="form-check-label" for="semanticAnalysis">
+                    进行语义分析（消耗更多资源）
+                  </label>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberSettings" checked>
+                    <label class="form-check-label" for="rememberSettings">
+                      记住这些设置
+                    </label>
+                  </div>
+                  <button class="btn btn-outline-secondary btn-sm">恢复默认设置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 导入操作 -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="btn btn-primary btn-lg px-5 me-2">
+          <i class="bi bi-upload me-2"></i>开始导入
+        </button>
+        <button class="btn btn-outline-secondary btn-lg px-4">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入脚本 -->
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/chart.js"></script>
+</body>
+</html> 
