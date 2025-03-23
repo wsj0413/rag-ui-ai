@@ -535,5 +535,172 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="js/admin-core.js"></script>
     <script src="js/admin.js"></script>
+    
+    <script>
+        // 仪表盘图表初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化知识库访问趋势图表
+            const trendsChartElement = document.getElementById('trendsChart');
+            if (trendsChartElement) {
+                const trendsCtx = trendsChartElement.getContext('2d');
+                
+                // 趋势图数据
+                const trendsData = {
+                    labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    datasets: [
+                        {
+                            label: '文档访问量',
+                            data: [65, 82, 91, 87, 103, 58, 48],
+                            borderColor: 'rgba(13, 110, 253, 1)',
+                            backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: '文档下载量',
+                            data: [28, 35, 42, 38, 45, 25, 18],
+                            borderColor: 'rgba(20, 184, 166, 1)',
+                            backgroundColor: 'rgba(20, 184, 166, 0.0)',
+                            tension: 0.3,
+                            borderDash: [5, 5],
+                            fill: false
+                        },
+                        {
+                            label: '搜索次数',
+                            data: [120, 145, 132, 168, 175, 85, 72],
+                            borderColor: 'rgba(244, 106, 106, 1)',
+                            backgroundColor: 'rgba(244, 106, 106, 0.0)',
+                            tension: 0.3,
+                            fill: false
+                        }
+                    ]
+                };
+                
+                // 渲染趋势图表
+                const trendsChart = new Chart(trendsCtx, {
+                    type: 'line',
+                    data: trendsData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.parsed.y + ' 次';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    drawBorder: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        }
+                    }
+                });
+            }
+            
+            // 初始化知识类型分布图表
+            const distributionChartElement = document.getElementById('distributionChart');
+            if (distributionChartElement) {
+                const distributionCtx = distributionChartElement.getContext('2d');
+                
+                // 分布图数据
+                const distributionData = {
+                    labels: ['技术文档', '产品文档', '管理文档', '市场文档', '培训资料', '其他'],
+                    datasets: [{
+                        data: [35, 22, 18, 12, 8, 5],
+                        backgroundColor: [
+                            'rgba(13, 110, 253, 0.8)',  // 主蓝色
+                            'rgba(20, 184, 166, 0.8)',  // 青绿色
+                            'rgba(244, 106, 106, 0.8)', // 红色
+                            'rgba(250, 204, 21, 0.8)',  // 黄色
+                            'rgba(168, 85, 247, 0.8)',  // 紫色
+                            'rgba(107, 114, 128, 0.8)'  // 灰色
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#fff'
+                    }]
+                };
+                
+                // 渲染分布图表
+                const distributionChart = new Chart(distributionCtx, {
+                    type: 'doughnut',
+                    data: distributionData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed || 0;
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = ((value / total) * 100).toFixed(1);
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '65%'
+                    }
+                });
+                
+                // 添加中心文本
+                Chart.register({
+                    id: 'doughnutCenterText',
+                    beforeDraw: function(chart) {
+                        if (chart.config.type === 'doughnut') {
+                            // 计算文档总数
+                            const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                            
+                            // 绘制中心文本
+                            const width = chart.width;
+                            const height = chart.height;
+                            const ctx = chart.ctx;
+                            
+                            ctx.restore();
+                            ctx.font = '16px Arial';
+                            ctx.fillStyle = '#333333';
+                            ctx.textBaseline = 'middle';
+                            ctx.textAlign = 'center';
+                            
+                            ctx.fillText(total, width / 2, height / 2 - 10);
+                            
+                            ctx.font = '12px Arial';
+                            ctx.fillStyle = '#666666';
+                            ctx.fillText('文档总数', width / 2, height / 2 + 10);
+                            
+                            ctx.save();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html> 

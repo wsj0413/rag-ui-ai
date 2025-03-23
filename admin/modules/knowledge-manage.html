@@ -402,4 +402,235 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 测试数据
+        const knowledgeBaseData = [
+            {
+                id: 6,
+                name: '产品设计文档库',
+                description: '产品原型、设计规范、用户体验报告等',
+                icon: 'journal-richtext',
+                docCount: 278,
+                creator: '林小明',
+                createTime: '2023-05-18',
+                updateTime: '2023-12-07',
+                status: 'active'
+            },
+            {
+                id: 7,
+                name: '研发项目文档库',
+                description: '项目计划、迭代文档、Sprint回顾等',
+                icon: 'journal-check',
+                docCount: 347,
+                creator: '刘芳',
+                createTime: '2023-06-22',
+                updateTime: '2023-12-12',
+                status: 'active'
+            },
+            {
+                id: 8,
+                name: '市场营销文档库',
+                description: '营销策略、活动方案、市场分析报告等',
+                icon: 'journal-arrow-up',
+                docCount: 156,
+                creator: '张伟',
+                createTime: '2023-07-12',
+                updateTime: '2023-12-01',
+                status: 'active'
+            },
+            {
+                id: 9,
+                name: '法律合规文档库',
+                description: '合同模板、法规解读、知识产权资料等',
+                icon: 'journal-bookmark-fill',
+                docCount: 89,
+                creator: '王律师',
+                createTime: '2023-08-05',
+                updateTime: '2023-11-28',
+                status: 'active'
+            },
+            {
+                id: 10,
+                name: '财务文档库',
+                description: '财务报表、预算方案、费用规定等',
+                icon: 'journal-arrow-down',
+                docCount: 128,
+                creator: '李会计',
+                createTime: '2023-09-10',
+                updateTime: '2023-11-25',
+                status: 'active'
+            },
+            {
+                id: 11,
+                name: '人力资源文档库',
+                description: '招聘流程、绩效考核、员工手册等',
+                icon: 'people',
+                docCount: 175,
+                creator: '周小红',
+                createTime: '2023-07-08',
+                updateTime: '2023-12-05',
+                status: 'inactive'
+            },
+            {
+                id: 12,
+                name: '客户服务文档库',
+                description: '服务手册、故障排查、常见问题等',
+                icon: 'journal-plus',
+                docCount: 232,
+                creator: '董小华',
+                createTime: '2023-04-15',
+                updateTime: '2023-11-20',
+                status: 'active'
+            },
+            {
+                id: 13,
+                name: '质量管理文档库',
+                description: '质量标准、检验规程、改进方案等',
+                icon: 'shield-check',
+                docCount: 110,
+                creator: '赵工',
+                createTime: '2023-10-22',
+                updateTime: '2023-12-15',
+                status: 'active'
+            }
+        ];
+        
+        // 渲染表格
+        function renderKnowledgeTable() {
+            const tableBody = document.querySelector('.knowledge-list-table tbody');
+            
+            // 获取已有的行数（保留已有示例数据）
+            const existingRows = tableBody.querySelectorAll('tr').length;
+            
+            // 添加新数据
+            knowledgeBaseData.forEach((kb, index) => {
+                // 跳过前5项，因为已经在HTML中静态定义了
+                if (index < 5 - existingRows) {
+                    return;
+                }
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="text-center">
+                        <div class="form-check">
+                            <input class="form-check-input knowledge-select" type="checkbox" value="${kb.id}">
+                            <label class="form-check-label"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="kb-icon me-2">
+                                <i class="bi bi-${kb.icon}"></i>
+                            </div>
+                            <div>
+                                <a href="#" class="fw-medium text-primary">${kb.name}</a>
+                                <div class="small text-muted">${kb.description}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">${kb.docCount}</td>
+                    <td class="text-center">${kb.creator}</td>
+                    <td class="text-center">${kb.createTime}</td>
+                    <td class="text-center">${kb.updateTime}</td>
+                    <td class="text-center">
+                        <span class="badge ${kb.status === 'active' ? 'bg-success' : 'bg-secondary'}">
+                            ${kb.status === 'active' ? '已启用' : '已禁用'}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-primary" title="查看详情">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" title="编辑配置">
+                                <i class="bi bi-gear"></i>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-${kb.status === 'active' ? 'danger' : 'success'}" title="${kb.status === 'active' ? '停用' : '启用'}">
+                                <i class="bi bi-power"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+            
+            // 更新总条数显示
+            const totalKnowledgeBases = existingRows + knowledgeBaseData.length - (5 - existingRows);
+            document.querySelector('.pagination-info').textContent = `共 ${totalKnowledgeBases} 条`;
+        }
+        
+        // 初始化事件
+        function initEvents() {
+            // 创建知识库按钮点击事件
+            const createBtn = document.getElementById('create-knowledge-base-btn');
+            if (createBtn) {
+                createBtn.addEventListener('click', function() {
+                    const modal = new bootstrap.Modal(document.getElementById('createKnowledgeBaseModal'));
+                    modal.show();
+                });
+            }
+            
+            // 保存知识库按钮点击事件
+            const saveBtn = document.getElementById('save-knowledge-btn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function() {
+                    const form = document.getElementById('create-knowledge-form');
+                    if (form.checkValidity()) {
+                        // 模拟保存成功
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('createKnowledgeBaseModal'));
+                        modal.hide();
+                        
+                        // 显示成功消息
+                        showToast('知识库创建成功！', 'success');
+                    } else {
+                        form.classList.add('was-validated');
+                    }
+                });
+            }
+            
+            // 全选/全不选
+            const selectAll = document.getElementById('select-all-knowledge');
+            if (selectAll) {
+                selectAll.addEventListener('change', function() {
+                    const checkboxes = document.querySelectorAll('.knowledge-select');
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    });
+                });
+            }
+            
+            // 批量操作按钮事件
+            const batchActionBtns = document.querySelectorAll('.batch-actions button');
+            batchActionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.getAttribute('data-action');
+                    const selectedCount = document.querySelectorAll('.knowledge-select:checked').length;
+                    
+                    if (selectedCount === 0) {
+                        showToast('请至少选择一个知识库', 'warning');
+                        return;
+                    }
+                    
+                    if (action === 'delete') {
+                        if (confirm(`确定要删除选中的 ${selectedCount} 个知识库吗？此操作不可恢复。`)) {
+                            showToast(`已删除 ${selectedCount} 个知识库`, 'success');
+                        }
+                    } else if (action === 'disable') {
+                        showToast(`已禁用 ${selectedCount} 个知识库`, 'success');
+                    } else if (action === 'export') {
+                        showToast(`正在导出 ${selectedCount} 个知识库...`, 'info');
+                    }
+                });
+            });
+        }
+        
+        // 渲染数据
+        renderKnowledgeTable();
+        
+        // 初始化事件
+        initEvents();
+    });
+</script> 
