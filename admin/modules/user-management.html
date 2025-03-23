@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<div id="user-management-module" class="container-fluid py-3">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">用户管理</h4>
+        <div>
+          <button class="btn btn-primary" id="add-user-btn">
+            <i class="bi bi-person-plus-fill me-1"></i>添加用户
+          </button>
+          <button class="btn btn-outline-secondary ms-2" id="import-users-btn">
+            <i class="bi bi-upload me-1"></i>批量导入
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索和筛选 -->
+  <div class="row mb-4">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="d-flex">
+            <div class="search-container flex-grow-1">
+              <input type="text" class="form-control" id="user-search" placeholder="搜索用户名、邮箱或部门...">
+              <i class="bi bi-search search-icon"></i>
+            </div>
+            <div class="ms-3">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown">
+                <i class="bi bi-funnel me-1"></i>筛选
+              </button>
+              <div class="dropdown-menu p-3" style="width: 300px;">
+                <h6 class="dropdown-header">筛选条件</h6>
+                <div class="mb-3">
+                  <label class="form-label">部门</label>
+                  <select class="form-select" id="department-filter">
+                    <option value="">全部部门</option>
+                    <option value="技术部">技术部</option>
+                    <option value="产品部">产品部</option>
+                    <option value="设计部">设计部</option>
+                    <option value="市场部">市场部</option>
+                    <option value="销售部">销售部</option>
+                    <option value="人事部">人事部</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">角色</label>
+                  <select class="form-select" id="role-filter">
+                    <option value="">全部角色</option>
+                    <option value="系统管理员">系统管理员</option>
+                    <option value="部门管理员">部门管理员</option>
+                    <option value="普通用户">普通用户</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">状态</label>
+                  <select class="form-select" id="status-filter">
+                    <option value="">全部状态</option>
+                    <option value="active">激活</option>
+                    <option value="inactive">未激活</option>
+                    <option value="locked">已锁定</option>
+                  </select>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button class="btn btn-sm btn-outline-secondary" id="reset-filter-btn">重置</button>
+                  <button class="btn btn-sm btn-primary" id="apply-filter-btn">应用筛选</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex align-items-center">
+                <div class="rounded-circle bg-primary-soft p-2 me-2">
+                  <i class="bi bi-person"></i>
+                </div>
+                <div>
+                  <div class="small text-muted">总用户数</div>
+                  <div class="fw-bold">187</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex align-items-center">
+                <div class="rounded-circle bg-success-soft p-2 me-2">
+                  <i class="bi bi-person-check"></i>
+                </div>
+                <div>
+                  <div class="small text-muted">活跃用户</div>
+                  <div class="fw-bold">156</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 用户列表 -->
+  <div class="card">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="bg-light">
+            <tr>
+              <th class="ps-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="select-all-users">
+                </div>
+              </th>
+              <th>用户信息</th>
+              <th>角色</th>
+              <th>部门</th>
+              <th>状态</th>
+              <th>最后登录</th>
+              <th class="text-end pe-3">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 用户1 -->
+            <tr>
+              <td class="ps-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-bold">王管理</div>
+                    <div class="small text-muted">wangguanli@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>系统管理员</td>
+              <td>技术部</td>
+              <td><span class="badge bg-success">活跃</span></td>
+              <td>2023-12-20 10:30</td>
+              <td class="text-end pe-3">
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    操作
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>编辑</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-key me-2"></i>重置密码</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-shield me-2"></i>权限设置</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-lock me-2"></i>锁定账户</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            
+            <!-- 用户2 -->
+            <tr>
+              <td class="ps-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-bold">张明</div>
+                    <div class="small text-muted">zhangming@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>部门管理员</td>
+              <td>产品部</td>
+              <td><span class="badge bg-success">活跃</span></td>
+              <td>2023-12-19 16:45</td>
+              <td class="text-end pe-3">
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    操作
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>编辑</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-key me-2"></i>重置密码</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-shield me-2"></i>权限设置</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-lock me-2"></i>锁定账户</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            
+            <!-- 用户3 -->
+            <tr>
+              <td class="ps-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-bold">李华</div>
+                    <div class="small text-muted">lihua@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>普通用户</td>
+              <td>设计部</td>
+              <td><span class="badge bg-secondary">未激活</span></td>
+              <td>-</td>
+              <td class="text-end pe-3">
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    操作
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>编辑</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-key me-2"></i>重置密码</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-shield me-2"></i>权限设置</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-primary" href="#"><i class="bi bi-envelope me-2"></i>重发邀请</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            
+            <!-- 用户4 -->
+            <tr>
+              <td class="ps-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-bold">赵敏</div>
+                    <div class="small text-muted">zhaomin@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>部门管理员</td>
+              <td>市场部</td>
+              <td><span class="badge bg-success">活跃</span></td>
+              <td>2023-12-20 09:15</td>
+              <td class="text-end pe-3">
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    操作
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>编辑</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-key me-2"></i>重置密码</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-shield me-2"></i>权限设置</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-lock me-2"></i>锁定账户</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            
+            <!-- 用户5 -->
+            <tr>
+              <td class="ps-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-bold">陈晨</div>
+                    <div class="small text-muted">chenchen@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>普通用户</td>
+              <td>人事部</td>
+              <td><span class="badge bg-danger">已锁定</span></td>
+              <td>2023-12-15 14:20</td>
+              <td class="text-end pe-3">
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    操作
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>编辑</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-key me-2"></i>重置密码</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-shield me-2"></i>权限设置</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-success" href="#"><i class="bi bi-unlock me-2"></i>解锁账户</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- 分页 -->
+    <div class="card-footer bg-white">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="text-muted small">显示 1-5 条，共 187 条</div>
+        <nav>
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">下一页</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 添加/编辑用户模态框 -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userModalLabel">添加用户</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+      </div>
+      <div class="modal-body">
+        <form id="user-form" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="username" class="form-label">用户名</label>
+              <input type="text" class="form-control" id="username" required>
+              <div class="invalid-feedback">请输入用户名</div>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">邮箱</label>
+              <input type="email" class="form-control" id="email" required>
+              <div class="invalid-feedback">请输入有效的邮箱地址</div>
+            </div>
+            <div class="col-md-6">
+              <label for="fullname" class="form-label">姓名</label>
+              <input type="text" class="form-control" id="fullname" required>
+              <div class="invalid-feedback">请输入用户姓名</div>
+            </div>
+            <div class="col-md-6">
+              <label for="department" class="form-label">部门</label>
+              <select class="form-select" id="department" required>
+                <option value="">选择部门</option>
+                <option value="技术部">技术部</option>
+                <option value="产品部">产品部</option>
+                <option value="设计部">设计部</option>
+                <option value="市场部">市场部</option>
+                <option value="销售部">销售部</option>
+                <option value="人事部">人事部</option>
+              </select>
+              <div class="invalid-feedback">请选择部门</div>
+            </div>
+            <div class="col-md-6">
+              <label for="role" class="form-label">角色</label>
+              <select class="form-select" id="role" required>
+                <option value="">选择角色</option>
+                <option value="系统管理员">系统管理员</option>
+                <option value="部门管理员">部门管理员</option>
+                <option value="普通用户">普通用户</option>
+              </select>
+              <div class="invalid-feedback">请选择角色</div>
+            </div>
+            <div class="col-md-6">
+              <label for="status" class="form-label">状态</label>
+              <select class="form-select" id="status">
+                <option value="active">活跃</option>
+                <option value="inactive">未激活</option>
+                <option value="locked">已锁定</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="avatar" class="form-label">头像</label>
+              <div class="input-group">
+                <input type="file" class="form-control" id="avatar">
+                <label class="input-group-text" for="avatar">上传</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="send-invitation" checked>
+                <label class="form-check-label" for="send-invitation">
+                  发送邀请邮件
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="save-user-btn">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 批量导入模态框 -->
+<div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importModalLabel">批量导入用户</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+      </div>
+      <div class="modal-body">
+        <form id="import-form">
+          <div class="mb-3">
+            <label for="import-file" class="form-label">选择文件</label>
+            <input type="file" class="form-control" id="import-file" accept=".csv, .xlsx">
+            <div class="form-text">支持.csv或.xlsx格式，<a href="#">下载导入模板</a></div>
+          </div>
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="overwrite-existing" checked>
+              <label class="form-check-label" for="overwrite-existing">
+                覆盖已存在的用户信息
+              </label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="send-batch-invitations" checked>
+              <label class="form-check-label" for="send-batch-invitations">
+                批量发送邀请邮件
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="start-import-btn">开始导入</button>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<div id="access-log-module" class="container-fluid py-3">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">访问日志</h4>
+        <div>
+          <button class="btn btn-outline-secondary" id="export-log-btn">
+            <i class="bi bi-download me-1"></i>导出日志
+          </button>
+          <button class="btn btn-outline-danger ms-2" id="clear-log-btn">
+            <i class="bi bi-trash me-1"></i>清除日志
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索和筛选 -->
+  <div class="row mb-4">
+    <div class="col-lg-9">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="d-flex flex-wrap">
+            <div class="search-container flex-grow-1 me-3 mb-2 mb-md-0">
+              <input type="text" class="form-control" id="log-search" placeholder="搜索用户、操作或IP地址...">
+              <i class="bi bi-search search-icon"></i>
+            </div>
+            <div class="d-flex flex-wrap">
+              <div class="me-2 mb-2 mb-md-0">
+                <select class="form-select" id="action-filter">
+                  <option value="">全部操作</option>
+                  <option value="login">登录</option>
+                  <option value="logout">登出</option>
+                  <option value="view">查看</option>
+                  <option value="create">创建</option>
+                  <option value="update">更新</option>
+                  <option value="delete">删除</option>
+                  <option value="download">下载</option>
+                  <option value="permission">权限修改</option>
+                </select>
+              </div>
+              <div class="me-2 mb-2 mb-md-0">
+                <select class="form-select" id="user-filter">
+                  <option value="">全部用户</option>
+                  <option value="admin">管理员</option>
+                  <option value="dept">部门管理员</option>
+                  <option value="user">普通用户</option>
+                </select>
+              </div>
+              <div>
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dateRangeDropdown" data-bs-toggle="dropdown">
+                  <i class="bi bi-calendar3 me-1"></i>时间范围
+                </button>
+                <div class="dropdown-menu p-3" style="width: 250px;">
+                  <h6 class="dropdown-header">选择时间范围</h6>
+                  <div class="mb-3">
+                    <label for="start-date" class="form-label">开始日期</label>
+                    <input type="date" class="form-control" id="start-date">
+                  </div>
+                  <div class="mb-3">
+                    <label for="end-date" class="form-label">结束日期</label>
+                    <input type="date" class="form-control" id="end-date">
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <button class="btn btn-sm btn-outline-secondary" id="date-reset-btn">重置</button>
+                    <button class="btn btn-sm btn-primary" id="date-apply-btn">应用</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="small text-muted">今日日志</div>
+              <div class="fs-4 fw-bold">145</div>
+            </div>
+            <div class="rounded-circle bg-primary-soft p-3">
+              <i class="bi bi-activity"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 日志列表 -->
+  <div class="card">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="bg-light">
+            <tr>
+              <th class="ps-3">用户</th>
+              <th>操作类型</th>
+              <th>操作内容</th>
+              <th>IP地址</th>
+              <th>设备信息</th>
+              <th>时间</th>
+              <th class="text-end pe-3">详情</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 日志条目 1 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">王管理</div>
+                    <div class="small text-muted">系统管理员</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-success">登录</span></td>
+              <td>用户登录系统</td>
+              <td>192.168.1.100</td>
+              <td>Chrome / Windows</td>
+              <td>2023-12-21 09:45:22</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 2 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">张明</div>
+                    <div class="small text-muted">部门管理员</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-info">更新</span></td>
+              <td>更新了文档"API接口设计规范"</td>
+              <td>192.168.1.105</td>
+              <td>Firefox / MacOS</td>
+              <td>2023-12-21 09:30:15</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 3 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">李华</div>
+                    <div class="small text-muted">开发人员</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-primary">创建</span></td>
+              <td>创建了新文档"微服务架构设计"</td>
+              <td>192.168.1.120</td>
+              <td>Chrome / Ubuntu</td>
+              <td>2023-12-21 09:15:33</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 4 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">赵敏</div>
+                    <div class="small text-muted">部门管理员</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-warning">权限修改</span></td>
+              <td>修改了"测试人员"角色的权限</td>
+              <td>192.168.1.110</td>
+              <td>Safari / iOS</td>
+              <td>2023-12-21 09:10:42</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 5 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">陈晨</div>
+                    <div class="small text-muted">普通用户</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-secondary">查看</span></td>
+              <td>查看了文档"产品需求规格说明书"</td>
+              <td>192.168.1.130</td>
+              <td>Edge / Windows</td>
+              <td>2023-12-21 09:05:18</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 6 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">刘伟</div>
+                    <div class="small text-muted">测试人员</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-danger">删除</span></td>
+              <td>删除了文档"过期测试用例"</td>
+              <td>192.168.1.115</td>
+              <td>Chrome / Windows</td>
+              <td>2023-12-21 09:01:54</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 7 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">吴娜</div>
+                    <div class="small text-muted">产品经理</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-info">更新</span></td>
+              <td>更新了文档"产品路线图2024"</td>
+              <td>192.168.1.125</td>
+              <td>Chrome / MacOS</td>
+              <td>2023-12-21 08:55:31</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <!-- 日志条目 8 -->
+            <tr>
+              <td class="ps-3">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-container me-2">
+                    <img src="https://via.placeholder.com/32" class="rounded-circle" alt="头像">
+                  </div>
+                  <div>
+                    <div class="fw-medium">郑强</div>
+                    <div class="small text-muted">开发人员</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge bg-purple">下载</span></td>
+              <td>下载了文档"数据库设计文档"</td>
+              <td>192.168.1.135</td>
+              <td>Chrome / Windows</td>
+              <td>2023-12-21 08:50:12</td>
+              <td class="text-end pe-3">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logDetailModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- 分页 -->
+    <div class="card-footer bg-white">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="text-muted small">显示 1-8 条，共 145 条</div>
+        <nav>
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">下一页</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 日志详情模态框 -->
+<div class="modal fade" id="logDetailModal" tabindex="-1" aria-labelledby="logDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logDetailModalLabel">日志详情</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h6 class="fw-bold">基本信息</h6>
+            <table class="table table-sm table-borderless">
+              <tr>
+                <td class="text-muted" style="width: 120px;">操作ID：</td>
+                <td>OP20231221094522</td>
+              </tr>
+              <tr>
+                <td class="text-muted">操作类型：</td>
+                <td><span class="badge bg-success">登录</span></td>
+              </tr>
+              <tr>
+                <td class="text-muted">操作内容：</td>
+                <td>用户登录系统</td>
+              </tr>
+              <tr>
+                <td class="text-muted">操作结果：</td>
+                <td><span class="badge bg-success">成功</span></td>
+              </tr>
+              <tr>
+                <td class="text-muted">操作时间：</td>
+                <td>2023-12-21 09:45:22</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <h6 class="fw-bold">用户信息</h6>
+            <table class="table table-sm table-borderless">
+              <tr>
+                <td class="text-muted" style="width: 120px;">用户名：</td>
+                <td>王管理 (wanggl)</td>
+              </tr>
+              <tr>
+                <td class="text-muted">用户角色：</td>
+                <td>系统管理员</td>
+              </tr>
+              <tr>
+                <td class="text-muted">部门：</td>
+                <td>技术部</td>
+              </tr>
+              <tr>
+                <td class="text-muted">IP地址：</td>
+                <td>192.168.1.100</td>
+              </tr>
+              <tr>
+                <td class="text-muted">登录位置：</td>
+                <td>北京市 联通</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="mt-3">
+          <h6 class="fw-bold">设备信息</h6>
+          <table class="table table-sm table-bordered">
+            <tr>
+              <td class="text-muted bg-light" style="width: 150px;">浏览器：</td>
+              <td>Chrome 108.0.5359.125</td>
+              <td class="text-muted bg-light" style="width: 150px;">操作系统：</td>
+              <td>Windows 10</td>
+            </tr>
+            <tr>
+              <td class="text-muted bg-light">设备类型：</td>
+              <td>桌面电脑</td>
+              <td class="text-muted bg-light">屏幕分辨率：</td>
+              <td>1920 x 1080</td>
+            </tr>
+            <tr>
+              <td class="text-muted bg-light">User Agent：</td>
+              <td colspan="3" class="small">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.5359.125 Safari/537.36</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="mt-3">
+          <h6 class="fw-bold">详细记录</h6>
+          <div class="border rounded p-3 bg-light">
+            <pre class="mb-0" style="max-height: 200px; overflow-y: auto;">
+{
+  "event": "user.login",
+  "timestamp": "2023-12-21T09:45:22.349Z",
+  "user": {
+    "id": "u-001",
+    "username": "wanggl",
+    "role": "system_admin",
+    "department": "tech"
+  },
+  "ip": "192.168.1.100",
+  "location": {
+    "city": "Beijing",
+    "isp": "China Unicom"
+  },
+  "client": {
+    "browser": "Chrome",
+    "browserVersion": "108.0.5359.125",
+    "os": "Windows",
+    "osVersion": "10",
+    "device": "desktop",
+    "screenResolution": "1920x1080"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "statusCode": 200,
+    "responseTime": 235
+  }
+}
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 清除日志确认模态框 -->
+<div class="modal fade" id="clearLogModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">确认清除</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>确定要清除所有访问日志吗？此操作不可恢复！</p>
+        <div class="alert alert-danger">
+          <div class="d-flex">
+            <div class="me-2">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+            <div>
+              <strong>警告：</strong> 清除所有日志将导致系统无法追踪历史操作记录。建议先导出备份。
+            </div>
+          </div>
+        </div>
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="confirm-clear-check" required>
+          <label class="form-check-label" for="confirm-clear-check">
+            我已了解此操作的风险，并确定要清除所有日志。
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-clear-btn" disabled>确认清除</button>
+      </div>
+    </div>
+  </div>
+</div> 

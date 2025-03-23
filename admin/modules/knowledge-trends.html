@@ -1,307 +1,350 @@
-<div class="module-panel" id="knowledge-trends-module">
-    <div class="page-header">
-        <h1 class="page-title">知识趋势</h1>
-        <div class="date-filter">
-            <button class="btn btn-outline-secondary dropdown-toggle">
-                <i class="bi bi-calendar3"></i> 最近30天
-                <i class="bi bi-chevron-down"></i>
-            </button>
+<!DOCTYPE html>
+<div id="knowledge-trends-module" class="container-fluid py-3">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">知识趋势分析</h4>
+        <div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-secondary active">周</button>
+            <button type="button" class="btn btn-outline-secondary">月</button>
+            <button type="button" class="btn btn-outline-secondary">季</button>
+            <button type="button" class="btn btn-outline-secondary">年</button>
+          </div>
+          <button class="btn btn-outline-primary ms-2">
+            <i class="bi bi-download me-1"></i>导出报告
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- 数据概览卡片 -->
-    <div class="row stat-cards">
-        <div class="col-xl-3 col-md-6">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div class="stat-icon bg-primary-soft">
-                        <i class="bi bi-file-earmark-plus"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3 class="stat-number">389</h3>
-                        <p class="stat-label">新增文档</p>
-                        <div class="stat-change increase">
-                            <i class="bi bi-arrow-up"></i> 15.2%
-                        </div>
-                    </div>
-                </div>
+  <!-- 趋势概览卡片 -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h6 class="text-muted">文档总量</h6>
+              <h3 class="mb-0">3,248</h3>
             </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div class="stat-icon bg-info-soft">
-                        <i class="bi bi-search"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3 class="stat-number">4,218</h3>
-                        <p class="stat-label">检索次数</p>
-                        <div class="stat-change increase">
-                            <i class="bi bi-arrow-up"></i> 18.3%
-                        </div>
-                    </div>
-                </div>
+            <div class="rounded-circle bg-primary-soft p-3">
+              <i class="bi bi-file-earmark-text"></i>
             </div>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <span class="badge bg-success me-1">
+              <i class="bi bi-arrow-up-short"></i> 12.6%
+            </span>
+            <span class="small text-muted">较上月</span>
+          </div>
         </div>
-        
-        <div class="col-xl-3 col-md-6">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div class="stat-icon bg-success-soft">
-                        <i class="bi bi-people"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3 class="stat-number">156</h3>
-                        <p class="stat-label">活跃用户</p>
-                        <div class="stat-change increase">
-                            <i class="bi bi-arrow-up"></i> 8.2%
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div class="stat-icon bg-warning-soft">
-                        <i class="bi bi-clock-history"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3 class="stat-number">86.4%</h3>
-                        <p class="stat-label">知识覆盖率</p>
-                        <div class="stat-change decrease">
-                            <i class="bi bi-arrow-down"></i> 2.1%
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-md-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h6 class="text-muted">知识热度</h6>
+              <h3 class="mb-0">73.8%</h3>
+            </div>
+            <div class="rounded-circle bg-success-soft p-3">
+              <i class="bi bi-fire"></i>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <span class="badge bg-success me-1">
+              <i class="bi bi-arrow-up-short"></i> 8.2%
+            </span>
+            <span class="small text-muted">较上月</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h6 class="text-muted">检索量</h6>
+              <h3 class="mb-0">5,874</h3>
+            </div>
+            <div class="rounded-circle bg-info-soft p-3">
+              <i class="bi bi-search"></i>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <span class="badge bg-success me-1">
+              <i class="bi bi-arrow-up-short"></i> 15.3%
+            </span>
+            <span class="small text-muted">较上月</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h6 class="text-muted">用户参与度</h6>
+              <h3 class="mb-0">62.5%</h3>
+            </div>
+            <div class="rounded-circle bg-warning-soft p-3">
+              <i class="bi bi-people"></i>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <span class="badge bg-danger me-1">
+              <i class="bi bi-arrow-down-short"></i> 3.1%
+            </span>
+            <span class="small text-muted">较上月</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- 知识趋势图表 -->
-    <div class="row mt-4">
-        <div class="col-xl-8">
-            <div class="card chart-card">
-                <div class="card-header">
-                    <h5 class="card-title">知识库访问趋势</h5>
-                    <div class="card-actions">
-                        <button class="btn btn-sm btn-outline-secondary">日</button>
-                        <button class="btn btn-sm btn-primary">周</button>
-                        <button class="btn btn-sm btn-outline-secondary">月</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="trendChart"></canvas>
-                    </div>
-                </div>
+  <!-- 文档增长趋势图表 -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">文档增长趋势</h5>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="growthChartOptions" data-bs-toggle="dropdown" aria-expanded="false">
+                过滤条件
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="growthChartOptions">
+                <li><a class="dropdown-item active" href="#">所有文档</a></li>
+                <li><a class="dropdown-item" href="#">技术文档</a></li>
+                <li><a class="dropdown-item" href="#">产品文档</a></li>
+                <li><a class="dropdown-item" href="#">管理文档</a></li>
+              </ul>
             </div>
+          </div>
         </div>
-        
-        <div class="col-xl-4">
-            <div class="card chart-card">
-                <div class="card-header">
-                    <h5 class="card-title">知识类型分布</h5>
-                    <div class="card-actions">
-                        <button class="btn btn-sm btn-icon">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="distributionChart"></canvas>
-                    </div>
-                </div>
-            </div>
+        <div class="card-body">
+          <div class="chart-container" style="height: 300px;">
+            <!-- 这里将通过JS渲染增长趋势图表 -->
+            <canvas id="documentGrowthChart"></canvas>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- 热门搜索关键词和热门文档 -->
-    <div class="row mt-4">
-        <div class="col-xl-5">
-            <div class="card chart-card">
-                <div class="card-header">
-                    <h5 class="card-title">热门搜索关键词</h5>
-                    <div class="card-actions">
-                        <button class="btn btn-sm btn-link">查看全部</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="keywordsChart"></canvas>
-                    </div>
-                </div>
+  <!-- 知识访问热度图和分类分布 -->
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">知识访问热度图</h5>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-sm btn-outline-secondary active">点击量</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">收藏量</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">评分</button>
             </div>
+          </div>
         </div>
-        
-        <div class="col-xl-7">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">热门文档</h5>
-                    <div class="card-actions">
-                        <button class="btn btn-sm btn-link">更多</button>
-                    </div>
-                </div>
-                <div class="card-body p-0">
-                    <div class="popular-docs">
-                        <div class="doc-item">
-                            <div class="doc-icon">
-                                <i class="bi bi-file-earmark-pdf"></i>
-                            </div>
-                            <div class="doc-info">
-                                <h6 class="doc-title">项目管理规范v3.1</h6>
-                                <div class="doc-meta">
-                                    <span class="doc-category">管理文档</span>
-                                    <span class="doc-views"><i class="bi bi-eye"></i> 239</span>
-                                </div>
-                            </div>
-                            <div class="doc-rating">
-                                <div class="rating">
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star half">★</span>
-                                </div>
-                                <span class="rating-value">4.5</span>
-                            </div>
-                        </div>
-                        
-                        <div class="doc-item">
-                            <div class="doc-icon">
-                                <i class="bi bi-file-earmark-word"></i>
-                            </div>
-                            <div class="doc-info">
-                                <h6 class="doc-title">API接口文档</h6>
-                                <div class="doc-meta">
-                                    <span class="doc-category">技术文档</span>
-                                    <span class="doc-views"><i class="bi bi-eye"></i> 186</span>
-                                </div>
-                            </div>
-                            <div class="doc-rating">
-                                <div class="rating">
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star empty">★</span>
-                                </div>
-                                <span class="rating-value">4.0</span>
-                            </div>
-                        </div>
-                        
-                        <div class="doc-item">
-                            <div class="doc-icon">
-                                <i class="bi bi-file-earmark-excel"></i>
-                            </div>
-                            <div class="doc-info">
-                                <h6 class="doc-title">市场分析报告2023</h6>
-                                <div class="doc-meta">
-                                    <span class="doc-category">业务文档</span>
-                                    <span class="doc-views"><i class="bi bi-eye"></i> 152</span>
-                                </div>
-                            </div>
-                            <div class="doc-rating">
-                                <div class="rating">
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star half">★</span>
-                                    <span class="star empty">★</span>
-                                </div>
-                                <span class="rating-value">3.5</span>
-                            </div>
-                        </div>
-                        
-                        <div class="doc-item">
-                            <div class="doc-icon">
-                                <i class="bi bi-file-earmark-ppt"></i>
-                            </div>
-                            <div class="doc-info">
-                                <h6 class="doc-title">产品路线图</h6>
-                                <div class="doc-meta">
-                                    <span class="doc-category">业务文档</span>
-                                    <span class="doc-views"><i class="bi bi-eye"></i> 118</span>
-                                </div>
-                            </div>
-                            <div class="doc-rating">
-                                <div class="rating">
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                </div>
-                                <span class="rating-value">5.0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="card-body">
+          <div class="chart-container" style="height: 350px;">
+            <!-- 这里将通过JS渲染热度图 -->
+            <canvas id="knowledgeHeatmapChart"></canvas>
+          </div>
         </div>
+      </div>
     </div>
-    
-    <!-- 知识增长和文档趋势 -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card chart-card">
-                <div class="card-header">
-                    <h5 class="card-title">知识库增长趋势</h5>
-                    <div class="card-actions">
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="bi bi-funnel"></i> 按部门筛选
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">所有部门</a></li>
-                                <li><a class="dropdown-item" href="#">研发部</a></li>
-                                <li><a class="dropdown-item" href="#">产品部</a></li>
-                                <li><a class="dropdown-item" href="#">设计部</a></li>
-                                <li><a class="dropdown-item" href="#">市场部</a></li>
-                                <li><a class="dropdown-item" href="#">销售部</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="trend-metrics">
-                                <div class="trend-metric-item">
-                                    <div class="metric-label">文档总数</div>
-                                    <div class="metric-value">2,547</div>
-                                    <div class="metric-change increase">较上月 +152</div>
-                                </div>
-                                <div class="trend-metric-item">
-                                    <div class="metric-label">累计贡献者</div>
-                                    <div class="metric-value">187</div>
-                                    <div class="metric-change increase">较上月 +12</div>
-                                </div>
-                                <div class="trend-metric-item">
-                                    <div class="metric-label">月均增长率</div>
-                                    <div class="metric-value">6.2%</div>
-                                    <div class="metric-change increase">持续增长</div>
-                                </div>
-                                <div class="trend-metric-item">
-                                    <div class="metric-label">预测下月增长</div>
-                                    <div class="metric-value">~170</div>
-                                    <div class="metric-change">基于历史数据</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="chart-container">
-                                <canvas id="growthChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-white">
+          <h5 class="card-title mb-0">知识分类分布</h5>
         </div>
+        <div class="card-body">
+          <div class="chart-container" style="height: 350px;">
+            <!-- 这里将通过JS渲染饼图 -->
+            <canvas id="categoryDistributionChart"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- 热门知识列表 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">热门知识TOP 10</h5>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="sortOptions" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sort-down me-1"></i>排序方式
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sortOptions">
+                <li><a class="dropdown-item active" href="#">按浏览量</a></li>
+                <li><a class="dropdown-item" href="#">按点赞数</a></li>
+                <li><a class="dropdown-item" href="#">按收藏数</a></li>
+                <li><a class="dropdown-item" href="#">按评分</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="bg-light">
+                <tr>
+                  <th>文档名称</th>
+                  <th>分类</th>
+                  <th>创建人</th>
+                  <th>浏览量</th>
+                  <th>评分</th>
+                  <th>趋势</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-file-earmark-text text-primary me-2"></i>
+                      <span>API接口设计规范</span>
+                    </div>
+                  </td>
+                  <td>技术文档</td>
+                  <td>张明</td>
+                  <td>1,342</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="me-1">4.8</span>
+                      <div class="rating small">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-success">上升</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-file-earmark-text text-primary me-2"></i>
+                      <span>微服务架构设计方案</span>
+                    </div>
+                  </td>
+                  <td>技术文档</td>
+                  <td>李华</td>
+                  <td>1,156</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="me-1">4.7</span>
+                      <div class="rating small">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-success">上升</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-file-earmark-text text-primary me-2"></i>
+                      <span>产品需求规格说明书</span>
+                    </div>
+                  </td>
+                  <td>产品文档</td>
+                  <td>王芳</td>
+                  <td>978</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="me-1">4.6</span>
+                      <div class="rating small">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-success">上升</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-file-earmark-text text-primary me-2"></i>
+                      <span>项目管理规范</span>
+                    </div>
+                  </td>
+                  <td>管理文档</td>
+                  <td>赵敏</td>
+                  <td>856</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="me-1">4.5</span>
+                      <div class="rating small">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-secondary">持平</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-file-earmark-text text-primary me-2"></i>
+                      <span>数据库设计规范</span>
+                    </div>
+                  </td>
+                  <td>技术文档</td>
+                  <td>刘伟</td>
+                  <td>765</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="me-1">4.3</span>
+                      <div class="rating small">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star text-warning"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-danger">下降</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

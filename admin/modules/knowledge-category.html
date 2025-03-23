@@ -1,285 +1,371 @@
 <!DOCTYPE html>
-<div class="container-fluid py-3" id="knowledge-category-module">
+<div id="knowledge-category-module" class="container-fluid py-3">
   <div class="row mb-4">
     <div class="col-12">
       <div class="d-flex justify-content-between align-items-center">
         <h4 class="mb-0">知识分类管理</h4>
-        <div>
-          <button class="btn btn-primary" id="add-category-btn">
-            <i class="bi bi-plus-circle me-1"></i>新增分类
-          </button>
-          <button class="btn btn-outline-secondary ms-2" id="expand-all-btn">
-            <i class="bi bi-arrows-expand me-1"></i>全部展开
-          </button>
-          <button class="btn btn-outline-secondary ms-2" id="collapse-all-btn">
-            <i class="bi bi-arrows-collapse me-1"></i>全部折叠
-          </button>
-        </div>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+          <i class="bi bi-plus-circle me-1"></i>添加分类
+        </button>
       </div>
     </div>
   </div>
 
+  <!-- 分类列表和树形结构 -->
   <div class="row">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">
+    <!-- 左侧分类树 -->
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header bg-white">
           <h5 class="card-title mb-0">分类结构</h5>
         </div>
         <div class="card-body">
-          <div class="category-tree">
-            <ul class="tree-root">
-              <!-- 技术文档分类 -->
-              <li class="tree-item">
-                <div class="tree-item-header">
-                  <span class="tree-toggle">
-                    <i class="bi bi-caret-down-fill"></i>
-                  </span>
-                  <i class="bi bi-folder-fill text-warning me-2"></i>
-                  <span class="tree-label">技术文档</span>
-                  <span class="badge bg-primary ms-2">125</span>
-                  <div class="tree-actions">
-                    <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                      <i class="bi bi-plus-circle"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
-                <ul class="tree-children">
-                  <li class="tree-item">
-                    <div class="tree-item-header">
-                      <span class="tree-toggle">
-                        <i class="bi bi-caret-down-fill"></i>
-                      </span>
-                      <i class="bi bi-folder-fill text-warning me-2"></i>
-                      <span class="tree-label">接口文档</span>
-                      <span class="badge bg-primary ms-2">56</span>
-                      <div class="tree-actions">
-                        <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                          <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                          <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <ul class="tree-children">
-                      <li class="tree-item">
-                        <div class="tree-item-header">
-                          <span class="tree-toggle invisible">
-                            <i class="bi bi-caret-right-fill"></i>
-                          </span>
-                          <i class="bi bi-file-earmark-text me-2"></i>
-                          <span class="tree-label">REST API设计规范</span>
-                          <span class="badge bg-primary ms-2">18</span>
-                          <div class="tree-actions">
-                            <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                              <i class="bi bi-plus-circle"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                              <i class="bi bi-pencil"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                              <i class="bi bi-trash"></i>
-                            </button>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="tree-item">
-                        <div class="tree-item-header">
-                          <span class="tree-toggle invisible">
-                            <i class="bi bi-caret-right-fill"></i>
-                          </span>
-                          <i class="bi bi-file-earmark-text me-2"></i>
-                          <span class="tree-label">WebSocket接口规范</span>
-                          <span class="badge bg-primary ms-2">12</span>
-                          <div class="tree-actions">
-                            <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                              <i class="bi bi-plus-circle"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                              <i class="bi bi-pencil"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                              <i class="bi bi-trash"></i>
-                            </button>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="tree-item">
-                    <div class="tree-item-header">
-                      <span class="tree-toggle">
-                        <i class="bi bi-caret-right-fill"></i>
-                      </span>
-                      <i class="bi bi-folder-fill text-warning me-2"></i>
-                      <span class="tree-label">架构设计</span>
-                      <span class="badge bg-primary ms-2">38</span>
-                      <div class="tree-actions">
-                        <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                          <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                          <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="tree-item">
-                    <div class="tree-item-header">
-                      <span class="tree-toggle">
-                        <i class="bi bi-caret-right-fill"></i>
-                      </span>
-                      <i class="bi bi-folder-fill text-warning me-2"></i>
-                      <span class="tree-label">开发规范</span>
-                      <span class="badge bg-primary ms-2">31</span>
-                      <div class="tree-actions">
-                        <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                          <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                          <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              
-              <!-- 管理文档分类 -->
-              <li class="tree-item">
-                <div class="tree-item-header">
-                  <span class="tree-toggle">
-                    <i class="bi bi-caret-right-fill"></i>
-                  </span>
-                  <i class="bi bi-folder-fill text-warning me-2"></i>
-                  <span class="tree-label">管理文档</span>
-                  <span class="badge bg-primary ms-2">87</span>
-                  <div class="tree-actions">
-                    <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                      <i class="bi bi-plus-circle"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
-              </li>
-              
-              <!-- 培训资料分类 -->
-              <li class="tree-item">
-                <div class="tree-item-header">
-                  <span class="tree-toggle">
-                    <i class="bi bi-caret-right-fill"></i>
-                  </span>
-                  <i class="bi bi-folder-fill text-warning me-2"></i>
-                  <span class="tree-label">培训资料</span>
-                  <span class="badge bg-primary ms-2">64</span>
-                  <div class="tree-actions">
-                    <button class="btn btn-sm btn-outline-primary" title="添加子分类">
-                      <i class="bi bi-plus-circle"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-secondary" title="编辑分类">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger" title="删除分类">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-sm btn-outline-secondary me-2">
+              <i class="bi bi-arrows-expand"></i> 展开全部
+            </button>
+            <button class="btn btn-sm btn-outline-secondary">
+              <i class="bi bi-arrows-collapse"></i> 折叠全部
+            </button>
           </div>
+          
+          <ul class="category-tree list-unstyled">
+            <!-- 分类树结构 -->
+            <li>
+              <div class="d-flex align-items-center category-item">
+                <span class="toggle-icon me-1"><i class="bi bi-dash-square"></i></span>
+                <span class="category-name">技术文档</span>
+                <div class="ms-auto">
+                  <span class="badge bg-primary rounded-pill">42</span>
+                </div>
+              </div>
+              <ul class="list-unstyled ps-4 mt-2">
+                <li>
+                  <div class="d-flex align-items-center category-item">
+                    <span class="toggle-icon me-1"><i class="bi bi-dash-square"></i></span>
+                    <span class="category-name">开发规范</span>
+                    <div class="ms-auto">
+                      <span class="badge bg-primary rounded-pill">15</span>
+                    </div>
+                  </div>
+                  <ul class="list-unstyled ps-4 mt-2">
+                    <li>
+                      <div class="d-flex align-items-center category-item">
+                        <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                        <span class="category-name">前端规范</span>
+                        <div class="ms-auto">
+                          <span class="badge bg-primary rounded-pill">8</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex align-items-center category-item">
+                        <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                        <span class="category-name">后端规范</span>
+                        <div class="ms-auto">
+                          <span class="badge bg-primary rounded-pill">7</span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center category-item">
+                    <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                    <span class="category-name">架构设计</span>
+                    <div class="ms-auto">
+                      <span class="badge bg-primary rounded-pill">12</span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex align-items-center category-item">
+                    <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                    <span class="category-name">API文档</span>
+                    <div class="ms-auto">
+                      <span class="badge bg-primary rounded-pill">15</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="d-flex align-items-center category-item">
+                <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                <span class="category-name">产品文档</span>
+                <div class="ms-auto">
+                  <span class="badge bg-primary rounded-pill">35</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="d-flex align-items-center category-item">
+                <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                <span class="category-name">运维文档</span>
+                <div class="ms-auto">
+                  <span class="badge bg-primary rounded-pill">20</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="d-flex align-items-center category-item">
+                <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                <span class="category-name">管理制度</span>
+                <div class="ms-auto">
+                  <span class="badge bg-primary rounded-pill">18</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="d-flex align-items-center category-item">
+                <span class="toggle-icon me-1"><i class="bi bi-plus-square"></i></span>
+                <span class="category-name">培训资料</span>
+                <div class="ms-auto">
+                  <span class="badge bg-primary rounded-pill">25</span>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
     
-    <div class="col-md-4">
+    <!-- 右侧分类管理 -->
+    <div class="col-md-8">
       <div class="card mb-4">
-        <div class="card-header">
-          <h5 class="card-title mb-0">分类详情</h5>
+        <div class="card-header bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">分类列表</h5>
+            <div class="input-group" style="max-width: 300px;">
+              <input type="text" class="form-control" placeholder="搜索分类...">
+              <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="card-body" id="category-details">
-          <div class="text-center py-4 text-muted">
-            <i class="bi bi-arrow-left-circle fs-2"></i>
-            <p class="mt-2">请从左侧选择一个分类查看详情</p>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="bg-light">
+                <tr>
+                  <th>分类名称</th>
+                  <th>上级分类</th>
+                  <th>文档数量</th>
+                  <th>创建时间</th>
+                  <th>排序</th>
+                  <th class="text-end">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>技术文档</span>
+                    </div>
+                  </td>
+                  <td>根分类</td>
+                  <td>42</td>
+                  <td>2023-06-15</td>
+                  <td>1</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#editCategoryModal">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>开发规范</span>
+                    </div>
+                  </td>
+                  <td>技术文档</td>
+                  <td>15</td>
+                  <td>2023-06-15</td>
+                  <td>1</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>前端规范</span>
+                    </div>
+                  </td>
+                  <td>开发规范</td>
+                  <td>8</td>
+                  <td>2023-06-16</td>
+                  <td>1</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>后端规范</span>
+                    </div>
+                  </td>
+                  <td>开发规范</td>
+                  <td>7</td>
+                  <td>2023-06-16</td>
+                  <td>2</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>架构设计</span>
+                    </div>
+                  </td>
+                  <td>技术文档</td>
+                  <td>12</td>
+                  <td>2023-06-17</td>
+                  <td>2</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>API文档</span>
+                    </div>
+                  </td>
+                  <td>技术文档</td>
+                  <td>15</td>
+                  <td>2023-06-18</td>
+                  <td>3</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>产品文档</span>
+                    </div>
+                  </td>
+                  <td>根分类</td>
+                  <td>35</td>
+                  <td>2023-06-20</td>
+                  <td>2</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-folder-fill text-warning me-2"></i>
+                      <span>运维文档</span>
+                    </div>
+                  </td>
+                  <td>根分类</td>
+                  <td>20</td>
+                  <td>2023-06-22</td>
+                  <td>3</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- 分页 -->
+        <div class="card-footer bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="text-muted small">显示 1-8 条，共 20 条</div>
+            <nav>
+              <ul class="pagination pagination-sm mb-0">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">下一页</a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
       
+      <!-- 分类统计 -->
       <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-white">
           <h5 class="card-title mb-0">分类统计</h5>
         </div>
         <div class="card-body">
-          <div class="row g-3">
-            <div class="col-6">
-              <div class="border rounded p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <span class="d-block text-muted">一级分类</span>
-                    <h3 class="mb-0">6</h3>
-                  </div>
-                  <div class="bg-primary-soft rounded-circle p-2">
-                    <i class="bi bi-folder fs-4"></i>
-                  </div>
-                </div>
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <div class="border rounded p-3 text-center">
+                <div class="display-6 mb-2">9</div>
+                <div class="text-muted">一级分类数量</div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="border rounded p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <span class="d-block text-muted">二级分类</span>
-                    <h3 class="mb-0">24</h3>
-                  </div>
-                  <div class="bg-success-soft rounded-circle p-2">
-                    <i class="bi bi-folder fs-4"></i>
-                  </div>
-                </div>
+            <div class="col-lg-4">
+              <div class="border rounded p-3 text-center">
+                <div class="display-6 mb-2">28</div>
+                <div class="text-muted">总分类数量</div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="border rounded p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <span class="d-block text-muted">三级分类</span>
-                    <h3 class="mb-0">53</h3>
-                  </div>
-                  <div class="bg-info-soft rounded-circle p-2">
-                    <i class="bi bi-folder fs-4"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="border rounded p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <span class="d-block text-muted">平均深度</span>
-                    <h3 class="mb-0">2.8</h3>
-                  </div>
-                  <div class="bg-warning-soft rounded-circle p-2">
-                    <i class="bi bi-layers fs-4"></i>
-                  </div>
-                </div>
+            <div class="col-lg-4">
+              <div class="border rounded p-3 text-center">
+                <div class="display-6 mb-2">140</div>
+                <div class="text-muted">总文档数量</div>
               </div>
             </div>
           </div>
@@ -289,83 +375,156 @@
   </div>
 </div>
 
-<!-- 添加/编辑分类模态框 -->
-<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+<!-- 添加分类模态框 -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="categoryModalLabel">添加分类</h5>
+        <h5 class="modal-title" id="addCategoryModalLabel">添加分类</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
       </div>
       <div class="modal-body">
-        <form id="category-form" class="needs-validation" novalidate>
-          <input type="hidden" id="category-id">
+        <form>
           <div class="mb-3">
             <label for="category-name" class="form-label">分类名称</label>
-            <input type="text" class="form-control" id="category-name" required>
-            <div class="invalid-feedback">请输入分类名称</div>
+            <input type="text" class="form-control" id="category-name" placeholder="输入分类名称">
           </div>
           <div class="mb-3">
-            <label for="parent-category" class="form-label">父级分类</label>
+            <label for="parent-category" class="form-label">上级分类</label>
             <select class="form-select" id="parent-category">
-              <option value="">无 (顶级分类)</option>
-              <option value="tech">技术文档</option>
-              <option value="tech-api">技术文档 > 接口文档</option>
-              <option value="tech-arch">技术文档 > 架构设计</option>
-              <option value="tech-dev">技术文档 > 开发规范</option>
-              <option value="mgmt">管理文档</option>
-              <option value="training">培训资料</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="category-icon" class="form-label">分类图标</label>
-            <select class="form-select" id="category-icon">
-              <option value="folder-fill">文件夹</option>
-              <option value="file-earmark-text">文档</option>
-              <option value="code-square">代码</option>
-              <option value="diagram-3">架构图</option>
-              <option value="gear">设置</option>
-              <option value="people">团队</option>
+              <option value="0">作为一级分类</option>
+              <option value="1">技术文档</option>
+              <option value="2">开发规范</option>
+              <option value="3">产品文档</option>
+              <option value="4">运维文档</option>
+              <option value="5">管理制度</option>
+              <option value="6">培训资料</option>
             </select>
           </div>
           <div class="mb-3">
             <label for="category-description" class="form-label">分类描述</label>
-            <textarea class="form-control" id="category-description" rows="3"></textarea>
+            <textarea class="form-control" id="category-description" rows="3" placeholder="输入分类描述（可选）"></textarea>
           </div>
           <div class="mb-3">
-            <div class="form-check">
+            <label for="category-icon" class="form-label">分类图标</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-folder-fill"></i></span>
+              <select class="form-select" id="category-icon">
+                <option value="bi-folder-fill">文件夹</option>
+                <option value="bi-file-code-fill">代码</option>
+                <option value="bi-file-text-fill">文档</option>
+                <option value="bi-database-fill">数据</option>
+                <option value="bi-gear-fill">设置</option>
+                <option value="bi-book-fill">书籍</option>
+                <option value="bi-graph-up">图表</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="category-sort" class="form-label">排序</label>
+            <input type="number" class="form-control" id="category-sort" min="1" max="999" value="1">
+            <div class="form-text">数字越小排序越靠前</div>
+          </div>
+          <div class="mb-3">
+            <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" id="category-visible" checked>
-              <label class="form-check-label" for="category-visible">
-                在导航菜单中显示
-              </label>
+              <label class="form-check-label" for="category-visible">在导航中显示</label>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="save-category-btn">保存</button>
+        <button type="button" class="btn btn-primary">保存</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- 删除确认模态框 -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+<!-- 编辑分类模态框 -->
+<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">确认删除</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="editCategoryModalLabel">编辑分类</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
       </div>
       <div class="modal-body">
-        <p>确定要删除该分类吗？此操作将同时删除其下所有子分类。</p>
-        <p class="text-danger"><strong>注意：</strong> 该操作不可恢复！</p>
+        <form>
+          <div class="mb-3">
+            <label for="edit-category-name" class="form-label">分类名称</label>
+            <input type="text" class="form-control" id="edit-category-name" value="技术文档">
+          </div>
+          <div class="mb-3">
+            <label for="edit-parent-category" class="form-label">上级分类</label>
+            <select class="form-select" id="edit-parent-category">
+              <option value="0" selected>作为一级分类</option>
+              <option value="3">产品文档</option>
+              <option value="4">运维文档</option>
+              <option value="5">管理制度</option>
+              <option value="6">培训资料</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="edit-category-description" class="form-label">分类描述</label>
+            <textarea class="form-control" id="edit-category-description" rows="3">包含各类技术开发文档、规范和API文档</textarea>
+          </div>
+          <div class="mb-3">
+            <label for="edit-category-icon" class="form-label">分类图标</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-folder-fill"></i></span>
+              <select class="form-select" id="edit-category-icon">
+                <option value="bi-folder-fill" selected>文件夹</option>
+                <option value="bi-file-code-fill">代码</option>
+                <option value="bi-file-text-fill">文档</option>
+                <option value="bi-database-fill">数据</option>
+                <option value="bi-gear-fill">设置</option>
+                <option value="bi-book-fill">书籍</option>
+                <option value="bi-graph-up">图表</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="edit-category-sort" class="form-label">排序</label>
+            <input type="number" class="form-control" id="edit-category-sort" min="1" max="999" value="1">
+            <div class="form-text">数字越小排序越靠前</div>
+          </div>
+          <div class="mb-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="edit-category-visible" checked>
+              <label class="form-check-label" for="edit-category-visible">在导航中显示</label>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-danger" id="confirm-delete-btn">确认删除</button>
+        <button type="button" class="btn btn-primary">保存修改</button>
       </div>
     </div>
   </div>
-</div> 
+</div>
+
+<!-- 样式 -->
+<style>
+  .category-tree {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .category-item {
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 4px;
+  }
+  
+  .category-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .toggle-icon {
+    width: 20px;
+    text-align: center;
+  }
+</style> 
